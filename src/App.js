@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import GlobalStyles from './styles/GlobalStyles';
+import { Section } from './styles/AppStyles';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Creative from './components/Creative/Creative';
+import Corporate from './components/Corporate/Corporate';
+import Social from './components/Social/Social';
+import Seo from './components/Seo/Seo';
+import Marketing from './components/Marketing/Marketing';
+import MarketingTwo from './components/MarketingTwo/MarketingTwo';
+import Agency from './components/Agency/Agency';
+import AgencyTwo from './components/AgencyTwo/AgencyTwo';
+import Footer from './components/Footer/Footer';
+import { ContentWrapper } from './indexStyled';
+import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
 
-function App() {
+const App = () => {
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowContent(true), 50); // Pequeno delay para suavizar a transição
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <Header />
+      <ContentWrapper className={showContent ? 'show' : ''}>
+        <Section id="home"><Home /></Section>
+        <Section id="creative"><Creative /></Section>
+        <Section id="corporate"><Corporate /></Section>
+        <Section id="social"><Social /></Section>
+        <Section id="seo"><Seo /></Section>
+        <Section id="marketing"><Marketing /></Section>
+        <Section id="marketing"><MarketingTwo /></Section>
+        <Section id="agency"><Agency /></Section>
+        <Section id="agency"><AgencyTwo /></Section>
+        <Footer />
+      </ContentWrapper>
+      <ScrollToTopButton />
+    </>
   );
 }
 

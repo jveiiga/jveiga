@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client'; // Alteração para importar de 'react-dom/client'
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
+const Root = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <React.StrictMode>
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <App />
+      )}
+    </React.StrictMode>
+  );
+};
+
+// Alteração aqui para usar 'createRoot' em vez de 'render'
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<Root />);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
