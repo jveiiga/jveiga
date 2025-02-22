@@ -1,7 +1,7 @@
 {
   "name": "jveiga",
   "version": "0.1.0",
-  "homepage": "https://jveiiga.github.io/jveiga",
+  "homepage": "https://jveiga.dev",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
