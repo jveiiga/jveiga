@@ -27,6 +27,7 @@ const logos = [
   { src: javaLogo, alt: 'Java Logo' },
   { src: springLogo, alt: 'Spring Logo' },
   { src: metaLogo, alt: 'Meta Logo' },
+  { src: googleLogo, alt: 'Google Logo' },
   { src: gitLogo, alt: 'Git Logo' },
   { src: githubLogo, alt: 'GitHub Logo' },
   { src: canvaLogo, alt: 'Canva Logo' },
