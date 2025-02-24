@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Matter from 'matter-js';
 import { LoadingWrapper, LoadingText, LoadingTextContainer } from './LoadingScreenStyled';
 import typescriptLogo from '../../assets/images/logo/ts-logo.png';
@@ -11,6 +11,10 @@ import javaLogo from '../../assets/images/logo/java-logo.png';
 import springLogo from '../../assets/images/logo/spring-logo.png';
 import metaLogo from '../../assets/images/logo/meta-logo.png';
 import googleLogo from '../../assets/images/logo/google-logo.png';
+import gitLogo from '../../assets/images/logo/git-logo.png';
+import githubLogo from '../../assets/images/logo/github-logo.png';
+import canvaLogo from '../../assets/images/logo/canva-logo.png';
+import vercelLogo from '../../assets/images/logo/vercel-logo.png';
 
 
 const logos = [
@@ -23,25 +27,14 @@ const logos = [
   { src: javaLogo, alt: 'Java Logo' },
   { src: springLogo, alt: 'Spring Logo' },
   { src: metaLogo, alt: 'Meta Logo' },
-  { src: googleLogo, alt: 'Google Logo' }
+  { src: gitLogo, alt: 'Git Logo' },
+  { src: githubLogo, alt: 'GitHub Logo' },
+  { src: canvaLogo, alt: 'Canva Logo' },
+  { src: vercelLogo, alt: 'Vercel Logo' }
 ];
 
 const LoadingScreen = () => {
   const sceneRef = useRef(null);
-  const [loadingText, setLoadingText] = useState('');
-
-  useEffect(() => {
-    const handleTyping = () => {
-      const text = 'Carregando....';
-      let index = 0;
-      const interval = setInterval(() => {
-        setLoadingText(text.slice(0, index + 1));
-        index = (index + 1) % (text.length + 1);
-      }, 400);
-      return () => clearInterval(interval);
-    };
-    handleTyping();
-  }, []);
 
   useEffect(() => {
     if (!sceneRef.current) return;
@@ -114,7 +107,7 @@ const LoadingScreen = () => {
   return (
     <LoadingWrapper ref={sceneRef}>
       <LoadingTextContainer>
-        <LoadingText>{loadingText}</LoadingText>
+        <LoadingText>Carregando....</LoadingText>
       </LoadingTextContainer>
     </LoadingWrapper>
   );

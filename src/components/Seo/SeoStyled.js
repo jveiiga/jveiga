@@ -1,23 +1,30 @@
 import styled from 'styled-components';
-import seoBackground from '../../assets/images/background/seo-background.jpg'
 
 export const SeoSession = styled.section`
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 `;
 
 export const SeoWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(${seoBackground});
+  overflow: hidden;
   background-size: cover;
   background-position: center;
   will-change: transform;
-  transition: transform 0.1s ease-out; // Esta linha foi adicionada para suavizar a animação
+  transition: transform 0.1s ease-out; 
 `;
+
+export const BackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+`
 
 export const Overlay = styled.div`
   position: absolute;
@@ -25,23 +32,33 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: rgba(0, 0, 0, 0.1);  */
+  background-color: rgba(47, 20, 20, 0.1); 
+  z-index: 2;
+`;
+
+export const SeoContentWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 3;
+  text-align: center;
 `;
 
 export const SeoContent = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
   flex-direction: column;
-  padding-left: 10%;
+  padding-right: 10%;
   position: relative;
   z-index: 4;
-  color: #000;
+  color: #FFF;
   text-align: center;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   opacity: 0;
-  transform: translateX(-50%);
+  transform: translateX(50%);
   transition: opacity 1s ease-out, transform 1s ease-out;
 
   &.animate {
@@ -89,7 +106,6 @@ export const TitleContent = styled.div`
     font-family: 'Open Sans', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
-    /* text-transform: uppercase; */
   }
 
   strong {
@@ -97,6 +113,23 @@ export const TitleContent = styled.div`
     font-family: 'Raleway', sans-serif;
     font-size: 2.5rem;
     font-weight: 100;
-    /* text-transform: uppercase; */
   }
 `;
+
+  export const Button = styled.button`
+  position: relative;
+  padding: 1rem 4rem;
+  border: 2px solid #FFF;
+  background-color: transparent;
+  color: #FFF;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FFF;
+    color: #000;
+  }
+  `;

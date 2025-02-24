@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Overlay, SocialContent, SocialContentWrapper, SocialSession, SocialWrapper, TitleContent } from './SocialStyled';
+import { BackgroundImage, Button, Overlay, SocialContent, SocialContentWrapper, SocialSession, SocialWrapper, TitleContent } from './SocialStyled';
 import { useInView } from 'react-intersection-observer';
 
 const Social = () => {
@@ -28,6 +28,7 @@ const Social = () => {
   return (
     <SocialSession id="social">
       <SocialWrapper id="social-wrapper">
+        <BackgroundImage id="creative-image" src={require('../../assets/images/background/social-background.jpg')} alt="Social Background" />
         <Overlay />
         <SocialContentWrapper>
           <SocialContent ref={ref} className={inView ? 'animate' : ''}>
@@ -35,6 +36,7 @@ const Social = () => {
               <strong>Mídia&nbsp;</strong><h2>Social</h2>
             </TitleContent>
             <p>Gestão inteligente para engajamento, alcance e conversões.</p>
+            <Button>Saber Mais</Button> 
           </SocialContent>
         </SocialContentWrapper>
       </SocialWrapper>

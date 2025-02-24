@@ -1,42 +1,34 @@
-import React, { useEffect } from 'react';
-import { HomeSession, HomeWrapper, Overlay, HomeContent, TitleContent, Button } from './HomeStyled';
+import React, { useEffect, useState } from 'react';
+import { HomeContainer, HomeSession, HomeWrapper, Overlay, HomeContent, TitleContent, Button } from './HomeStyled';
 
 const Home = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const creativeWrapper = document.getElementById('home-wrapper');
-      
-      if (creativeWrapper) {
-        const maxScroll = creativeWrapper.clientHeight - window.innerHeight;
-        const backgroundPositionY = Math.min(scrollPosition * 0.5, maxScroll);
-        creativeWrapper.style.backgroundPositionY = `${backgroundPositionY}px`;
-      }
-    };
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <HomeSession id="home">
-      <HomeWrapper id="home-wrapper">
-        <Overlay />
-        <HomeContent>
-          <TitleContent>
-            <strong>Soluções&nbsp;</strong><h1>Estratégicas</h1>
-          </TitleContent>
-          <p>Desenvolvimento, Tráfego Pago e Fotografia</p>
-          <Button>
-            Saber Mais
-          </Button>
-        </HomeContent>
-      </HomeWrapper>
-    </HomeSession>
+    <HomeContainer>
+      <HomeSession id="home">
+        <HomeWrapper>
+          <Overlay />
+          <HomeContent className={isVisible ? 'animate' : ''}>
+            <TitleContent>
+              <strong>Soluções&nbsp;</strong>
+              <h1>Estratégicas</h1>
+            </TitleContent>
+            <p>Desenvolvimento, Tráfego Pago e Fotografia</p>
+            <Button>Saber Mais</Button>
+          </HomeContent>
+        </HomeWrapper>
+      </HomeSession>
+    </HomeContainer>
   );
-}
+};
 
 export default Home;

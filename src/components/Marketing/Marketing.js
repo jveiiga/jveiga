@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MarketingContent, MarketingContentWrapper, MarketingSession, MarketingWrapper, Overlay, TitleContent } from './MarketingStyled';
+import { BackgroundImage, MarketingContent, MarketingContentWrapper, MarketingSession, MarketingWrapper, Overlay, TitleContent } from './MarketingStyled';
 import { useInView } from 'react-intersection-observer';
 
 const Marketing = () => {
@@ -28,6 +28,7 @@ const Marketing = () => {
   return (
     <MarketingSession id="marketing">
       <MarketingWrapper id="marketing-wrapper">
+        <BackgroundImage id="marketin-image" src={require('../../assets/images/background/marketing-background.jpg')} alt="Marketing Background" />
         <Overlay />
         <MarketingContentWrapper>
           <MarketingContent ref={ref} className={inView ? 'animate' : ''}>

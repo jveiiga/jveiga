@@ -5,5 +5,9 @@ export const AppWrapper = styled.div`
 `;
 
 export const Section = styled.section`
- 
+  /* width: 100vw;  */
+  scroll-snap-align: start; /* Garante que cada seção seja "encaixada" ao ser rolada */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
 `;

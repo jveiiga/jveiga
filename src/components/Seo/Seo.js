@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Overlay, SeoContent, SeoSession, SeoWrapper, TitleContent } from './SeoStyled';
+import { BackgroundImage, Button, Overlay, SeoContent, SeoSession, SeoWrapper, TitleContent } from './SeoStyled';
 
 const Seo = () => {
   const { ref, inView } = useInView({
@@ -28,12 +28,14 @@ const Seo = () => {
   return (
     <SeoSession id="seo">
       <SeoWrapper id="seo-wrapper">
+        <BackgroundImage id="seo-image" src={require('../../assets/images/background/seo-background.jpg')} alt="Seo Background" />
         <Overlay />
         <SeoContent ref={ref} className={inView ? 'animate' : ''}>
           <TitleContent>
             <h2>SEO</h2>
           </TitleContent>
           <p>Conteúdo estratégico e otimização para alcançar resultados reais.</p>
+          <Button>Saber Mais</Button>
         </SeoContent>
       </SeoWrapper>
     </SeoSession>

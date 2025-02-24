@@ -63,8 +63,8 @@ const Header = () => {
         <Nav>
           <NavList>
             <NavItem><NavLink href="#home" onClick={(e) => handleClick(e, '#home')} className={activeLink === '#home' ? 'active' : ''}>Home</NavLink></NavItem>
-            <NavItem><NavLink href="#creative" onClick={(e) => handleClick(e, '#creative')} className={activeLink === '#creative' ? 'active' : ''}>Creative</NavLink></NavItem>
-            <NavItem><NavLink href="#corporate" onClick={(e) => handleClick(e, '#corporate')} className={activeLink === '#corporate' ? 'active' : ''}>Corporate</NavLink></NavItem>
+            {/* <NavItem><NavLink href="#creative" onClick={(e) => handleClick(e, '#creative')} className={activeLink === '#creative' ? 'active' : ''}>Creative</NavLink></NavItem> */}
+            {/* <NavItem><NavLink href="#corporate" onClick={(e) => handleClick(e, '#corporate')} className={activeLink === '#corporate' ? 'active' : ''}>Corporate</NavLink></NavItem> */}
             <NavItem><NavLink href="#social" onClick={(e) => handleClick(e, '#social')} className={activeLink === '#social' ? 'active' : ''}>Social</NavLink></NavItem>
             <NavItem><NavLink href="#seo" onClick={(e) => handleClick(e, '#seo')} className={activeLink === '#seo' ? 'active' : ''}>Seo</NavLink></NavItem>
             <NavItem><NavLink href="#marketing" onClick={(e) => handleClick(e, '#marketing')} className={activeLink === '#marketing' ? 'active' : ''}>Marketing</NavLink></NavItem>

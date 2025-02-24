@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import homeBackground from '../../assets/images/background/home-background.png';
 
+export const HomeContainer = styled.div`
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+`;
+
 export const HomeSession = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  scroll-snap-align: start;
 `;
 
 export const HomeWrapper = styled.div`
@@ -15,8 +22,7 @@ export const HomeWrapper = styled.div`
   background-image: url(${homeBackground});
   background-size: cover;
   background-position: center;
-  will-change: transform;
-  transition: transform 0.1s ease-out; // Esta linha foi adicionada para suavizar a animação
+  will-change: background-position;
 `;
 
 export const Overlay = styled.div`
@@ -25,7 +31,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); 
+  background-color: rgba(0, 0, 0, 0.3);
 `;
 
 export const HomeContent = styled.div`
@@ -39,6 +45,14 @@ export const HomeContent = styled.div`
   color: white;
   text-align: center;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   h1 {
     font-family: 'Raleway', sans-serif;
@@ -52,7 +66,6 @@ export const HomeContent = styled.div`
     font-weight: 100;
     text-transform: uppercase;
   }
-
 `;
 
 export const TitleContent = styled.div`
@@ -63,20 +76,10 @@ export const TitleContent = styled.div`
   margin-bottom: 1.5rem;
   margin-top: 15rem;
 
-  p {
-    font-size: 1.5rem;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 100;
-    /* text-transform: uppercase; */
-  }
-
   strong {
     font-size: 3rem;
     font-family: 'Raleway', sans-serif;
-    font-size: 2.5rem;
     font-weight: 100;
-    /* text-transform: uppercase; */
   }
 `;
 
@@ -91,6 +94,7 @@ export const Button = styled.button`
   margin-top: 2rem;
   background-color: rgba(0, 0, 0, 0.8);
   transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     background-color: #FFF;

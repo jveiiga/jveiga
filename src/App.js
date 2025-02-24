@@ -14,6 +14,7 @@ import AgencyTwo from './components/AgencyTwo/AgencyTwo';
 import Footer from './components/Footer/Footer';
 import { ContentWrapper } from './indexStyled';
 import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
+import About from './components/About/About';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -28,15 +29,16 @@ const App = () => {
       <Header />
       <ContentWrapper className={showContent ? 'show' : ''}>
         <Section id="home"><Home /></Section>
-        <Section id="creative"><Creative /></Section>
-        <Section id="corporate"><Corporate /></Section>
+        {/* <Section id="creative"><About /></Section> */}
+        {/* <Section id="creative"><Creative /></Section> */}
+        {/* <Section id="corporate"><Corporate /></Section> */}
         <Section id="social"><Social /></Section>
+        <Section id="seo"><MarketingTwo /></Section>
         <Section id="seo"><Seo /></Section>
         <Section id="marketing"><Marketing /></Section>
-        <Section id="marketing"><MarketingTwo /></Section>
         <Section id="agency"><Agency /></Section>
         <Section id="agency"><AgencyTwo /></Section>
-        <Footer />
+        <Section><Footer /></Section>
       </ContentWrapper>
       <ScrollToTopButton />
     </>

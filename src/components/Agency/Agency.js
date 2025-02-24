@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { AgencyContent, AgencyContentWrapper, AgencySession, AgencyWrapper, Overlay, TitleContent } from './AgencyStyled';
+import { AgencyContent, AgencyContentWrapper, AgencySession, AgencyWrapper, BackgroundImage, Button, Overlay, TitleContent } from './AgencyStyled';
+// import { BackgroundImage } from '../Creative/CreativeStyled';
 
 
 const Agency = () => {
@@ -15,7 +16,7 @@ const Agency = () => {
       const creativeWrapper = document.getElementById('agency-wrapper');
 
       if (creativeWrapper) {
-        creativeWrapper.style.backgroundPositionY = `${scrollPosition * 1}px`;
+        creativeWrapper.style.backgroundPositionY = `${scrollPosition * 5}px`;
       }
     };
 
@@ -29,6 +30,7 @@ const Agency = () => {
   return (
     <AgencySession id="agency">
       <AgencyWrapper id="agency-wrapper">
+        <BackgroundImage id="creative-image" src={require('../../assets/images/background/agency-background.jpeg')} alt="Agency Background" />
         <Overlay />
         <AgencyContentWrapper>
           <AgencyContent ref={ref} className={inView ? 'animate' : ''}>
@@ -36,6 +38,7 @@ const Agency = () => {
               <strong>Melhores&nbsp;</strong><h2>Soluções</h2>
             </TitleContent>
             <p>Empresas que querem crescer precisam de presença digital forte.</p>
+            <Button>Saber Mais</Button>
           </AgencyContent>
         </AgencyContentWrapper>
       </AgencyWrapper>

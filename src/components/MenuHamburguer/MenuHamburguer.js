@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { MenuButton, MenuContainer, MenuIcon, MenuItem, MenuList, Logo, FooterIcons, IconWrapper, Image } from './MenuHamburguerStyled';
+import { MenuButton, MenuContainer, MenuIcon, MenuItem, MenuList, Logo, FooterIcons, IconWrapper } from './MenuHamburguerStyled';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import logoImage from '../../assets/images/logo.png';
-
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,9 +29,15 @@ const HamburgerMenu = () => {
           </MenuItem>
         ))}
         <FooterIcons>
-          <IconWrapper href='https://www.linkedin.com/in/jveiiga/' target='_blank'><Image src={FaLinkedin} alt="Logo LinkedIn" /></IconWrapper>
-          <IconWrapper href='https://github.com/jveiiga' target='_blank'><Image src={FaGithub} alt="Logo GitHub" /></IconWrapper>
-          <IconWrapper href='mailto:jeferson.veiiga@icloud.com'><Image src={FaEnvelope} alt="Logo Email" /></IconWrapper>
+          <IconWrapper href='https://www.linkedin.com/in/jveiiga/' target='_blank'>
+            <FaLinkedin size={24} />  {/* Usando o componente do ícone diretamente */}
+          </IconWrapper>
+          <IconWrapper href='https://github.com/jveiiga' target='_blank'>
+            <FaGithub size={24} />    {/* Usando o componente do ícone diretamente */}
+          </IconWrapper>
+          <IconWrapper href='mailto:jeferson.veiiga@icloud.com'>
+            <FaEnvelope size={24} />  {/* Usando o componente do ícone diretamente */}
+          </IconWrapper>
         </FooterIcons>
       </MenuList>
     </MenuContainer>

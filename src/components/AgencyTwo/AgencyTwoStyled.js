@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import agencyTwoBackground  from '../../assets/images/background/agecyTwo-background.jpg'
+import agencyTwoBackground  from '../../assets/images/background/agencyTwo-background.jpg'
 
 export const AgencyTwoSession = styled.section`
   height: 100vh;

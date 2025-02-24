@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MarketingTwoContent, MarketingTwoSession, MarketingTwoWrapper, Overlay, TitleContent } from './MarketingTwoStyled';
+import { BackgroundImage, MarketingTwoContent, MarketingTwoSession, MarketingTwoWrapper, Overlay, TitleContent } from './MarketingTwoStyled';
 import { useInView } from 'react-intersection-observer';
 
 
@@ -12,8 +12,8 @@ const MarketingTwo = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const creativeWrapper = document.getElementById('marketing-wrapper');
-      
+      const creativeWrapper = document.getElementById('seo-wrapper');
+
       if (creativeWrapper) {
         creativeWrapper.style.backgroundPositionY = `${scrollPosition * 1}px`;
       }
@@ -27,12 +27,13 @@ const MarketingTwo = () => {
   }, []);
 
   return (
-    <MarketingTwoSession id="marketing">
-      <MarketingTwoWrapper id="marketing-wrapper">
+    <MarketingTwoSession id="seo">
+      <MarketingTwoWrapper id="seo-wrapper">
+        <BackgroundImage id="seo-image" src={require('../../assets/images/background/marketingTwo-background.jpg')} alt="Marketing Background" />
         <Overlay />
         <MarketingTwoContent ref={ref} className={inView ? 'animate' : ''}>
           <TitleContent>
-          <strong>Cultive a &nbsp;</strong><h2>Inspiração</h2>
+            <strong>Cultive a &nbsp;</strong><h2>Inspiração</h2>
           </TitleContent>
           <p>Design e comunicação conectam marcas ao público certo.</p>
         </MarketingTwoContent>

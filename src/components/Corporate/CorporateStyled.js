@@ -1,23 +1,33 @@
 import styled from 'styled-components';
-import agencyBackground  from '../../assets/images/background/corporate-background.jpg'
 
 export const CorporateSession = styled.section`
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 `;
 
 export const CorporateWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(${agencyBackground});
+  overflow: hidden;
+  /* z-index: 1; */
   background-size: cover;
   background-position: center;
   will-change: transform;
-  transition: transform 0.1s ease-out; // Esta linha foi adicionada para suavizar a animação
+  transition: transform 0.1s ease-out; 
 `;
+
+export const BackgroundImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* left: 0; */
+  /* z-index: 1; */
+`
 
 export const Overlay = styled.div`
   position: absolute;
@@ -25,7 +35,17 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1); 
+  background-color: rgba(47, 20, 20, 0.2); 
+  z-index: 2;
+`;
+
+export const CorporateContentWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 3;
+  text-align: center;
 `;
 
 export const CorporateContent = styled.div`
@@ -37,7 +57,7 @@ export const CorporateContent = styled.div`
   padding-left: 10%;
   position: relative;
   z-index: 4;
-  color: #000;
+  color: #FFF;
   text-align: center;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   opacity: 0;
@@ -89,7 +109,6 @@ export const TitleContent = styled.div`
     font-family: 'Open Sans', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
-    /* text-transform: uppercase; */
   }
 
   strong {
@@ -97,6 +116,5 @@ export const TitleContent = styled.div`
     font-family: 'Raleway', sans-serif;
     font-size: 2.5rem;
     font-weight: 100;
-    /* text-transform: uppercase; */
   }
 `;
