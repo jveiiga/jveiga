@@ -56,7 +56,7 @@ const Header = () => {
   };
 
   return (
-    <HeaderWrapper isScrolled={isScrolled}>
+    <HeaderWrapper scrolled={isScrolled ? 'true' : undefined}>
       <NavLink href="#home">
         <Logo src={logoImage} alt="Logo" />
       </NavLink>
