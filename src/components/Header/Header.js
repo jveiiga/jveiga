@@ -11,24 +11,23 @@ const Header = () => {
   const [activeLink, setActiveLink] = useState('#home');
 
   useEffect(() => {
+    console.log('useEffect rodou'); // Verificar se o useEffect está sendo executado
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      console.log('Scroll detectado:', window.scrollY); // Verificar se o evento de rolagem está sendo detectado
+      setIsScrolled(window.scrollY > 50);
     };
 
     const sections = document.querySelectorAll('section');
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.3
+      threshold: 0.3,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          console.log('Seção visível:', entry.target.id); // Verificar qual seção está visível
           setActiveLink(`#${entry.target.id}`);
         }
       });
@@ -48,6 +47,8 @@ const Header = () => {
     };
   }, []);
 
+  console.log('isScrolled:', isScrolled); // Verificar se o isScrolled está mudando
+
   const handleClick = (e, href) => {
     e.preventDefault();
     setActiveLink(href);
@@ -63,11 +64,9 @@ const Header = () => {
         <Nav>
           <NavList>
             <NavItem><NavLink href="#home" onClick={(e) => handleClick(e, '#home')} className={activeLink === '#home' ? 'active' : ''}>Home</NavLink></NavItem>
-            {/* <NavItem><NavLink href="#creative" onClick={(e) => handleClick(e, '#creative')} className={activeLink === '#creative' ? 'active' : ''}>Creative</NavLink></NavItem> */}
-            {/* <NavItem><NavLink href="#corporate" onClick={(e) => handleClick(e, '#corporate')} className={activeLink === '#corporate' ? 'active' : ''}>Corporate</NavLink></NavItem> */}
             <NavItem><NavLink href="#social" onClick={(e) => handleClick(e, '#social')} className={activeLink === '#social' ? 'active' : ''}>Social</NavLink></NavItem>
-            <NavItem><NavLink href="#seo" onClick={(e) => handleClick(e, '#seo')} className={activeLink === '#seo' ? 'active' : ''}>Seo</NavLink></NavItem>
             <NavItem><NavLink href="#marketing" onClick={(e) => handleClick(e, '#marketing')} className={activeLink === '#marketing' ? 'active' : ''}>Marketing</NavLink></NavItem>
+            <NavItem><NavLink href="#seo" onClick={(e) => handleClick(e, '#seo')} className={activeLink === '#seo' ? 'active' : ''}>Seo</NavLink></NavItem>
             <NavItem><NavLink href="#agency" onClick={(e) => handleClick(e, '#agency')} className={activeLink === '#agency' ? 'active' : ''}>Agency</NavLink></NavItem>
             <NavItem><NavLink href="#contact" onClick={(e) => handleClick(e, '#contact')} className={activeLink === '#contact' ? 'active' : ''}>Contact</NavLink></NavItem>
           </NavList>

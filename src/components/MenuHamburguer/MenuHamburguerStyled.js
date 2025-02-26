@@ -176,6 +176,7 @@ export const IconWrapper = styled.a`
 
   &:hover {
     background-color: #FFF;
+    color: #000;
   }
 
   &:hover img {

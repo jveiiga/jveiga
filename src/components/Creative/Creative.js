@@ -25,7 +25,6 @@ const Creative = () => {
   return (
     <CreativeSession id="creative" ref={ref}>
       <CreativeWrapper id="creative-wrapper">
-        {/* Usando a imagem importada */}
         <BackgroundImage id="creative-image" src={creativeBackground} alt="Creative Background" />
         <Overlay />
         <CreativeContentWrapper>

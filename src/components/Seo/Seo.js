@@ -1,29 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { BackgroundImage, Button, Overlay, SeoContent, SeoSession, SeoWrapper, TitleContent } from './SeoStyled';
 
 const Seo = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3
   });
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const creativeWrapper = document.getElementById('seo-wrapper');
-
-      if (creativeWrapper) {
-        creativeWrapper.style.backgroundPositionY = `${scrollPosition * 1}px`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    if (inView) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 1000);
+    
+      return () => clearTimeout(timer);
+    }
+  }, [inView]);
 
   return (
     <SeoSession id="seo">
@@ -35,7 +30,7 @@ const Seo = () => {
             <h2>SEO</h2>
           </TitleContent>
           <p>Conteúdo estratégico e otimização para alcançar resultados reais.</p>
-          <Button>Saber Mais</Button>
+          <Button className={isVisible ? 'animate' : ''}>Saber Mais</Button>
         </SeoContent>
       </SeoWrapper>
     </SeoSession>

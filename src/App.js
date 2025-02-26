@@ -32,12 +32,12 @@ const App = () => {
         {/* <Section id="creative"><About /></Section> */}
         {/* <Section id="creative"><Creative /></Section> */}
         {/* <Section id="corporate"><Corporate /></Section> */}
-        <Section id="social"><Social /></Section>
         <Section id="seo"><MarketingTwo /></Section>
-        <Section id="seo"><Seo /></Section>
+        <Section id="social"><Social /></Section>
         <Section id="marketing"><Marketing /></Section>
-        <Section id="agency"><Agency /></Section>
+        <Section id="seo"><Seo /></Section>
         <Section id="agency"><AgencyTwo /></Section>
+        <Section id="agency"><Agency /></Section>
         <Section><Footer /></Section>
       </ContentWrapper>
       <ScrollToTopButton />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BackgroundImage, MarketingContent, MarketingContentWrapper, MarketingSession, MarketingWrapper, Overlay, TitleContent } from './MarketingStyled';
 import { useInView } from 'react-intersection-observer';
 
@@ -7,23 +7,6 @@ const Marketing = () => {
     triggerOnce: true,
     threshold: 0.3
   });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const creativeWrapper = document.getElementById('marketing-wrapper');
-
-      if (creativeWrapper) {
-        creativeWrapper.style.backgroundPositionY = `${scrollPosition * 1}px`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <MarketingSession id="marketing">

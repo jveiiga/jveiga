@@ -33,7 +33,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(47, 20, 20, 0.1); 
+  background-color: rgba(0, 0, 0, 0.5); 
   z-index: 2;
 `;
 
@@ -114,20 +114,27 @@ export const TitleContent = styled.div`
   }
 `;
 
-  export const Button = styled.button`
-    position: relative;
-    padding: 1rem 4rem;
-    border: 2px solid #FFF;
-    background-color: transparent;
-    color: #FFF;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    margin-top: 2rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
+export const Button = styled.button`
+  position: relative;
+  padding: 1rem 4rem;
+  border: 2px solid #FFF;
+  background-color: transparent;
+  color: #FFF;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 1s ease-out, transform 1s ease-out;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
 
-    &:hover {
-      background-color: #FFF;
-      color: #000;
-    }
-  `;
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background-color: #FFF;
+    color: #000;
+  }
+`;

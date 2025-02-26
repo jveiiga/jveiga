@@ -1,29 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BackgroundImage, Button, Overlay, SocialContent, SocialContentWrapper, SocialSession, SocialWrapper, TitleContent } from './SocialStyled';
 import { useInView } from 'react-intersection-observer';
 
 const Social = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3
   });
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const creativeWrapper = document.getElementById('social-wrapper');
-
-      if (creativeWrapper) {
-        creativeWrapper.style.backgroundPositionY = `${scrollPosition * 1}px`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    if (inView) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 1000);
+    
+      return () => clearTimeout(timer);
+    }
+  }, [inView]);
 
   return (
     <SocialSession id="social">
@@ -36,7 +31,7 @@ const Social = () => {
               <strong>Mídia&nbsp;</strong><h2>Social</h2>
             </TitleContent>
             <p>Gestão inteligente para engajamento, alcance e conversões.</p>
-            <Button>Saber Mais</Button> 
+            <Button className={isVisible ? 'animate' : ''}>Saber Mais</Button> 
           </SocialContent>
         </SocialContentWrapper>
       </SocialWrapper>

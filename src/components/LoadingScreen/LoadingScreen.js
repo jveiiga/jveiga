@@ -15,6 +15,9 @@ import gitLogo from '../../assets/images/logo/git-logo.png';
 import githubLogo from '../../assets/images/logo/github-logo.png';
 import canvaLogo from '../../assets/images/logo/canva-logo.png';
 import vercelLogo from '../../assets/images/logo/vercel-logo.png';
+import facebookLogo from '../../assets/images/logo/facebook-logo.png';
+import instagramLogo from '../../assets/images/logo/instagram-logo.png';
+import youtubeLogo from '../../assets/images/logo/youtube-logo.png';
 
 
 const logos = [
@@ -31,7 +34,10 @@ const logos = [
   { src: gitLogo, alt: 'Git Logo' },
   { src: githubLogo, alt: 'GitHub Logo' },
   { src: canvaLogo, alt: 'Canva Logo' },
-  { src: vercelLogo, alt: 'Vercel Logo' }
+  { src: vercelLogo, alt: 'Vercel Logo' },
+  { src: facebookLogo, alt: 'Facebook Logo' },
+  { src: instagramLogo, alt: 'Instagram Logo' },
+  { src: youtubeLogo, alt: 'Youtube Logo' }
 ];
 
 const LoadingScreen = () => {
