@@ -22,7 +22,7 @@ const Home = () => {
               <strong>Soluções&nbsp;</strong>
               <h1>Estratégicas</h1>
             </TitleContent>
-            <p>Desenvolvimento, Tráfego Pago e Fotografia</p>
+            <p>Desenvolvimento, Tráfego Pago e Branding</p>
             <Button>Saber Mais</Button>
           </HomeContent>
         </HomeWrapper>
