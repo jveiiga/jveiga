@@ -32,13 +32,18 @@ export const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  /* min-height: 100vh; */
   text-align: center;
   position: relative;
   width: 100vw;
   background-color: ${({ darkMode }) => (darkMode ? 'black' : 'white')};
   color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
   transition: background-color 0.5s, color 0.5s;
+`;
+
+export const ToogleWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -117,7 +122,6 @@ export const Content = styled.div`
 `;
 
 export const ToggleButton = styled.button`
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
@@ -134,3 +138,14 @@ export const GradientText = styled.span`
   -webkit-text-fill-color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
   color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
 `;
+
+export const ListWrapper = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+
+    &ul, li {
+        list-style: disc;
+    }
+
+`

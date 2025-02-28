@@ -116,8 +116,13 @@ export const Content = styled.div`
   animation: ${fadeIn} 2s ease-out;
 `;
 
+export const ToogleWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+`;
+
 export const ToggleButton = styled.button`
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper } from './SeoDetailStyled';
+import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ListWrapper, ToogleWrapper } from './SeoDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 const SeoDetail = () => {
@@ -48,9 +48,11 @@ const SeoDetail = () => {
       </ImageWrapper>
       <TextWrapper ref={textRef} isVisible={textIsVisible}>
         <Content ref={ref} className={isVisible ? 'animate' : ''}>
-          <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </ToggleButton>
+          <ToogleWrapper>
+            <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </ToggleButton>
+          </ToogleWrapper>
           <TextContent>
             <article id="seo-conteudo">
               <header>
@@ -118,19 +120,21 @@ const SeoDetail = () => {
                 <p>
                   Ao apostar em uma estratégia completa de SEO e conteúdo, sua empresa experimenta diversos benefícios:
                 </p>
-                <ul>
-                  <li>Maior visibilidade orgânica e posicionamento privilegiado nos resultados de busca;</li>
-                  <li>Aumento de tráfego qualificado, sem custos recorrentes com anúncios;</li>
-                  <li>Geração de leads e conversões de forma sustentável;</li>
-                  <li>Fortalecimento da autoridade e credibilidade da marca no mercado.</li>
-                </ul>
+                <ListWrapper>
+                  <ul>
+                    <li>Maior visibilidade orgânica e posicionamento privilegiado nos resultados de busca;</li>
+                    <li>Aumento de tráfego qualificado, sem custos recorrentes com anúncios;</li>
+                    <li>Geração de leads e conversões de forma sustentável;</li>
+                    <li>Fortalecimento da autoridade e credibilidade da marca no mercado.</li>
+                  </ul>
+                </ListWrapper>
                 <p>
                   Esses resultados se traduzem em crescimento contínuo e em uma presença digital robusta, que coloca sua empresa à frente da concorrência.
                 </p>
               </section>
               <section id="seo-conclusao">
                 <header>
-                  <h2>Conclusão</h2>
+                  <h2>Por fim</h2>
                 </header>
                 <p>
                   Se a sua marca ainda não alcançou o posicionamento desejado nos motores de busca, é hora de investir em uma estratégia de SEO e conteúdo que faça a diferença. Nosso compromisso é transformar a sua presença online, fazendo com que seu site se torne uma ferramenta poderosa de atração e conversão.

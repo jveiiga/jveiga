@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper } from './AgencyDetailStyled';
+import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ToogleWrapper } from './AgencyDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 const AgencyDetail = () => {
@@ -48,20 +48,22 @@ const AgencyDetail = () => {
       </ImageWrapper>
       <TextWrapper ref={textRef} isVisible={textIsVisible}>
         <Content ref={ref} className={isVisible ? 'animate' : ''}>
-          <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </ToggleButton>
+          <ToogleWrapper>
+            <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </ToggleButton>
+          </ToogleWrapper>
           <TextContent>
             <article id="agency">
               <header>
-                <h1>Agency – Estratégia e Execução Personalizada para Impulsionar o Crescimento Digital</h1>
+                <h1 style={{'marginBottom': '20px'}}>Agência – Estratégia e Execução Personalizada para Impulsionar o Crescimento Digital</h1>
               </header>
               <section id="agency-introducao">
                 <p>
-                  No cenário digital atual, muitas empresas se veem dispersas ao tentar contratar serviços pontuais – desde o desenvolvimento de um site até campanhas de marketing e identidade visual. Essa fragmentação gera dores como a falta de integração, comunicação deficiente e resultados insatisfatórios. Se você busca uma solução completa, que una estratégia, execução e acompanhamento, a resposta está na abordagem integrada de uma agência.
+                  No cenário digital atual, muitas empresas se veem dispersas ao tentar contratar serviços pontuais – desde o desenvolvimento de um site até campanhas de marketing e identidade visual. Essa fragmentação conecta com a falta de integração, comunicação deficiente e resultados insatisfatórios. Se você busca uma solução completa, que una estratégia, execução e acompanhamento, a resposta está na abordagem integrada de uma agência.
                 </p>
                 <p>
-                  Nossa proposta na Agency é transformar essa realidade. Oferecemos um serviço personalizado que integra desenvolvimento, marketing digital e branding, com o objetivo de criar um plano estratégico único para sua marca. Com comprometimento e expertise, curamos a dor da dispersão e trazemos resultados consistentes para o seu negócio.
+                  Nossa proposta é transformar essa realidade. Oferecemos um serviço personalizado que integra desenvolvimento, marketing digital e branding, com o objetivo de criar um plano estratégico único para sua marca. Com comprometimento e expertise, tiramos a dispersão e trazemos resultados consistentes para o seu negócio.
                 </p>
               </section>
               <section id="agency-solucoes-integradas">
@@ -69,7 +71,7 @@ const AgencyDetail = () => {
                   <h2>Soluções Integradas</h2>
                 </header>
                 <p>
-                  Em vez de contratar serviços isolados, nossa abordagem integrada permite que você tenha um planejamento estratégico completo. Unimos as melhores práticas do Desenvolvimento Web, Tráfego Pago, SEO e Identidade Visual para criar campanhas coesas e alinhadas com os objetivos do seu negócio.
+                  Em vez de contratar serviços isolados, nossa abordagem integrada permite que você tenha um planejamento estratégico completo. Unimos as melhores práticas do Desenvolvimento Web, Tráfego Pago, SEO e Identidade Visual para criar campanhas com coesa e alinhadas com os objetivos do seu negócio.
                 </p>
                 <p>
                   Essa integração garante sinergia entre as ações, tornando cada investimento mais eficiente e direcionado ao crescimento real da sua marca. Ao optar por uma solução completa, você elimina a necessidade de gerenciar múltiplos fornecedores e ganha em agilidade, comunicação e resultados.
@@ -110,10 +112,10 @@ const AgencyDetail = () => {
               </section>
               <section id="agency-conclusao">
                 <header>
-                  <h2>Conclusão</h2>
+                  <h2>Por fim</h2>
                 </header>
                 <p>
-                  Se você deseja ir além de soluções isoladas e contar com um parceiro estratégico que entende as nuances do ambiente digital, nossa Agency é a escolha ideal. Oferecemos um serviço completo, que integra consultoria, gestão de projetos e execução personalizada para transformar a presença online da sua marca.
+                  Se você deseja ir além de soluções isoladas e contar com um parceiro estratégico que entende as nuances do ambiente digital, nossa Agência é a escolha ideal. Oferecemos um serviço completo, que integra consultoria, gestão de projetos e execução personalizada para transformar a presença online da sua marca.
                 </p>
                 <p>
                   Nosso trabalho é pautado na transparência, na inovação e no comprometimento com resultados reais. Estamos prontos para desenvolver uma estratégia que una todas as frentes do marketing digital e leve sua empresa a um novo patamar de competitividade e crescimento.

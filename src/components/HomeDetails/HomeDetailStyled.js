@@ -32,7 +32,6 @@ export const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  /* min-height: 100vh; */
   text-align: center;
   position: relative;
   width: 100vw;
@@ -71,9 +70,7 @@ export const Overlay = styled.div`
 `;
 
 export const TitleContentImage = styled.div`
-  display: flex;
   align-items: baseline;
-  height: 3rem;
   margin-bottom: 1.5rem;
 
   h2 {
@@ -88,6 +85,36 @@ export const TitleContentImage = styled.div`
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
     animation: ${slideInRight} 1s ease-out;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 460px) {
+    h2{
+        font-size: 2rem;
+    }
+
+    strong {
+        font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 461px) and (max-width: 580px) {
+    h2{
+        font-size: 2rem;
+    }
+
+    strong {
+        font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 581px) and (max-width: 790px) {
+    h2{
+        font-size: 3rem;
+    }
+
+    strong{
+        font-size: 3rem;
+    }
   }
 `;
 
@@ -140,3 +167,13 @@ export const GradientText = styled.span`
   -webkit-text-fill-color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
   color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
 `;
+
+export const ListWrapper = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    text-align: start;
+
+    &ul, li {
+        list-style: disc;
+    }
+`

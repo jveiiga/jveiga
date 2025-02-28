@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper } from './SocialDetailStyled';
+import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ToogleWrapper, ListWrapper } from './SocialDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 const SocialDetail = () => {
@@ -48,23 +48,22 @@ const SocialDetail = () => {
       </ImageWrapper>
       <TextWrapper ref={textRef} isVisible={textIsVisible}>
         <Content ref={ref} className={isVisible ? 'animate' : ''}>
-          <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </ToggleButton>
+          <ToogleWrapper>
+            <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </ToggleButton>
+          </ToogleWrapper>
           <TextContent>
             <article id="trafego-pago">
               <header>
-                <h1>Tráfego Pago: Acelerando Resultados com Anúncios Estratégicos</h1>
+                <h1 style={{ 'marginBottom': '20px' }}>Tráfego Pago: Acelerando Resultados com Anúncios Estratégicos</h1>
               </header>
               <section id="tp-introducao">
-                <header>
-                  <h2>Introdução</h2>
-                </header>
                 <p>
                   Muitos empreendedores investem tempo e dinheiro em marketing digital, mas ainda enfrentam a frustração de não ver resultados expressivos. Se você já sentiu a dor de campanhas que não convertem, sabe o quanto é desafiador atrair o público certo e transformar cliques em vendas. Essa situação pode prejudicar o crescimento do seu negócio e gerar insegurança quanto ao retorno do investimento.
                 </p>
                 <p>
-                  O Tráfego Pago surge como uma solução eficaz para resolver essa dor. Ao investir em anúncios segmentados e estratégias bem definidas, é possível alcançar um público qualificado de maneira rápida e escalável. Nossa abordagem visa não apenas aumentar o volume de visitas, mas transformar essas visitas em oportunidades reais de negócio.
+                  O Tráfego Pago surge como uma solução eficaz para seu problema. Ao investir em anúncios segmentados e estratégias bem definidas, é possível alcançar um público qualificado de maneira rápida e escalável. Nossa abordagem visa não apenas aumentar o volume de visitas, mas transformar essas visitas em oportunidades reais de negócio.
                 </p>
               </section>
               <section id="tp-conceito">
@@ -107,25 +106,27 @@ const SocialDetail = () => {
                 <p>
                   Ao investir em Tráfego Pago, você obtém resultados que vão além do simples aumento de visitas. Nossa abordagem integrada garante:
                 </p>
-                <ul>
-                  <li>Aumento imediato do tráfego qualificado;</li>
-                  <li>Mensuração precisa dos resultados através de indicadores específicos;</li>
-                  <li>Flexibilidade para ajustar campanhas conforme o desempenho;</li>
-                  <li>Crescimento escalável, possibilitando investimentos progressivos conforme a performance.</li>
-                </ul>
+                <ListWrapper>
+                  <ul>
+                    <li>Aumento imediato do tráfego qualificado;</li>
+                    <li>Mensuração precisa dos resultados através de indicadores específicos;</li>
+                    <li>Flexibilidade para ajustar campanhas conforme o desempenho;</li>
+                    <li>Crescimento escalável, possibilitando investimentos progressivos conforme a performance.</li>
+                  </ul>
+                </ListWrapper>
                 <p>
                   Esses benefícios se traduzem em crescimento real para seu negócio, com a segurança de que cada centavo investido está trabalhando para gerar conversões e consolidar sua marca no mercado.
                 </p>
               </section>
               <section id="tp-conclusao">
                 <header>
-                  <h2>Conclusão</h2>
+                  <h2>Por fim</h2>
                 </header>
                 <p>
                   Se você está cansado de estratégias que não entregam o esperado, chegou a hora de apostar em uma solução que traz resultados imediatos e mensuráveis. O Tráfego Pago, aliado a uma segmentação avançada e otimização contínua, é a ferramenta certa para transformar cliques em clientes e expandir sua presença digital.
                 </p>
                 <p>
-                  Nossa equipe de especialistas está pronta para planejar, executar e monitorar campanhas que atendam às especificidades do seu negócio. Com uma abordagem transparente e orientada a resultados, trabalhamos lado a lado com nossos clientes para superar desafios e alcançar o sucesso.
+                  Nossa equipe está pronta para planejar, executar e monitorar campanhas que atendam às especificidades do seu negócio. Com uma abordagem transparente e orientada a resultados, trabalhamos lado a lado com nossos clientes para superar desafios e alcançar o sucesso.
                 </p>
                 <p>
                   Não deixe que a insegurança e a incerteza comprometam o crescimento da sua empresa. Descubra como anúncios bem planejados podem acelerar seu desempenho no mercado e gerar um retorno sobre investimento que realmente faça a diferença.

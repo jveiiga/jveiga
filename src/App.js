@@ -12,7 +12,7 @@ import AgencyTwo from './components/AgencyTwo/AgencyTwo';
 import Footer from './components/Footer/Footer';
 import { ContentWrapper } from './indexStyled';
 import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import HomeDetail from './components/HomeDetails/HomeDetail';
 import SocialDetail from './components/SocialDetail/SocialDetail';
 import SeoDetail from './components/SeoDetail/SeoDetail';
@@ -20,13 +20,17 @@ import AgencyDetail from './components/AgencyDetail/AgencyDetail';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 50); // Pequeno delay para suavizar a transição
     return () => clearTimeout(timer);
   }, []);
+
+  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail'].includes(location.pathname);
+
   return (
-    <Router>
+    <>
       <GlobalStyles />
       <Header />
       <ContentWrapper className={showContent ? 'show' : ''}>
@@ -43,17 +47,23 @@ const App = () => {
               <Section><Footer /></Section>
             </>
           } />
-          </Routes>
-          </ContentWrapper>
-          <Routes>
-          <Route path="/home-detail" element={<HomeDetail />} />
-          <Route path="/social-detail" element={<SocialDetail />} />
-          <Route path="/seo-detail" element={<SeoDetail />} />
-          <Route path="/agency-detail" element={<AgencyDetail />} />
         </Routes>
-      <ScrollToTopButton />
-    </Router>
+      </ContentWrapper>
+      {!isDetailPage && <ScrollToTopButton />}
+      <Routes>
+        <Route path="/home-detail" element={<HomeDetail />} />
+        <Route path="/social-detail" element={<SocialDetail />} />
+        <Route path="/seo-detail" element={<SeoDetail />} />
+        <Route path="/agency-detail" element={<AgencyDetail />} />
+      </Routes>
+    </>
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;
