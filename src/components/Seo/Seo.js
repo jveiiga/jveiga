@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { BackgroundImage, Button, Overlay, SeoContent, SeoSession, SeoWrapper, TitleContent } from './SeoStyled';
+import { Link } from 'react-router-dom';
 
 const Seo = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,7 @@ const Seo = () => {
             <h2>SEO</h2>
           </TitleContent>
           <p>Conteúdo estratégico e otimização para alcançar resultados reais.</p>
-          <Button className={isVisible ? 'animate' : ''}>Saber Mais</Button>
+          <Button as={Link} to="/seo-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
         </SeoContent>
       </SeoWrapper>
     </SeoSession>

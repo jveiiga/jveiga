@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { AgencyContent, AgencyContentWrapper, AgencySession, AgencyWrapper, BackgroundImage, Button, Overlay, TitleContent } from './AgencyStyled';
+import { Link } from 'react-router-dom';
 // import { BackgroundImage } from '../Creative/CreativeStyled';
 
 
@@ -33,7 +34,7 @@ const Agency = () => {
               <strong>Melhores&nbsp;</strong><h2>Soluções</h2>
             </TitleContent>
             <p>Empresas que querem crescer precisam de presença digital forte.</p>
-            <Button className={isVisible ? 'animate' : ''}>Saber Mais</Button>
+            <Button as={Link} to="/seo-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
           </AgencyContent>
         </AgencyContentWrapper>
       </AgencyWrapper>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+  import styled from 'styled-components';
 import homeBackground from '../../assets/images/background/home-background.png';
 
 export const HomeContainer = styled.div`
@@ -99,5 +99,11 @@ export const Button = styled.button`
   &:hover {
     background-color: #FFF;
     color: #000;
+    text-shadow: none;
   }
 `;
+
+export const Link = styled.a`
+  text-decoration: none;
+  color: inherit;
+`

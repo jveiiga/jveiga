@@ -8,13 +8,13 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: ${props => props.scrolled ? '#0F0F0F' : 'transparent'}; */
+  background-color: ${props => props.scrolled ? '#0F0F0F' : 'transparent'};
   color: #FFF;
   transition: background-color 0.3s ease;
   z-index: 10000;
 
   @media screen and (min-width: 920px) and (max-width: 1120px) {
-  justify-content: flex-start;
+    justify-content: flex-start;
   }
 `;
 

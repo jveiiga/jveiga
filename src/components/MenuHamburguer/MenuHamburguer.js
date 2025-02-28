@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MenuButton, MenuContainer, MenuIcon, MenuItem, MenuList, Logo, FooterIcons, IconWrapper } from './MenuHamburguerStyled';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import logoImage from '../../assets/images/logo.png';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleItemClick = (href) => {
-    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+  const handleItemClick = (e, href) => {
+    e.preventDefault();
     setIsOpen(false);
+    if (window.location.pathname !== '/') {
+      navigate(`/#${href}`);
+      setTimeout(() => {
+        const target = document.getElementById(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }, 200);
+    } else {
+      const target = document.getElementById(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -20,11 +32,11 @@ const HamburgerMenu = () => {
       </MenuButton>
       <MenuList isOpen={isOpen}>
         <Logo src={logoImage} alt="Logo" />
-        {['#home', '#creative', '#corporate', '#social', '#seo', '#marketing', '#agency', '#contact'].map((href, index) => (
+        {['home', 'social', 'marketing', 'seo', 'agency', 'contact'].map((href, index) => (
           <MenuItem key={href} isOpen={isOpen} index={index}>
-            <a href={href} onClick={() => handleItemClick(href)}>
+            <a href={`#${href}`} onClick={(e) => handleItemClick(e, href)}>
               <span className="menu-number">{index + 1}.</span>
-              <span className="menu-text">{href.slice(1).charAt(0).toUpperCase() + href.slice(2)}</span>
+              <span className="menu-text">{href.charAt(0).toUpperCase() + href.slice(1)}</span>
             </a>
           </MenuItem>
         ))}

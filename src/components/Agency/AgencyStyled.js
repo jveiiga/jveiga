@@ -136,6 +136,7 @@ export const TitleContent = styled.div`
     &:hover {
       background-color: #FFF;
       color: #000;
+      text-shadow: none;
     }
   `;
 

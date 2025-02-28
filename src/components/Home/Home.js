@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { HomeContainer, HomeSession, HomeWrapper, Overlay, HomeContent, TitleContent, Button } from './HomeStyled';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +24,7 @@ const Home = () => {
               <h1>Estratégicas</h1>
             </TitleContent>
             <p>Desenvolvimento, Tráfego Pago e Branding</p>
-            <Button>Saber Mais</Button>
+            <Button as={Link} to="/home-detail">Saber Mais</Button>
           </HomeContent>
         </HomeWrapper>
       </HomeSession>
