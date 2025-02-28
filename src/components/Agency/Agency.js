@@ -34,7 +34,7 @@ const Agency = () => {
               <strong>Melhores&nbsp;</strong><h2>Soluções</h2>
             </TitleContent>
             <p>Empresas que querem crescer precisam de presença digital forte.</p>
-            <Button as={Link} to="/seo-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
+            <Button as={Link} to="/agency-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
           </AgencyContent>
         </AgencyContentWrapper>
       </AgencyWrapper>

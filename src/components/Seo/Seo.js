@@ -16,7 +16,7 @@ const Seo = () => {
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 1000);
-    
+
       return () => clearTimeout(timer);
     }
   }, [inView]);

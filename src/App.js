@@ -15,7 +15,8 @@ import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomeDetail from './components/HomeDetails/HomeDetail';
 import SocialDetail from './components/SocialDetail/SocialDetail';
-import AgencyTwoDetail from './components/AgencyTwoDetail/AgencyTwoDetail';
+import SeoDetail from './components/SeoDetail/SeoDetail';
+import AgencyDetail from './components/AgencyDetail/AgencyDetail';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -47,8 +48,8 @@ const App = () => {
           <Routes>
           <Route path="/home-detail" element={<HomeDetail />} />
           <Route path="/social-detail" element={<SocialDetail />} />
-          <Route path="/seo-detail" element={<SocialDetail />} />
-          <Route path="/agency-detail" element={<AgencyTwoDetail />} />
+          <Route path="/seo-detail" element={<SeoDetail />} />
+          <Route path="/agency-detail" element={<AgencyDetail />} />
         </Routes>
       <ScrollToTopButton />
     </Router>
