@@ -1,17 +1,14 @@
 {
   "files": {
-    "main.js": "/static/js/main.f6de1b43.js",
+    "main.js": "/static/js/main.3d8e3b53.js",
     "static/media/home-background.png": "/static/media/home-background.77a6b3eabe2e62bb72f6.png",
     "static/media/marketing-background.jpg": "/static/media/marketing-background.54d018bcc2b50b75dfdf.jpg",
-    "static/media/creative-background.jpg": "/static/media/creative-background.b3a2b915328f185bac02.jpg",
     "static/media/agency-background.jpeg": "/static/media/agency-background.733b89d09a58ac2219f8.jpeg",
     "static/media/instagram-logo.png": "/static/media/instagram-logo.fec8881ae2639ea4a6c0.png",
     "static/media/facebook-logo.png": "/static/media/facebook-logo.cc1ec5be52186967f5db.png",
-    "static/media/about-background.jpeg": "/static/media/about-background.5c2c0a315519b8de83e1.jpeg",
     "static/media/google-logo.png": "/static/media/google-logo.80b83630f88fa1c6e714.png",
     "static/media/meta-logo.png": "/static/media/meta-logo.265e1433383ef18bbcf2.png",
     "static/media/agencyTwo-background.jpg": "/static/media/agencyTwo-background.822f2846fdc471ac4137.jpg",
-    "static/media/corporate-background.jpg": "/static/media/corporate-background.3f20eeaa5ac469752462.jpg",
     "static/media/social-background.jpg": "/static/media/social-background.d9186b0a24318f8a38aa.jpg",
     "static/media/canva-logo.png": "/static/media/canva-logo.46b2002f3c6f5bc56507.png",
     "static/media/youtube-logo.png": "/static/media/youtube-logo.1a5387ef290309c31eb6.png",
@@ -29,9 +26,9 @@
     "static/media/github.svg": "/static/media/github.3b4375b1cacddb7910737e992dd73aad.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.540f6bb939a10fe0badbc26387374d38.svg",
-    "main.f6de1b43.js.map": "/static/js/main.f6de1b43.js.map"
+    "main.3d8e3b53.js.map": "/static/js/main.3d8e3b53.js.map"
   },
   "entrypoints": [
-    "static/js/main.f6de1b43.js"
+    "static/js/main.3d8e3b53.js"
   ]
 }
