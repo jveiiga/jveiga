@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.js": "/static/js/main.6f56a7e9.js",
+    "main.js": "/static/js/main.3735d07c.js",
     "static/media/home-background.png": "/static/media/home-background.77a6b3eabe2e62bb72f6.png",
     "static/media/marketing-background.jpg": "/static/media/marketing-background.54d018bcc2b50b75dfdf.jpg",
     "static/media/agency-background.jpeg": "/static/media/agency-background.733b89d09a58ac2219f8.jpeg",
+    "static/media/desenvolvimento-background.jpeg": "/static/media/desenvolvimento-background.56c5db4c5db38acb1c64.jpeg",
     "static/media/instagram-logo.png": "/static/media/instagram-logo.fec8881ae2639ea4a6c0.png",
     "static/media/facebook-logo.png": "/static/media/facebook-logo.cc1ec5be52186967f5db.png",
     "static/media/google-logo.png": "/static/media/google-logo.80b83630f88fa1c6e714.png",
@@ -26,9 +27,9 @@
     "static/media/github.svg": "/static/media/github.3b4375b1cacddb7910737e992dd73aad.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.540f6bb939a10fe0badbc26387374d38.svg",
-    "main.6f56a7e9.js.map": "/static/js/main.6f56a7e9.js.map"
+    "main.3735d07c.js.map": "/static/js/main.3735d07c.js.map"
   },
   "entrypoints": [
-    "static/js/main.6f56a7e9.js"
+    "static/js/main.3735d07c.js"
   ]
 }
