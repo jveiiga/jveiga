@@ -23,7 +23,7 @@ const Home = () => {
               <strong>Soluções&nbsp;</strong>
               <h1>Estratégicas</h1>
             </TitleContent>
-            <p>Desenvolvimento, Tráfego Pago e Branding</p>
+            <h1>Desenvolvimento, Tráfego Pago e Branding</h1>
             <Button as={Link} to="/home-detail">Saber Mais</Button>
           </HomeContent>
         </HomeWrapper>

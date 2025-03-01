@@ -55,9 +55,11 @@ export const HomeContent = styled.div`
   }
 
   h1 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+
   }
 
   p {
