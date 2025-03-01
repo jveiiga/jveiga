@@ -74,10 +74,10 @@ export const TitleContent = styled.div`
 
  
   p {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
 
   strong {
