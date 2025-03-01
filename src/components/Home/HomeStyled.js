@@ -55,19 +55,13 @@ export const HomeContent = styled.div`
   }
 
   h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
     text-transform: uppercase;
 
   }
 
-  p {
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 100;
-    text-transform: uppercase;
-  }
 `;
 
 export const TitleContent = styled.div`
@@ -77,6 +71,14 @@ export const TitleContent = styled.div`
   justify-content: center;
   margin-bottom: 1.5rem;
   margin-top: 15rem;
+
+ 
+  p {
+    font-size: 2.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 
   strong {
     font-size: 3rem;

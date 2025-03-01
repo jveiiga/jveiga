@@ -21,9 +21,9 @@ const Home = () => {
           <HomeContent className={isVisible ? 'animate' : ''}>
             <TitleContent>
               <strong>Soluções&nbsp;</strong>
-              <h1>Estratégicas</h1>
+              <p>Estratégicas</p>
             </TitleContent>
-            <h1>Desenvolvimento, Tráfego Pago e Branding</h1>
+            <h1>Desenvolvimento de Sites, Tráfego Pago e Branding</h1>
             <Button as={Link} to="/home-detail">Saber Mais</Button>
           </HomeContent>
         </HomeWrapper>

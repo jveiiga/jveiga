@@ -66,6 +66,7 @@ export const Overlay = styled.div`
   align-items: center;
   color: white;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5); 
   animation: ${fadeIn} 3s ease-out;
 `;
 
