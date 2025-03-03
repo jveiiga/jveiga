@@ -1,11 +1,297 @@
-import React from 'react';
-import { ContactWrapper } from './ContactStyled';
-
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Card,
+  CardWrapper,
+  ContactWrapper,
+  CardContent,
+  CardTitle,
+  FlagTitle,
+  CardPlan,
+  CardDescription,
+  ServicesList,
+  ServiceItemCard,
+  ServiceItemFlag,
+  FormContainer,
+  Form,
+  FormTitle,
+  InputGroup,
+  Label,
+  Input,
+  SubmitButton,
+  FlagsWrapper,
+  TitleCard,
+  Flag,
+  TitleFlags,
+  FormWrapper,
+  CardDetails
+} from './ContactStyled';
+import Footer from '../Footer/Footer';
 
 const Contact = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef(null);
+  const formRef = useRef(null);
+  const [formVisible, setFormVisible] = useState(false);
+  const [formMounted, setFormMounted] = useState(false);
+
+  // Dados para cada card
+  const cardContents = [
+    {
+      id: 1,
+      title: "Site Institucional",
+      plan: "R$ 1.500,00",
+      description: "Ideal para empresas e profissionais que desejam apresentar seus serviços e diferenciais de forma profissional. Um site completo, moderno e otimizado para destacar sua marca na internet.",
+      services: [
+        "Design Responsivo",
+        "SEO",
+        "Integração com Redes Sociais",
+        "Hospedagem + Dominío"
+      ],
+    },
+    {
+      id: 2,
+      title: "Landing Page",
+      plan: "R$ 500,00",
+      description: "Página estratégica para converter visitantes em clientes. Criada com design atrativo, carregamento rápido e otimização para capturar leads e aumentar suas vendas.",
+      services: [
+        "Design Responsivo",
+        "SEO",
+        "Integração com Redes Sociais",
+        "Hospedagem + Dominío"
+      ],
+    },
+    {
+      id: 3,
+      title: "Páginas de Vendas",
+      plan: "R$ 800,00",
+      description: "Projetada para maximizar conversões e impulsionar suas vendas. Layout persuasivo, copywriting estratégico e integração com sistemas de pagamento para otimizar sua receita.",
+      services: [
+        "Design Responsivo",
+        "SEO",
+        "Integração com Redes Sociais",
+        "Hospedagem + Dominío"
+      ],
+    },
+    {
+      id: 4,
+      title: "Hot Site",
+      plan: "R$ 1.000,00",
+      description: "Perfeito para campanhas promocionais e lançamentos de produtos. Um site dinâmico, chamativo e focado em gerar impacto imediato no público-alvo.",
+      services: [
+        "Design Responsivo",
+        "SEO",
+        "Integração com Redes Sociais",
+        "Hospedagem + Dominío"
+      ],
+    },
+    {
+      id: 5,
+      title: "Site One Page",
+      plan: "R$ 1.000,00",
+      description: "Um site moderno e direto, que reúne todas as informações essenciais em uma única página. Ideal para startups, freelancers e pequenas empresas que querem presença digital rápida e eficiente.",
+      services: [
+        "Design Responsivo",
+        "SEO",
+        "Integração com Redes Sociais",
+        "Hospedagem + Dominío"
+      ],
+    },
+  ];
+
+  // Dados para os cards em formato de bandeira
+  const flagContents = [
+    {
+      "plan": "Trimestral",
+      "value": "R$ 1.500,00",
+      "details": "3 parcelas de R$ 500,00",
+      "services": [
+        "Gestão de até 2 campanhas",
+        "Otimização semanal",
+        "Relatório mensal de desempenho",
+        "Suporte via WhatsApp",
+        "Sem ajustes de landing page"
+      ]
+    },
+    {
+      "plan": "Semestral",
+      "value": "R$ 4.300,00",
+      "details": "6 parcelas de R$ 716,67",
+      "services": [
+        "Gestão de até 4 campanhas",
+        "Otimização duas vezes por semana",
+        "Relatório quinzenal de desempenho",
+        "Suporte via WhatsApp e e-mail",
+        "Ajustes básicos em landing pages"
+      ]
+    },
+    {
+      "plan": "Anual",
+      "value": "R$ 8.200,00",
+      "details": "12 parcelas de R$ 683,33",
+      "services": [
+        "Gestão de campanhas ilimitadas",
+        "Otimização diária",
+        "Relatórios detalhados e insights",
+        "Suporte prioritário 24/7",
+        "Criação e ajustes de landing pages"
+      ]
+    }
+  ];
+
+  // Detecta qual card está em evidência durante o scroll
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const scrollPosition = container.scrollLeft;
+      const cardWidth = container.firstChild.offsetWidth;
+      const newActiveIndex = Math.round(scrollPosition / cardWidth) % cardContents.length;
+      setActiveIndex(newActiveIndex);
+    }
+  };
+
+  // Função para verificar se o formulário está visível
+  const checkFormVisibility = () => {
+    if (formRef.current) {
+      const rect = formRef.current.getBoundingClientRect();
+      const isVisible = (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+
+      if (isVisible && !formMounted) {
+        setFormVisible(true);
+        setFormMounted(true);
+      }
+    }
+  };
+
+  // Adiciona o event listener para o scroll da página
+  useEffect(() => {
+    window.addEventListener('scroll', checkFormVisibility);
+
+    // Verificação inicial
+    checkFormVisibility();
+
+    return () => {
+      window.removeEventListener('scroll', checkFormVisibility);
+    };
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Lógica para enviar o formulário
+    console.log('Formulário enviado!');
+  };
+
   return (
     <ContactWrapper>
- 
+      <TitleCard>
+        <h1>Preços para Criação de Sites Exclusivos</h1>
+      </TitleCard>
+      <CardWrapper ref={containerRef} onScroll={handleScroll}>
+        {Array.from({ length: 30 }, (_, i) => {
+          // Repete os 10 cards três vezes para simular um scroll infinito
+          const cardIndex = i % cardContents.length;
+          const cardData = cardContents[cardIndex];
+          const isActive = activeIndex === cardIndex;
+
+          return (
+            <Card
+              key={i}
+              className={isActive ? 'active' : ''}
+              style={{
+                transform: isActive ? 'rotate(360deg)' : 'rotate(0deg)',
+                transition: 'transform 1.2s ease-in-out'
+              }}
+            >
+              <CardContent>
+                <CardTitle>
+                  {cardData.title}
+                </CardTitle>
+                <p style={{ 'padding': '15px 0' }}>A partir de:</p>
+                <CardPlan>{cardData.plan}</CardPlan>
+                <CardDescription>
+                  {cardData.description}
+                </CardDescription>
+                <ServicesList>
+                  {cardData.services.map((service, index) => (
+                    <ServiceItemCard key={index}>{service}</ServiceItemCard>
+                  ))}
+                </ServicesList>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </CardWrapper>
+      <TitleFlags>
+        <h2>Planos Estratégicos de Tráfego Pago</h2>
+      </TitleFlags>
+
+      <FlagsWrapper>
+        {flagContents.map((flag, index) => (
+          <Flag key={index}>
+            <CardContent>
+              <FlagTitle>{flag.plan}</FlagTitle>
+              <p style={{ 'padding': '10px 0', 'color': '#FFF' }}>A partir de:</p>
+              <CardPlan>{flag.value}</CardPlan>
+              <CardDetails>{flag.details}</CardDetails>
+              <hr style={{ 'width': '100%', 'border': '1px solid #333' }} />
+              <ServicesList>
+                {flag.services.map((service, index) => (
+                  <ServiceItemFlag key={index}>{service}</ServiceItemFlag>
+                ))}
+              </ServicesList>
+            </CardContent>
+          </Flag>
+        ))}
+      </FlagsWrapper>
+
+      <FormWrapper>
+        <FormContainer ref={formRef}>
+          <FormTitle className={formVisible ? 'visible' : ''}>Entre em Contato</FormTitle>
+          <Form onSubmit={handleSubmit}>
+            <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
+              <Label className={formVisible ? 'visible' : ''}>Nome</Label>
+              <Input type="text" placeholder="Digite seu nome..." required />
+            </InputGroup>
+
+            <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
+              <Label className={formVisible ? 'visible' : ''}>Empresa</Label>
+              <Input type="text" placeholder="É empresa?" required />
+            </InputGroup>
+
+            <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
+              <Label className={formVisible ? 'visible' : ''}>Email</Label>
+              <Input type="email" placeholder="Ex: raquel@gmail.com" required />
+            </InputGroup>
+
+            <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
+              <Label className={formVisible ? 'visible' : ''}>Telefone</Label>
+              <Input type="tel" placeholder="Ex: 1197855-0000" required />
+            </InputGroup>
+
+            <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
+              <Label className={formVisible ? 'visible' : ''}>Tipo de Serviço</Label>
+              <Input type="text" placeholder="Ex: Site Institucional ou Tráfego Pago" required />
+            </InputGroup>
+
+            <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
+              <Label className={formVisible ? 'visible' : ''}>Preferência de Contato</Label>
+              <Input type="text" placeholder="Ex: WhatsApp ou Email" required />
+            </InputGroup>
+
+            <SubmitButton
+              type="submit"
+              className={formVisible ? 'visible' : ''}
+            >
+              Enviar
+            </SubmitButton>
+          </Form>
+        </FormContainer>
+      </FormWrapper>
+      <Footer />
     </ContactWrapper>
   );
 }

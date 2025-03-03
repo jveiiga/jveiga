@@ -17,6 +17,7 @@ import HomeDetail from './components/HomeDetails/HomeDetail';
 import SocialDetail from './components/SocialDetail/SocialDetail';
 import SeoDetail from './components/SeoDetail/SeoDetail';
 import AgencyDetail from './components/AgencyDetail/AgencyDetail';
+import Contact from './components/Contact/Contact';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -27,12 +28,12 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail'].includes(location.pathname);
+  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/contact'].includes(location.pathname);
 
   return (
     <>
       <GlobalStyles />
-      <Header />
+      <Header currentPath={location.pathname} />
       <ContentWrapper className={showContent ? 'show' : ''}>
         <Routes>
           <Route path="/" element={
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/social-detail" element={<SocialDetail />} />
         <Route path="/seo-detail" element={<SeoDetail />} />
         <Route path="/agency-detail" element={<AgencyDetail />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

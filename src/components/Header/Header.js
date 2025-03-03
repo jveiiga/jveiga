@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HeaderWrapper, Logo, Nav, NavList, NavItem, NavLink, Icons, IconWrapper, Image, NavWrapper } from './HeaderStyled';
 import logoImage from '../../assets/images/logo.png';
 import linkedIn from '../../assets/images/icon/linkedin.svg';
@@ -7,7 +7,7 @@ import gitHub from '../../assets/images/icon/github.svg';
 import email from '../../assets/images/icon/email.png';
 import HamburgerMenu from '../MenuHamburguer/MenuHamburguer';
 
-const Header = () => {
+const Header = ({ currentPath }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('#home');
   const location = useLocation();
@@ -59,6 +59,12 @@ const Header = () => {
       return () => clearTimeout(timer);
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (currentPath === '/contact') {
+      setActiveLink('#contact');
+    }
+  }, [currentPath]);
 
   const handleClick = (e, id) => {
     e.preventDefault();
@@ -131,8 +137,8 @@ const Header = () => {
             </NavItem>
             <NavItem>
               <NavLink
-                href="#contact"
-                onClick={(e) => handleClick(e, 'contact')}
+                as={Link}
+                to="/contact"
                 className={activeLink === '#contact' ? 'active' : ''}
               >
                 Contact
