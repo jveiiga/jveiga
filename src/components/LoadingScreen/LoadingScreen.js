@@ -18,6 +18,7 @@ import vercelLogo from '../../assets/images/logo/vercel-logo.png';
 import facebookLogo from '../../assets/images/logo/facebook-logo.png';
 import instagramLogo from '../../assets/images/logo/instagram-logo.png';
 import youtubeLogo from '../../assets/images/logo/youtube-logo.png';
+import nextLogo from '../../assets/images/logo/next-logo.png';
 
 
 const logos = [
@@ -37,7 +38,8 @@ const logos = [
   { src: vercelLogo, alt: 'Vercel Logo' },
   { src: facebookLogo, alt: 'Facebook Logo' },
   { src: instagramLogo, alt: 'Instagram Logo' },
-  { src: youtubeLogo, alt: 'Youtube Logo' }
+  { src: youtubeLogo, alt: 'Youtube Logo' },
+  { src: nextLogo, alt: 'Next Logo' }
 ];
 
 const LoadingScreen = () => {
