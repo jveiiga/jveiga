@@ -32,11 +32,15 @@ import Footer from '../Footer/Footer';
 const Contact = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
-  const formRef = useRef(null);
+  
+  // Removemos formRef do useRef e usamos o hook do intersection observer
+  const { ref: formRef, inView: formInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
   const [formVisible, setFormVisible] = useState(false);
-  const [formMounted, setFormMounted] = useState(false);
 
-  // Intersection observers for animations
+  // Outras configurações de inView (para animações de títulos e flags)
   const { ref: titleCardRef, inView: titleCardInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -129,10 +133,10 @@ const Contact = () => {
   // Dados para os cards em formato de bandeira
   const flagContents = [
     {
-      "plan": "Trimestral",
-      "value": "R$ 1.500,00",
-      "details": "3 parcelas de R$ 500,00",
-      "services": [
+      plan: "Trimestral",
+      value: "R$ 1.500,00",
+      details: "3 parcelas de R$ 500,00",
+      services: [
         "Gestão de até 2 campanhas",
         "Otimização semanal",
         "Relatório mensal de desempenho",
@@ -141,10 +145,10 @@ const Contact = () => {
       ]
     },
     {
-      "plan": "Semestral",
-      "value": "R$ 4.300,00",
-      "details": "6 parcelas de R$ 716,67",
-      "services": [
+      plan: "Semestral",
+      value: "R$ 4.300,00",
+      details: "6 parcelas de R$ 716,67",
+      services: [
         "Gestão de até 4 campanhas",
         "Otimização duas vezes por semana",
         "Relatório quinzenal de desempenho",
@@ -153,10 +157,10 @@ const Contact = () => {
       ]
     },
     {
-      "plan": "Anual",
-      "value": "R$ 8.200,00",
-      "details": "12 parcelas de R$ 683,33",
-      "services": [
+      plan: "Anual",
+      value: "R$ 8.200,00",
+      details: "12 parcelas de R$ 683,33",
+      services: [
         "Gestão de campanhas ilimitadas",
         "Otimização diária",
         "Relatórios detalhados e insights",
@@ -177,35 +181,12 @@ const Contact = () => {
     }
   };
 
-  // Função para verificar se o formulário está visível
-  const checkFormVisibility = () => {
-    if (formRef.current) {
-      const rect = formRef.current.getBoundingClientRect();
-      const isVisible = (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-
-      if (isVisible && !formMounted) {
-        setFormVisible(true);
-        setFormMounted(true);
-      }
-    }
-  };
-
-  // Adiciona o event listener para o scroll da página
+  // Usando useEffect para marcar o formulário como visível uma vez que esteja em view
   useEffect(() => {
-    window.addEventListener('scroll', checkFormVisibility);
-
-    // Verificação inicial
-    checkFormVisibility();
-
-    return () => {
-      window.removeEventListener('scroll', checkFormVisibility);
-    };
-  }, []);
+    if (formInView) {
+      setFormVisible(true);
+    }
+  }, [formInView]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -227,7 +208,7 @@ const Contact = () => {
 
           return (
             <Card
-              key={i}
+              key={`${cardData.id}-${i}`}
               className={`card ${isActive ? 'active' : ''}`}
               style={{
                 '--index': i,
@@ -237,7 +218,7 @@ const Contact = () => {
             >
               <CardContent>
                 <CardTitle>{cardData.title}</CardTitle>
-                <p style={{ 'padding': '15px 0' }}>A partir de:</p>
+                <p style={{ padding: '15px 0' }}>A partir de:</p>
                 <CardPlan>{cardData.plan}</CardPlan>
                 <CardDescription>{cardData.description}</CardDescription>
                 <ServicesList>
@@ -251,7 +232,6 @@ const Contact = () => {
         })}
       </CardWrapper>
       <ContainerFlags>
-
         <TitleFlags ref={titleFlagsRef} className={titleFlagsInView ? 'animate' : ''}>
           <h2>Planos Estratégicos de Tráfego Pago</h2>
         </TitleFlags>
@@ -261,17 +241,17 @@ const Contact = () => {
               key={index}
               ref={index === 0 ? flagLeftRef : index === 1 ? flagCenterRef : flagRightRef}
               className={`
-              ${index === 0 ? (flagLeftInView ? 'animate-left' : '') : ''}
-              ${index === 1 ? (flagCenterInView ? 'animate-center' : '') : ''}
-              ${index === 2 ? (flagRightInView ? 'animate-right' : '') : ''}
+                ${index === 0 ? (flagLeftInView ? 'animate-left' : '') : ''}
+                ${index === 1 ? (flagCenterInView ? 'animate-center' : '') : ''}
+                ${index === 2 ? (flagRightInView ? 'animate-right' : '') : ''}
               `}
             >
               <CardContent>
                 <FlagTitle>{flag.plan}</FlagTitle>
-                <p style={{ 'padding': '10px 0', 'color': '#FFF' }}>A partir de:</p>
+                <p style={{ padding: '10px 0', color: '#FFF' }}>A partir de:</p>
                 <CardPlan>{flag.value}</CardPlan>
                 <CardDetails>{flag.details}</CardDetails>
-                <hr style={{ 'width': '100%', 'border': '1px solid #333' }} />
+                <hr style={{ width: '100%', border: '1px solid #333' }} />
                 <ServicesList>
                   {flag.services.map((service, index) => (
                     <ServiceItemFlag key={index}>{service}</ServiceItemFlag>
@@ -319,6 +299,6 @@ const Contact = () => {
       <Footer />
     </ContactWrapper>
   );
-}
+};
 
 export default Contact;

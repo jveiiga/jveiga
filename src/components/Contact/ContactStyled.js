@@ -235,14 +235,6 @@ export const Card = styled.div`
   @media screen and (min-width: 320px) and (max-width: 460px) {
     min-width: 100%;
   }
-
-  @media screen and (min-width: 461px) and (max-width: 580px) {
-
-  }
-
-  @media screen and (min-width: 581px) and (max-width: 790px) {
-
-  }
 `;
 
 export const CardContent = styled.div`
@@ -377,7 +369,8 @@ export const Form = styled.form`
   gap: 1.5rem;
 
   @media screen and (min-width: 320px) and (max-width: 768px) {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
