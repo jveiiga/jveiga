@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import {
   Card,
   CardWrapper,
@@ -23,7 +24,8 @@ import {
   Flag,
   TitleFlags,
   FormWrapper,
-  CardDetails
+  CardDetails,
+  ContainerFlags
 } from './ContactStyled';
 import Footer from '../Footer/Footer';
 
@@ -33,6 +35,32 @@ const Contact = () => {
   const formRef = useRef(null);
   const [formVisible, setFormVisible] = useState(false);
   const [formMounted, setFormMounted] = useState(false);
+
+  // Intersection observers for animations
+  const { ref: titleCardRef, inView: titleCardInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: titleFlagsRef, inView: titleFlagsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: flagLeftRef, inView: flagLeftInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: flagCenterRef, inView: flagCenterInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: flagRightRef, inView: flagRightInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: cardWrapperRef, inView: cardWrapperInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   // Dados para cada card
   const cardContents = [
@@ -187,10 +215,10 @@ const Contact = () => {
 
   return (
     <ContactWrapper>
-      <TitleCard>
+      <TitleCard ref={titleCardRef} className={titleCardInView ? 'animate' : ''}>
         <h1>Preços para Criação de Sites Exclusivos</h1>
       </TitleCard>
-      <CardWrapper ref={containerRef} onScroll={handleScroll}>
+      <CardWrapper ref={cardWrapperRef} onScroll={handleScroll} className={cardWrapperInView ? 'animate' : ''}>
         {Array.from({ length: 30 }, (_, i) => {
           // Repete os 10 cards três vezes para simular um scroll infinito
           const cardIndex = i % cardContents.length;
@@ -200,21 +228,18 @@ const Contact = () => {
           return (
             <Card
               key={i}
-              className={isActive ? 'active' : ''}
+              className={`card ${isActive ? 'active' : ''}`}
               style={{
+                '--index': i,
                 transform: isActive ? 'rotate(360deg)' : 'rotate(0deg)',
                 transition: 'transform 1.2s ease-in-out'
               }}
             >
               <CardContent>
-                <CardTitle>
-                  {cardData.title}
-                </CardTitle>
+                <CardTitle>{cardData.title}</CardTitle>
                 <p style={{ 'padding': '15px 0' }}>A partir de:</p>
                 <CardPlan>{cardData.plan}</CardPlan>
-                <CardDescription>
-                  {cardData.description}
-                </CardDescription>
+                <CardDescription>{cardData.description}</CardDescription>
                 <ServicesList>
                   {cardData.services.map((service, index) => (
                     <ServiceItemCard key={index}>{service}</ServiceItemCard>
@@ -225,29 +250,38 @@ const Contact = () => {
           );
         })}
       </CardWrapper>
-      <TitleFlags>
-        <h2>Planos Estratégicos de Tráfego Pago</h2>
-      </TitleFlags>
+      <ContainerFlags>
 
-      <FlagsWrapper>
-        {flagContents.map((flag, index) => (
-          <Flag key={index}>
-            <CardContent>
-              <FlagTitle>{flag.plan}</FlagTitle>
-              <p style={{ 'padding': '10px 0', 'color': '#FFF' }}>A partir de:</p>
-              <CardPlan>{flag.value}</CardPlan>
-              <CardDetails>{flag.details}</CardDetails>
-              <hr style={{ 'width': '100%', 'border': '1px solid #333' }} />
-              <ServicesList>
-                {flag.services.map((service, index) => (
-                  <ServiceItemFlag key={index}>{service}</ServiceItemFlag>
-                ))}
-              </ServicesList>
-            </CardContent>
-          </Flag>
-        ))}
-      </FlagsWrapper>
-
+        <TitleFlags ref={titleFlagsRef} className={titleFlagsInView ? 'animate' : ''}>
+          <h2>Planos Estratégicos de Tráfego Pago</h2>
+        </TitleFlags>
+        <FlagsWrapper>
+          {flagContents.map((flag, index) => (
+            <Flag
+              key={index}
+              ref={index === 0 ? flagLeftRef : index === 1 ? flagCenterRef : flagRightRef}
+              className={`
+              ${index === 0 ? (flagLeftInView ? 'animate-left' : '') : ''}
+              ${index === 1 ? (flagCenterInView ? 'animate-center' : '') : ''}
+              ${index === 2 ? (flagRightInView ? 'animate-right' : '') : ''}
+              `}
+            >
+              <CardContent>
+                <FlagTitle>{flag.plan}</FlagTitle>
+                <p style={{ 'padding': '10px 0', 'color': '#FFF' }}>A partir de:</p>
+                <CardPlan>{flag.value}</CardPlan>
+                <CardDetails>{flag.details}</CardDetails>
+                <hr style={{ 'width': '100%', 'border': '1px solid #333' }} />
+                <ServicesList>
+                  {flag.services.map((service, index) => (
+                    <ServiceItemFlag key={index}>{service}</ServiceItemFlag>
+                  ))}
+                </ServicesList>
+              </CardContent>
+            </Flag>
+          ))}
+        </FlagsWrapper>
+      </ContainerFlags>
       <FormWrapper>
         <FormContainer ref={formRef}>
           <FormTitle className={formVisible ? 'visible' : ''}>Entre em Contato</FormTitle>
@@ -256,36 +290,27 @@ const Contact = () => {
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
               <Input type="text" placeholder="Digite seu nome..." required />
             </InputGroup>
-
             <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Empresa</Label>
               <Input type="text" placeholder="É empresa?" required />
             </InputGroup>
-
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Email</Label>
               <Input type="email" placeholder="Ex: raquel@gmail.com" required />
             </InputGroup>
-
             <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Telefone</Label>
               <Input type="tel" placeholder="Ex: 1197855-0000" required />
             </InputGroup>
-
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Tipo de Serviço</Label>
               <Input type="text" placeholder="Ex: Site Institucional ou Tráfego Pago" required />
             </InputGroup>
-
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Preferência de Contato</Label>
               <Input type="text" placeholder="Ex: WhatsApp ou Email" required />
             </InputGroup>
-
-            <SubmitButton
-              type="submit"
-              className={formVisible ? 'visible' : ''}
-            >
+            <SubmitButton type="submit" className={formVisible ? 'visible' : ''}>
               Enviar
             </SubmitButton>
           </Form>

@@ -1,9 +1,63 @@
 import styled, { keyframes } from 'styled-components';
 
+const slideInFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const slideInFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const slideInFromBottom = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 export const ContactWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  background-color: #FFF;
 `;
 
 export const TitleCard = styled.div`
@@ -15,14 +69,25 @@ export const TitleCard = styled.div`
   background-color: #FFF;
   text-transform: uppercase;
   font-size: 1rem;
+  opacity: 0;
+
+  &.animate {
+    animation: ${slideInFromLeft} 1.5s forwards;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 753px) {
+    text-align: center;
+    padding: 1rem 1rem 0 1rem;
+  }
 `;
 
 export const CardWrapper = styled.div`
   display: flex;
   overflow-x: auto;
   width: 100%;
-  padding-top: 2rem;
-  padding-bottom: 5rem;
+  padding: 2rem 1rem 5rem 1rem;
+  /* padding-bottom: 5rem; */
+
   scroll-behavior: smooth;
   background-color: #FFF;
   -ms-overflow-style: none; /* IE e Edge */
@@ -41,7 +106,17 @@ export const CardWrapper = styled.div`
   
   /* Efeito de snap para auxiliar na navegação */
   scroll-snap-type: x mandatory;
+
+  &.animate .card {
+    opacity: 0;
+    animation: ${fadeInUp} 1s forwards;
+    animation-delay: calc(var(--index) * 0.2s);
+  }
 `;
+
+export const ContainerFlags = styled.div`
+  background-color: #000;
+`
 
 export const FlagsWrapper = styled.div`
   display: flex;
@@ -49,6 +124,12 @@ export const FlagsWrapper = styled.div`
   margin-top: 2rem;
   padding-bottom: 13rem;
   gap: 1rem;
+
+  @media screen and (min-width: 320px) and (max-width: 934px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 8rem;
+  }
 `;
 
 export const Flag = styled.div`
@@ -61,7 +142,8 @@ export const Flag = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   margin: 1rem;
-
+  opacity: 0;
+  
   &:after {
     content: '';
     position: absolute;
@@ -73,6 +155,29 @@ export const Flag = styled.div`
     border-left: 7.6rem solid transparent;
     border-right: 7.5rem solid transparent;
     border-top: 8.5rem solid rgba(255, 255, 255, 0.1);
+
+    @media screen and (min-width: 320px) and (max-width: 460px) {
+      bottom: -8.5rem;
+    }
+  }
+
+  &.animate-left {
+    animation: ${slideInFromLeft} 1s forwards;
+    opacity: 1;
+  }
+
+  &.animate-center {
+    animation: ${slideInFromBottom} 1s forwards;
+    opacity: 1;
+  }
+
+  &.animate-right {
+    animation: ${slideInFromRight} 1s forwards;
+    opacity: 1;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 460px) {
+    /* bottom: -9rem; */
   }
 `;
 
@@ -83,6 +188,16 @@ export const TitleFlags = styled.div`
   color: #FFF;
   font-size: 1.3rem;
   text-transform: uppercase;
+  opacity: 0;
+
+  &.animate {
+    animation: ${slideInFromRight} 1.5s forwards;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 753px) {
+    text-align: center;
+    padding: 2rem 1rem 0 1rem;
+  }
 `;
 
 export const FlagTitle = styled.h3`
@@ -112,9 +227,21 @@ export const Card = styled.div`
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
   
-  &.active {
+  &.active {  
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 460px) {
+    min-width: 100%;
+  }
+
+  @media screen and (min-width: 461px) and (max-width: 580px) {
+
+  }
+
+  @media screen and (min-width: 581px) and (max-width: 790px) {
+
   }
 `;
 
@@ -215,50 +342,6 @@ export const ServiceItemFlag = styled.li`
   }
 `;
 
-// Animações para o formulário
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-const slideInLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const slideInRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-const riseUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-// Estilos para o formulário
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -292,8 +375,8 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  
-  @media (max-width: 768px) {
+
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -303,14 +386,13 @@ export const InputGroup = styled.div`
   opacity: 0;
   
   &.left.visible {
-    animation: ${slideInLeft} 0.8s forwards;
+    animation: ${slideInFromLeft} 0.8s forwards;
   }
   
   &.right.visible {
-    animation: ${slideInRight} 0.8s forwards;
+    animation: ${slideInFromRight} 0.8s forwards;
   }
   
-  /* Aplicando atrasos diferentes para cada input */
   &:nth-child(1) {
     animation-delay: 0.1s;
   }
@@ -339,7 +421,7 @@ export const Label = styled.label`
   opacity: 0;
   
   &.visible {
-    animation: ${riseUp} 0.6s forwards;
+    animation: ${fadeInUp} 0.6s forwards;
     animation-delay: 0.2s;
   }
 `;
@@ -385,7 +467,7 @@ export const SubmitButton = styled.button`
   }
   
   &.visible {
-    animation: ${riseUp} 0.8s forwards;
+    animation: ${fadeInUp} 0.8s forwards;
     animation-delay: 0.6s;
   }
 `;

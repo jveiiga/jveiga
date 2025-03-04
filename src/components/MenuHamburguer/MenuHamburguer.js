@@ -13,7 +13,9 @@ const HamburgerMenu = () => {
   const handleItemClick = (e, href) => {
     e.preventDefault();
     setIsOpen(false);
-    if (window.location.pathname !== '/') {
+    if (href === 'contact') {
+      navigate('/contact');
+    } else if (window.location.pathname !== '/') {
       navigate(`/#${href}`);
       setTimeout(() => {
         const target = document.getElementById(href);
@@ -34,7 +36,7 @@ const HamburgerMenu = () => {
         <Logo src={logoImage} alt="Logo" />
         {['home', 'social', 'marketing', 'seo', 'agency', 'contact'].map((href, index) => (
           <MenuItem key={href} isOpen={isOpen} index={index}>
-            <a href={`#${href}`} onClick={(e) => handleItemClick(e, href)}>
+            <a href={href === 'contact' ? '/contact' : `#${href}`} onClick={(e) => handleItemClick(e, href)}>
               <span className="menu-number">{index + 1}.</span>
               <span className="menu-text">{href.charAt(0).toUpperCase() + href.slice(1)}</span>
             </a>
