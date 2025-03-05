@@ -137,7 +137,7 @@ const Contact = () => {
       value: "R$ 1.500,00",
       details: "3 parcelas de R$ 500,00",
       services: [
-        "Gestão de até 2 campanhas",
+        "Gestão de até 2 campanhas no Facebook Ads",
         "Otimização semanal",
         "Relatório mensal de desempenho",
         "Suporte via WhatsApp",
@@ -149,7 +149,7 @@ const Contact = () => {
       value: "R$ 4.300,00",
       details: "6 parcelas de R$ 716,67",
       services: [
-        "Gestão de até 4 campanhas",
+        "Gestão de até 4 campanhas no Facebook Ads ou Google Ads",
         "Otimização duas vezes por semana",
         "Relatório quinzenal de desempenho",
         "Suporte via WhatsApp e e-mail",
@@ -161,7 +161,7 @@ const Contact = () => {
       value: "R$ 8.200,00",
       details: "12 parcelas de R$ 683,33",
       services: [
-        "Gestão de campanhas ilimitadas",
+        "Gestão de campanhas ilimitadas no Facebook Ads, Google Ads e YouTube, com otimização contínua",
         "Otimização diária",
         "Relatórios detalhados e insights",
         "Suporte prioritário 24/7",
@@ -188,11 +188,11 @@ const Contact = () => {
     }
   }, [formInView]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Lógica para enviar o formulário
-    console.log('Formulário enviado!');
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Lógica para enviar o formulário
+  //   console.log('Formulário enviado!');
+  // };
 
   return (
     <ContactWrapper>
@@ -265,7 +265,9 @@ const Contact = () => {
       <FormWrapper>
         <FormContainer ref={formRef}>
           <FormTitle className={formVisible ? 'visible' : ''}>Entre em Contato</FormTitle>
-          <Form onSubmit={handleSubmit}>
+          <Form 
+            action="https://formsubmit.co/b79601494f5bb6ab81f2640e897ff29b" method="POST"
+            >
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
               <Input type="text" placeholder="Digite seu nome..." required />
