@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import { Section } from './styles/AppStyles';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
+import { ContentWrapper } from './indexStyled';
+
+// Componentes das páginas
 import Home from './components/Home/Home';
 import Social from './components/Social/Social';
 import Seo from './components/Seo/Seo';
@@ -9,10 +15,6 @@ import Marketing from './components/Marketing/Marketing';
 import MarketingTwo from './components/MarketingTwo/MarketingTwo';
 import Agency from './components/Agency/Agency';
 import AgencyTwo from './components/AgencyTwo/AgencyTwo';
-import Footer from './components/Footer/Footer';
-import { ContentWrapper } from './indexStyled';
-import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
-import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import HomeDetail from './components/HomeDetails/HomeDetail';
 import SocialDetail from './components/SocialDetail/SocialDetail';
 import SeoDetail from './components/SeoDetail/SeoDetail';
@@ -25,26 +27,23 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 50); // Pequeno delay para suavizar a transição
+    // Garante que a página sempre começa do topo
+    window.scrollTo(0, 0);
+    
+    const timer = setTimeout(() => setShowContent(true), 50);
     return () => clearTimeout(timer);
-  }, []);
+  }, [location.pathname]); // Atualiza sempre que a rota mudar
 
-  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/contact', '/thanks'].includes(location.pathname);
+  // Define quais páginas são "detalhes" e não devem ter ContentWrapper
+  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/contact'].includes(location.pathname);
 
   return (
     <>
       <GlobalStyles />
       <Header currentPath={location.pathname} />
-      {isDetailPage ? (
-        <Routes>
-          <Route path="/home-detail" element={<HomeDetail />} />
-          <Route path="/social-detail" element={<SocialDetail />} />
-          <Route path="/seo-detail" element={<SeoDetail />} />
-          <Route path="/agency-detail" element={<AgencyDetail />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/thanks" element={<ThankYou />} />
-        </Routes>
-      ) : (
+
+      {/* Aplica ContentWrapper apenas se NÃO for uma página de detalhe */}
+      {!isDetailPage ? (
         <ContentWrapper className={showContent ? 'show' : ''}>
           <Routes>
             <Route path="/" element={
@@ -61,16 +60,21 @@ const App = () => {
             } />
           </Routes>
         </ContentWrapper>
+      ) : (
+        <Routes>
+          {/* Rotas de detalhes SEM ContentWrapper */}
+          <Route path="/home-detail" element={<HomeDetail />} />
+          <Route path="/social-detail" element={<SocialDetail />} />
+          <Route path="/seo-detail" element={<SeoDetail />} />
+          <Route path="/agency-detail" element={<AgencyDetail />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/thanks" element={<ThankYou />} />
+        </Routes>
       )}
+
       {!isDetailPage && <ScrollToTopButton />}
     </>
   );
 }
 
-const AppWrapper = () => (
-  <Router>
-    <App />
-  </Router>
-);
-
-export default AppWrapper;
+export default App;

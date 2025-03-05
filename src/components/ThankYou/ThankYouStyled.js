@@ -1,4 +1,47 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+// Definindo keyframes para as animações
+const slideInFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const slideInFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const slideInFromTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const ThankYouWrapper = styled.div`
   position: relative;
@@ -8,7 +51,6 @@ export const ThankYouWrapper = styled.div`
   align-items: center;
   height: 100vh;
   text-align: center;
-  /* background-color: #f5f5f5; */
   z-index: 1; /* Garante que o conteúdo esteja por cima */
 `;
 
@@ -19,6 +61,7 @@ export const ThankYouBackground = styled.img`
   object-fit: cover;
   z-index: 0; /* Garante que a imagem esteja no fundo */
   opacity: 0.5;
+  animation: ${slideInFromTop} 2s forwards;
 `;
 
 export const ThankYouMessageOne = styled.h1`
@@ -29,6 +72,7 @@ export const ThankYouMessageOne = styled.h1`
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   margin-bottom: 1rem;
   z-index: 2; /* Garante que o texto esteja por cima da imagem */
+  animation: ${slideInFromRight} 2s forwards;
 `;
 
 export const ThankYouMessageTwo = styled.h1`
@@ -39,6 +83,7 @@ export const ThankYouMessageTwo = styled.h1`
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   margin-bottom: 1rem;
   z-index: 2; /* Garante que o texto esteja por cima da imagem */
+  animation: ${slideInFromLeft} 2s forwards;
 `;
 
 export const BackButton = styled.button`
@@ -48,6 +93,7 @@ export const BackButton = styled.button`
   border: none;
   cursor: pointer;
   z-index: 2; /* Garante que o botão esteja por cima da imagem */
+  animation: ${fadeIn} 4.5s forwards;
 
   &:hover {
     text-decoration: underline;

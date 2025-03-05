@@ -11,7 +11,7 @@ const ThankYou = () => {
 
   return (
     <>
-      <ThankYouBackground src={require("../../assets/images/background/thankyou-background.jpg")} alt="Thank you" />
+      <ThankYouBackground src={require('../../assets/images/background/thankyou-background.jpg')} alt="Thank you" />
       <ThankYouWrapper>
         <ThankYouMessageOne>Fico feliz pelo seu interesse!</ThankYouMessageOne>
         <ThankYouMessageTwo>Em breve entrarei em contato.</ThankYouMessageTwo>
