@@ -169,16 +169,30 @@ const Contact = () => {
     }
   ];
 
+  const totalCards = 5; // Número total de cards originais
+  const scrollTimeoutRef = useRef(null);
+  
   const handleScroll = () => {
     if (containerRef.current) {
-      const container = containerRef.current;
-      const scrollPosition = container.scrollLeft;
-      const cardWidth = container.firstChild.offsetWidth;
-      const newActiveIndex = Math.round(scrollPosition / cardWidth) % cardContents.length;
-      setActiveIndex(newActiveIndex);
+      // Limpa timeout anterior para debouncing
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = setTimeout(() => {
+        const container = containerRef.current;
+        const cardWidth = container.firstChild.offsetWidth;
+        const middleOffset = totalCards * cardWidth; // Início da cópia central
+  
+        const newScrollPosition = container.scrollLeft;
+        const relativeScroll = newScrollPosition - middleOffset;
+        const newActiveIndex = Math.round(relativeScroll / cardWidth);
+        // Normaliza o índice para o intervalo [0, totalCards)
+        setActiveIndex(((newActiveIndex % totalCards) + totalCards) % totalCards);
+      }, 150); // Delay de 150ms para debouncing
     }
   };
-
+  
+  
   useEffect(() => {
     if (formInView) {
       setFormVisible(true);
@@ -195,18 +209,18 @@ const Contact = () => {
       method: 'POST',
       body: formData,
     })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = 'https://jveiga.dev/#/thanks';
-      } else {
-        console.error('Erro ao enviar formulário');
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'https://jveiga.dev/#/thanks';
+        } else {
+          console.error('Erro ao enviar formulário');
+          setLoading(false);
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao enviar formulário:', error);
         setLoading(false);
-      }
-    })
-    .catch(error => {
-      console.error('Erro ao enviar formulário:', error);
-      setLoading(false);
-    });
+      });
   };
 
   return (
@@ -214,20 +228,25 @@ const Contact = () => {
       <TitleCard ref={titleCardRef} className={titleCardInView ? 'animate' : ''}>
         <h1>Preços para Criação de Sites Exclusivos</h1>
       </TitleCard>
-      <CardWrapper ref={cardWrapperRef} onScroll={handleScroll} className={cardWrapperInView ? 'animate' : ''}>
-        {Array.from({ length: 30 }, (_, i) => {
-          const cardIndex = i % cardContents.length;
+      <CardWrapper
+        ref={containerRef}
+        onScroll={handleScroll}
+        className={cardWrapperInView ? 'animate' : ''}
+        style={{ overflowX: 'auto', scrollSnapType: 'x mandatory' }}
+      >
+        {Array.from({ length: totalCards * 3 }, (_, i) => {
+          // Para 3 cópias dos cards
+          const cardIndex = i % totalCards;
           const cardData = cardContents[cardIndex];
           const isActive = activeIndex === cardIndex;
 
           return (
             <Card
               key={`${cardData.id}-${i}`}
-              className={`card ${isActive ? 'active' : ''}`}
+              className={isActive ? 'active' : ''}
               style={{
-                '--index': i,
                 transform: isActive ? 'rotate(360deg)' : 'rotate(0deg)',
-                transition: 'transform 1.2s ease-in-out'
+                transition: 'transform 0.8s ease-in-out'
               }}
             >
               <CardContent>
@@ -245,6 +264,7 @@ const Contact = () => {
           );
         })}
       </CardWrapper>
+
       <ContainerFlags>
         <TitleFlags ref={titleFlagsRef} className={titleFlagsInView ? 'animate' : ''}>
           <h2>Planos Estratégicos de Tráfego Pago</h2>
@@ -282,11 +302,11 @@ const Contact = () => {
           <Form
             ref={formRef}
             onSubmit={handleSubmit}
-            action="https://formsubmit.co/b79601494f5bb6ab81f2640e897ff29b" 
+            action="https://formsubmit.co/b79601494f5bb6ab81f2640e897ff29b"
             method="POST"
           >
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" value="https://jveiga.dev/thanks" />
+            <input type="hidden" value="https://jveiga.dev/#/thanks" />
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
               <Input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required />

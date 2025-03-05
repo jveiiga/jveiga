@@ -62,6 +62,15 @@ const spin = keyframes`
   }
 `;
 
+const rotateIn = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 export const ContactWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -234,6 +243,7 @@ export const Card = styled.div`
   &.active {  
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.1);
+    animation: ${rotateIn} 1.2s ease-in-out;
   }
 
   @media screen and (min-width: 320px) and (max-width: 460px) {
