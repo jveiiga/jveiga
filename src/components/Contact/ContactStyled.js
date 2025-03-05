@@ -53,6 +53,15 @@ const fadeInUp = keyframes`
   }
 `;
 
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
 export const ContactWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -86,25 +95,20 @@ export const CardWrapper = styled.div`
   overflow-x: auto;
   width: 100%;
   padding: 2rem 1rem 5rem 1rem;
-  /* padding-bottom: 5rem; */
-
   scroll-behavior: smooth;
   background-color: #FFF;
   -ms-overflow-style: none; /* IE e Edge */
   scrollbar-width: none; /* Firefox */
   
-  /* Esconde a barra de rolagem para Chrome, Safari e Opera */
   &::-webkit-scrollbar {
     display: none;
   }
   
-  /* Garante que haja espaço suficiente antes e depois dos cards para scroll infinito */
   &::before,
   &::after {
     content: '';
   }
   
-  /* Efeito de snap para auxiliar na navegação */
   scroll-snap-type: x mandatory;
 
   &.animate .card {
@@ -116,7 +120,7 @@ export const CardWrapper = styled.div`
 
 export const ContainerFlags = styled.div`
   background-color: #000;
-`
+`;
 
 export const FlagsWrapper = styled.div`
   display: flex;
@@ -453,6 +457,9 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
   &:hover {
     background-color: #ff5252;
@@ -463,4 +470,13 @@ export const SubmitButton = styled.button`
     animation: ${fadeInUp} 0.8s forwards;
     animation-delay: 0.6s;
   }
+`;
+
+export const Spinner = styled.div`
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: ${spin} 1s linear infinite;
 `;

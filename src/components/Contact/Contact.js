@@ -25,16 +25,19 @@ import {
   TitleFlags,
   FormWrapper,
   CardDetails,
-  ContainerFlags
+  ContainerFlags,
+  Spinner
 } from './ContactStyled';
 import Footer from '../Footer/Footer';
 
 const Contact = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
-  
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef(null);
+
   // Removemos formRef do useRef e usamos o hook do intersection observer
-  const { ref: formRef, inView: formInView } = useInView({
+  const { ref: formInViewRef, inView: formInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
@@ -188,11 +191,16 @@ const Contact = () => {
     }
   }, [formInView]);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Lógica para enviar o formulário
-  //   console.log('Formulário enviado!');
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true); // Inicia o estado de carregamento
+    // Simula um atraso para enviar o formulário (substitua pelo envio real)
+    setTimeout(() => {
+      if (formRef.current) {
+        formRef.current.submit(); // Garante que o formRef está definido
+      }
+    }, 1000);
+  };
 
   return (
     <ContactWrapper>
@@ -263,11 +271,16 @@ const Contact = () => {
         </FlagsWrapper>
       </ContainerFlags>
       <FormWrapper>
-        <FormContainer ref={formRef}>
+        <FormContainer ref={formInViewRef}>
           <FormTitle className={formVisible ? 'visible' : ''}>Entre em Contato</FormTitle>
-          <Form 
-            action="https://formsubmit.co/b79601494f5bb6ab81f2640e897ff29b" method="POST"
-            >
+          <Form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            action="https://formsubmit.co/b79601494f5bb6ab81f2640e897ff29b" 
+            method="POST"
+          >
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://jveiga.dev/thanks" />
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
               <Input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required />
@@ -293,7 +306,7 @@ const Contact = () => {
               <Input type="text" id="preferencia" name="preferencia" placeholder="Ex: WhatsApp ou Email" required />
             </InputGroup>
             <SubmitButton type="submit" className={formVisible ? 'visible' : ''}>
-              Enviar
+              {loading ? <Spinner /> : 'Enviar'}
             </SubmitButton>
           </Form>
         </FormContainer>
