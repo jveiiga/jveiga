@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import AppWrapper from './App';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
@@ -12,14 +12,14 @@ const Root = () => {
 
     const skipLoadingPaths = [
       '/home-detail',
-      '/social-detail', 
-      '/seo-detail', 
-      '/agency-detail', 
-      '/contact', 
-      '/thanks'
+      '/social-detail',
+      '/seo-detail',
+      '/agency-detail',
+      '/contact',
+      '/thanks',
     ];
 
-    const shouldSkipLoading = skipLoadingPaths.some(path => 
+    const shouldSkipLoading = skipLoadingPaths.some((path) =>
       currentPath === path || currentPath.startsWith(path + '/')
     );
 
@@ -30,20 +30,20 @@ const Root = () => {
 
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 5000); // Reduza o tempo para 100ms ou menos
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <React.StrictMode>
-      <Router>
+      <HashRouter>
         {loading ? (
           <LoadingScreen />
         ) : (
           <AppWrapper />
         )}
-      </Router>
+      </HashRouter>
     </React.StrictMode>
   );
 };

@@ -16,10 +16,12 @@ const HamburgerMenu = () => {
     setIsOpen(false);
   
     if (href === 'contact') {
-      navigate('/contact');
-      console.log('Navegou para /contact');
-    } else if (window.location.pathname !== '/') {
-      navigate('/'); // Navega para a página principal
+      navigate('/contact'); // Navega para a página de contato
+      console.log('Navegou para /#/contact');
+    } else if (window.location.hash !== '#/') {
+      // Se não estiver na página principal, navega para a página principal
+      navigate('/#/');
+      // Aguarda um pequeno delay para garantir que a página principal foi carregada
       setTimeout(() => {
         const target = document.getElementById(href);
         console.log('Target:', target);
@@ -29,8 +31,9 @@ const HamburgerMenu = () => {
         } else {
           console.error('Seção não encontrada:', href);
         }
-      }, 500); // Aumente o tempo se necessário
+      }, 100); // Reduza o tempo de espera
     } else {
+      // Se já estiver na página principal, rola para a seção
       const target = document.getElementById(href);
       console.log('Target:', target);
       if (target) {
@@ -40,7 +43,7 @@ const HamburgerMenu = () => {
         console.error('Seção não encontrada:', href);
       }
     }
-  };
+  }; 
 
   return (
     <MenuContainer>
