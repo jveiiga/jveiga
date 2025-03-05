@@ -270,27 +270,27 @@ const Contact = () => {
             >
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
-              <Input type="text" placeholder="Digite seu nome..." required />
+              <Input type="text" name="name" placeholder="Digite seu nome..." required />
             </InputGroup>
             <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Empresa</Label>
-              <Input type="text" placeholder="É empresa?" required />
+              <Input type="text" name="isEnterprise?" placeholder="É empresa?" required />
             </InputGroup>
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Email</Label>
-              <Input type="email" placeholder="Ex: raquel@gmail.com" required />
+              <Input type="email" name="email" placeholder="Ex: raquel@gmail.com" required />
             </InputGroup>
             <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Telefone</Label>
-              <Input type="tel" placeholder="Ex: 1197855-0000" required />
+              <Input type="tel" name="phone" placeholder="Ex: 1197855-0000" required />
             </InputGroup>
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Tipo de Serviço</Label>
-              <Input type="text" placeholder="Ex: Site Institucional ou Tráfego Pago" required />
+              <Input type="text" name="service" placeholder="Ex: Site Institucional ou Tráfego Pago" required />
             </InputGroup>
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Preferência de Contato</Label>
-              <Input type="text" placeholder="Ex: WhatsApp ou Email" required />
+              <Input type="text" name="preferences" placeholder="Ex: WhatsApp ou Email" required />
             </InputGroup>
             <SubmitButton type="submit" className={formVisible ? 'visible' : ''}>
               Enviar
