@@ -12,7 +12,7 @@ import AgencyTwo from './components/AgencyTwo/AgencyTwo';
 import Footer from './components/Footer/Footer';
 import { ContentWrapper } from './indexStyled';
 import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import HomeDetail from './components/HomeDetails/HomeDetail';
 import SocialDetail from './components/SocialDetail/SocialDetail';
 import SeoDetail from './components/SeoDetail/SeoDetail';
