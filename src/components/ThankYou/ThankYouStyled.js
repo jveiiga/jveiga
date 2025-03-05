@@ -54,15 +54,25 @@ export const ThankYouWrapper = styled.div`
   z-index: 1; /* Garante que o conteúdo esteja por cima */
 `;
 
-export const ThankYouBackground = styled.img`
+export const ThankYouBackground = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
-  z-index: 0; /* Garante que a imagem esteja no fundo */
-  opacity: 0.5;
-  animation: ${slideInFromTop} 2s forwards;
+  background: url(${require('../../assets/images/background/thankyou-background.jpg')}) no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Ajuste a opacidade conforme desejado */
+  }
 `;
+
 
 export const ThankYouMessageOne = styled.h1`
   font-size: 3rem;
