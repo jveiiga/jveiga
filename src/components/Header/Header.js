@@ -13,13 +13,10 @@ const Header = ({ currentPath }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Re-inicializa o observer e o evento de scroll quando a Home é exibida
   useEffect(() => {
     if (location.pathname === '/') {
-      // Espera um pouco para as seções serem renderizadas
       const timer = setTimeout(() => {
         const sections = document.querySelectorAll('section');
-        // Configura o IntersectionObserver
         const options = {
           root: null,
           rootMargin: '0px',
@@ -34,7 +31,6 @@ const Header = ({ currentPath }) => {
         }, options);
         sections.forEach(section => observer.observe(section));
   
-        // Evento de scroll para ajustar o header e o link ativo
         const handleScroll = () => {
           setIsScrolled(window.scrollY > 50);
           const scrollPos = window.scrollY + 100;
@@ -46,15 +42,13 @@ const Header = ({ currentPath }) => {
         };
   
         window.addEventListener('scroll', handleScroll);
-        // Executa um check inicial
         handleScroll();
   
-        // Cleanup
         return () => {
           window.removeEventListener('scroll', handleScroll);
           sections.forEach(section => observer.unobserve(section));
         };
-      }, 200); // atraso de 200ms para garantir que as seções estejam no DOM
+      }, 200);
   
       return () => clearTimeout(timer);
     }
@@ -70,7 +64,6 @@ const Header = ({ currentPath }) => {
     e.preventDefault();
     if (location.pathname !== '/') {
       navigate(`/`);
-      // Após navegar para a Home, espera um pouco e então rola para a seção
       setTimeout(() => {
         const target = document.getElementById(id);
         if (target) target.scrollIntoView({ behavior: 'smooth' });

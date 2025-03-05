@@ -12,18 +12,33 @@ const HamburgerMenu = () => {
 
   const handleItemClick = (e, href) => {
     e.preventDefault();
+    console.log(`Clicked on: ${href}`);
     setIsOpen(false);
+  
     if (href === 'contact') {
       navigate('/contact');
+      console.log('Navegou para /contact');
     } else if (window.location.pathname !== '/') {
-      navigate(`/#${href}`);
+      navigate('/'); // Navega para a página principal
       setTimeout(() => {
         const target = document.getElementById(href);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      }, 200);
+        console.log('Target:', target);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          console.log('Rolou para a seção:', href);
+        } else {
+          console.error('Seção não encontrada:', href);
+        }
+      }, 500); // Aumente o tempo se necessário
     } else {
       const target = document.getElementById(href);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      console.log('Target:', target);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        console.log('Rolou para a seção:', href);
+      } else {
+        console.error('Seção não encontrada:', href);
+      }
     }
   };
 
