@@ -270,11 +270,11 @@ const Contact = () => {
             >
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
-              <Input type="text" id="name" name="name" placeholder="Digite seu nome..." required />
+              <Input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required />
             </InputGroup>
             <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Empresa</Label>
-              <Input type="text" id="company" name="company" placeholder="É empresa?" required />
+              <Input type="text" id="empresa" name="empresa" placeholder="É empresa?" required />
             </InputGroup>
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Email</Label>
@@ -282,15 +282,15 @@ const Contact = () => {
             </InputGroup>
             <InputGroup className={`right ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Telefone</Label>
-              <Input type="number" id="tel" name="tel" placeholder="Ex: 1197855-0000" required />
+              <Input type="number" id="telefone" name="telefone" placeholder="Ex: 1197855-0000" required />
             </InputGroup>
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Tipo de Serviço</Label>
-              <Input type="text" id="service" name="service" placeholder="Ex: Site Institucional ou Tráfego Pago" required />
+              <Input type="text" id="servico" name="servico" placeholder="Ex: Site Institucional ou Tráfego Pago" required />
             </InputGroup>
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Preferência de Contato</Label>
-              <Input type="text" id="preferences" name="preferences" placeholder="Ex: WhatsApp ou Email" required />
+              <Input type="text" id="preferencia" name="preferencia" placeholder="Ex: WhatsApp ou Email" required />
             </InputGroup>
             <SubmitButton type="submit" className={formVisible ? 'visible' : ''}>
               Enviar
