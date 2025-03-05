@@ -280,7 +280,7 @@ const Contact = () => {
             method="POST"
           >
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://jveiga.dev/thanks" />
+            <input type="hidden" name="_next" value="https://jveiga.dev/#/thanks" />
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
               <Input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required />
