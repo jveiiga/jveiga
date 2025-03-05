@@ -65,10 +65,10 @@ export const ThankYouBackground = styled.img`
 `;
 
 export const ThankYouMessageOne = styled.h1`
-  font-size: 2.5rem;
-  color: #FFF;
+  font-size: 3rem;
   font-family: 'Raleway', sans-serif;
-  font-weight: 800;
+  font-weight: 100;
+  color: #FFF;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   margin-bottom: 1rem;
   z-index: 2; /* Garante que o texto esteja por cima da imagem */
@@ -76,9 +76,9 @@ export const ThankYouMessageOne = styled.h1`
 `;
 
 export const ThankYouMessageTwo = styled.h1`
+  font-size: 2.6rem;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 100;
-  font-size: 2rem;
+  font-weight: 600;
   color: #FFF;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   margin-bottom: 1rem;
@@ -94,6 +94,7 @@ export const BackButton = styled.button`
   cursor: pointer;
   z-index: 2; /* Garante que o botão esteja por cima da imagem */
   animation: ${fadeIn} 4.5s forwards;
+  text-transform: uppercase;
 
   &:hover {
     text-decoration: underline;
