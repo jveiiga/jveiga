@@ -36,14 +36,12 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
 
-  // Removemos formRef do useRef e usamos o hook do intersection observer
   const { ref: formInViewRef, inView: formInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const [formVisible, setFormVisible] = useState(false);
 
-  // Outras configurações de inView (para animações de títulos e flags)
   const { ref: titleCardRef, inView: titleCardInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -69,7 +67,6 @@ const Contact = () => {
     threshold: 0.1,
   });
 
-  // Dados para cada card
   const cardContents = [
     {
       id: 1,
@@ -133,7 +130,6 @@ const Contact = () => {
     },
   ];
 
-  // Dados para os cards em formato de bandeira
   const flagContents = [
     {
       plan: "Trimestral",
@@ -173,7 +169,6 @@ const Contact = () => {
     }
   ];
 
-  // Detecta qual card está em evidência durante o scroll
   const handleScroll = () => {
     if (containerRef.current) {
       const container = containerRef.current;
@@ -184,7 +179,6 @@ const Contact = () => {
     }
   };
 
-  // Usando useEffect para marcar o formulário como visível uma vez que esteja em view
   useEffect(() => {
     if (formInView) {
       setFormVisible(true);
@@ -193,13 +187,26 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true); // Inicia o estado de carregamento
-    // Simula um atraso para enviar o formulário (substitua pelo envio real)
-    setTimeout(() => {
-      if (formRef.current) {
-        formRef.current.submit(); // Garante que o formRef está definido
+    setLoading(true);
+
+    const formData = new FormData(formRef.current);
+
+    fetch('https://formsubmit.co/b79601494f5bb6ab81f2640e897ff29b', {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = 'https://jveiga.dev/#/thanks';
+      } else {
+        console.error('Erro ao enviar formulário');
+        setLoading(false);
       }
-    }, 1000);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar formulário:', error);
+      setLoading(false);
+    });
   };
 
   return (
@@ -209,7 +216,6 @@ const Contact = () => {
       </TitleCard>
       <CardWrapper ref={cardWrapperRef} onScroll={handleScroll} className={cardWrapperInView ? 'animate' : ''}>
         {Array.from({ length: 30 }, (_, i) => {
-          // Repete os 10 cards três vezes para simular um scroll infinito
           const cardIndex = i % cardContents.length;
           const cardData = cardContents[cardIndex];
           const isActive = activeIndex === cardIndex;
@@ -280,7 +286,7 @@ const Contact = () => {
             method="POST"
           >
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://jveiga.dev/#/thanks" />
+            <input type="hidden" value="https://jveiga.dev/#/thanks" />
             <InputGroup className={`left ${formVisible ? 'visible' : ''}`}>
               <Label className={formVisible ? 'visible' : ''}>Nome</Label>
               <Input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required />

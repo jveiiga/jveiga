@@ -27,22 +27,19 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Garante que a página sempre começa do topo
     window.scrollTo(0, 0);
-    
+
     const timer = setTimeout(() => setShowContent(true), 50);
     return () => clearTimeout(timer);
-  }, [location.pathname]); // Atualiza sempre que a rota mudar
+  }, [location.pathname]);
 
-  // Define quais páginas são "detalhes" e não devem ter ContentWrapper
-  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/contact'].includes(location.pathname);
+  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/contact', '/thanks'].includes(location.pathname);
 
   return (
     <>
       <GlobalStyles />
       <Header currentPath={location.pathname} />
 
-      {/* Aplica ContentWrapper apenas se NÃO for uma página de detalhe */}
       {!isDetailPage ? (
         <ContentWrapper className={showContent ? 'show' : ''}>
           <Routes>
@@ -62,7 +59,6 @@ const App = () => {
         </ContentWrapper>
       ) : (
         <Routes>
-          {/* Rotas de detalhes SEM ContentWrapper */}
           <Route path="/home-detail" element={<HomeDetail />} />
           <Route path="/social-detail" element={<SocialDetail />} />
           <Route path="/seo-detail" element={<SeoDetail />} />
@@ -77,4 +73,8 @@ const App = () => {
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <App />
+);
+
+export default AppWrapper;

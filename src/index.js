@@ -5,25 +5,45 @@ import AppWrapper from './App';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 const Root = () => {
-  const [loading, setLoading] = useState(true); // Sempre inicia como true
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const currentPath = window.location.hash.replace('#', '');
+
+    const skipLoadingPaths = [
+      '/home-detail',
+      '/social-detail', 
+      '/seo-detail', 
+      '/agency-detail', 
+      '/contact', 
+      '/thanks'
+    ];
+
+    const shouldSkipLoading = skipLoadingPaths.some(path => 
+      currentPath === path || currentPath.startsWith(path + '/')
+    );
+
+    if (shouldSkipLoading) {
+      setLoading(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000); // Aguarda 5 segundos
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <React.StrictMode>
-      {loading ? (
-        <LoadingScreen /> // Exibe a tela de carregamento
-      ) : (
-        <Router>
+      <Router>
+        {loading ? (
+          <LoadingScreen />
+        ) : (
           <AppWrapper />
-        </Router>
-      )}
+        )}
+      </Router>
     </React.StrictMode>
   );
 };
