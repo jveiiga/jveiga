@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client'; // Alteração para importar de 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 const Root = () => {
-  const [loading, setLoading] = useState(true);
+  // Verifica se já foi carregado antes no localStorage
+  const [loading, setLoading] = useState(() => {
+    return localStorage.getItem('appLoaded') ? false : true;
+  });
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 5000);
+    if (!localStorage.getItem('appLoaded')) {
+      const timer = setTimeout(() => {
+        setLoading(false);
+        localStorage.setItem('appLoaded', 'true'); // Marca que o app já carregou
+      }, 5000);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
     <React.StrictMode>
-      {loading ? (
-        <LoadingScreen />
-      ) : (
-        <App />
-      )}
+      {loading ? <LoadingScreen /> : <App />}
     </React.StrictMode>
   );
 };
 
-// // Alteração aqui para usar 'createRoot' em vez de 'render'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Root />);
+
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 
