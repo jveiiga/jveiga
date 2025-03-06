@@ -10,6 +10,29 @@ const Root = () => {
   useEffect(() => {
     const currentPath = window.location.hash.replace('#', '');
 
+    // Lista de rotas válidas
+    const validPaths = [
+      '/',
+      '/home-detail',
+      '/social-detail',
+      '/seo-detail',
+      '/agency-detail',
+      '/contact',
+      '/thanks',
+    ];
+
+    // Verifica se a rota atual é válida
+    const isValidPath = validPaths.some((path) =>
+      currentPath === path || currentPath.startsWith(path + '/')
+    );
+
+    // Se a rota não for válida, pule a tela de carregamento
+    if (!isValidPath) {
+      setLoading(false);
+      return;
+    }
+
+    // Lista de rotas que devem pular a tela de carregamento
     const skipLoadingPaths = [
       '/home-detail',
       '/social-detail',
@@ -23,11 +46,13 @@ const Root = () => {
       currentPath === path || currentPath.startsWith(path + '/')
     );
 
+    // Se a rota estiver na lista de pular carregamento, defina loading como false
     if (shouldSkipLoading) {
       setLoading(false);
       return;
     }
 
+    // Caso contrário, exiba a tela de carregamento por um tempo
     const timer = setTimeout(() => {
       setLoading(false);
     }, 5000); // Reduza o tempo para 100ms ou menos

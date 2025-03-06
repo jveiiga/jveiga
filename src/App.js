@@ -21,6 +21,7 @@ import SeoDetail from './components/SeoDetail/SeoDetail';
 import AgencyDetail from './components/AgencyDetail/AgencyDetail';
 import Contact from './components/Contact/Contact';
 import ThankYou from './components/ThankYou/ThankYou';
+import NotFound from './components/NotFound/NotFound';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -40,33 +41,32 @@ const App = () => {
       <GlobalStyles />
       <Header currentPath={location.pathname} />
 
-      {!isDetailPage ? (
-        <ContentWrapper className={showContent ? 'show' : ''}>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Section id="home"><Home /></Section>
-                <Section id="social"><MarketingTwo /></Section>
-                <Section id="social"><Social /></Section>
-                <Section id="marketing"><Marketing /></Section>
-                <Section id="seo"><Seo /></Section>
-                <Section id="agency"><AgencyTwo /></Section>
-                <Section id="agency"><Agency /></Section>
-                <Section><Footer /></Section>
-              </>
-            } />
-          </Routes>
-        </ContentWrapper>
-      ) : (
-        <Routes>
-          <Route path="/home-detail" element={<HomeDetail />} />
-          <Route path="/social-detail" element={<SocialDetail />} />
-          <Route path="/seo-detail" element={<SeoDetail />} />
-          <Route path="/agency-detail" element={<AgencyDetail />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/thanks" element={<ThankYou />} />
-        </Routes>
-      )}
+      <Routes>
+        {!isDetailPage ? (
+          <Route path="/" element={
+            <ContentWrapper className={showContent ? 'show' : ''}>
+              <Section id="home"><Home /></Section>
+              <Section id="social"><MarketingTwo /></Section>
+              <Section id="social"><Social /></Section>
+              <Section id="marketing"><Marketing /></Section>
+              <Section id="seo"><Seo /></Section>
+              <Section id="agency"><AgencyTwo /></Section>
+              <Section id="agency"><Agency /></Section>
+              <Section><Footer /></Section>
+            </ContentWrapper>
+          } />
+        ) : (
+          <>
+            <Route path="/home-detail" element={<HomeDetail />} />
+            <Route path="/social-detail" element={<SocialDetail />} />
+            <Route path="/seo-detail" element={<SeoDetail />} />
+            <Route path="/agency-detail" element={<AgencyDetail />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/thanks" element={<ThankYou />} />
+          </>
+        )}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
       {!isDetailPage && <ScrollToTopButton />}
     </>
