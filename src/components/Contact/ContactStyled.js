@@ -71,6 +71,21 @@ const rotateIn = keyframes`
   }
 `;
 
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(203, 52, 43, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(203, 52, 43, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(203, 52, 43, 0);
+  }
+`;
+
 export const ContactWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -239,17 +254,22 @@ export const Card = styled.div`
   transition: all 0.3s ease;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
-  
+
+  &.rotate {
+    animation: ${rotateIn} 1.2s ease-in-out;
+  }
+
   &.active {  
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.1);
-    animation: ${rotateIn} 1.2s ease-in-out;
+    border: 2px solid rgb(203, 52, 43);
   }
 
   @media screen and (min-width: 320px) and (max-width: 460px) {
     min-width: 100%;
   }
 `;
+
 
 export const CardContent = styled.div`
   display: flex;

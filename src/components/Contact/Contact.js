@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   Card,
@@ -6,12 +6,10 @@ import {
   ContactWrapper,
   CardContent,
   CardTitle,
-  FlagTitle,
   CardPlan,
   CardDescription,
   ServicesList,
   ServiceItemCard,
-  ServiceItemFlag,
   FormContainer,
   Form,
   FormTitle,
@@ -26,14 +24,16 @@ import {
   FormWrapper,
   CardDetails,
   ContainerFlags,
-  Spinner
+  Spinner,
+  FlagTitle,
+  ServiceItemFlag
 } from './ContactStyled';
 import Footer from '../Footer/Footer';
 
 const Contact = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [page, setPage] = useState(1);
   const formRef = useRef(null);
 
   const { ref: formInViewRef, inView: formInView } = useInView({
@@ -56,13 +56,9 @@ const Contact = () => {
   });
   const { ref: flagCenterRef, inView: flagCenterInView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 1,
   });
   const { ref: flagRightRef, inView: flagRightInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  const { ref: cardWrapperRef, inView: cardWrapperInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
@@ -169,35 +165,34 @@ const Contact = () => {
     }
   ];
 
-  const totalCards = 5; // Número total de cards originais
-  const scrollTimeoutRef = useRef(null);
-  
-  const handleScroll = () => {
-    if (containerRef.current) {
-      // Limpa timeout anterior para debouncing
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-      scrollTimeoutRef.current = setTimeout(() => {
-        const container = containerRef.current;
-        const cardWidth = container.firstChild.offsetWidth;
-        const middleOffset = totalCards * cardWidth; // Início da cópia central
-  
-        const newScrollPosition = container.scrollLeft;
-        const relativeScroll = newScrollPosition - middleOffset;
-        const newActiveIndex = Math.round(relativeScroll / cardWidth);
-        // Normaliza o índice para o intervalo [0, totalCards)
-        setActiveIndex(((newActiveIndex % totalCards) + totalCards) % totalCards);
-      }, 150); // Delay de 150ms para debouncing
-    }
-  };
-  
-  
   useEffect(() => {
     if (formInView) {
       setFormVisible(true);
     }
   }, [formInView]);
+
+  const loadMoreCards = useCallback(() => {
+    setCards((prevCards) => [
+      ...prevCards,
+      ...cardContents.slice((page - 1) * 10, page * 10),
+    ]);
+    setPage((prevPage) => prevPage + 1);
+  }, [page]);
+
+  useEffect(() => {
+    loadMoreCards();
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+      loadMoreCards();
+    }
+  }, [loadMoreCards]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -223,46 +218,81 @@ const Contact = () => {
       });
   };
 
+  // Hook para detectar qual card está visível
+  const [activeCard, setActiveCard] = useState(0);
+  const { ref: cardRef1, inView: card1InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef2, inView: card2InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef3, inView: card3InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef4, inView: card4InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef5, inView: card5InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef6, inView: card6InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef7, inView: card7InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef8, inView: card8InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef9, inView: card9InView } = useInView({ threshold: 0.9 });
+  const { ref: cardRef10, inView: card10InView } = useInView({ threshold: 0.9 });
+
+  useEffect(() => {
+    // Lógica para verificar se o primeiro card está visível
+    if (card1InView) {
+      setActiveCard(0);  // Define o primeiro card como ativo
+    } else if (card2InView) {
+      setActiveCard(1);  // Define o segundo card como ativo
+    } else if (card3InView) {
+      setActiveCard(2);  // Define o terceiro card como ativo
+    } else if (card4InView) {
+      setActiveCard(3);  // Define o quarto card como ativo
+    } else if (card5InView) {
+      setActiveCard(4);  // Define o quinto card como ativo
+    } else if (card6InView) {
+      setActiveCard(5);  // Define o sexto card como ativo
+    } else if (card7InView) {
+      setActiveCard(6);  // Define o sétimo card como ativo
+    } else if (card8InView) {
+      setActiveCard(7);  // Define o oitavo card como ativo
+    } else if (card9InView) {
+      setActiveCard(8);  // Define o nono card como ativo
+    } else if (card10InView) {
+      setActiveCard(9);  // Define o décimo card como ativo
+    }
+  }, [card1InView, card2InView, card3InView, card4InView, card5InView, card6InView, card7InView, card8InView, card9InView, card10InView]);
+
   return (
     <ContactWrapper>
       <TitleCard ref={titleCardRef} className={titleCardInView ? 'animate' : ''}>
         <h1>Preços para Criação de Sites Exclusivos</h1>
       </TitleCard>
-      <CardWrapper
-        ref={containerRef}
-        onScroll={handleScroll}
-        className={cardWrapperInView ? 'animate' : ''}
-        style={{ overflowX: 'auto', scrollSnapType: 'x mandatory' }}
-      >
-        {Array.from({ length: totalCards * 3 }, (_, i) => {
-          // Para 3 cópias dos cards
-          const cardIndex = i % totalCards;
-          const cardData = cardContents[cardIndex];
-          const isActive = activeIndex === cardIndex;
-
-          return (
-            <Card
-              key={`${cardData.id}-${i}`}
-              className={isActive ? 'active' : ''}
-              style={{
-                transform: isActive ? 'rotate(360deg)' : 'rotate(0deg)',
-                transition: 'transform 0.5s ease-in-out'
-              }}
-            >
-              <CardContent>
-                <CardTitle>{cardData.title}</CardTitle>
-                <p style={{ padding: '15px 0' }}>A partir de:</p>
-                <CardPlan>{cardData.plan}</CardPlan>
-                <CardDescription>{cardData.description}</CardDescription>
-                <ServicesList>
-                  {cardData.services.map((service, index) => (
-                    <ServiceItemCard key={index}>{service}</ServiceItemCard>
-                  ))}
-                </ServicesList>
-              </CardContent>
-            </Card>
-          );
-        })}
+      <CardWrapper>
+        {cards.map((card, index) => (
+          <Card
+  key={index}
+  ref={
+    index === 0 ? cardRef1 :
+    index === 1 ? cardRef2 :
+    index === 2 ? cardRef3 :
+    index === 3 ? cardRef4 :
+    index === 4 ? cardRef5 :
+    index === 5 ? cardRef6 :
+    index === 6 ? cardRef7 :
+    index === 7 ? cardRef8 :
+    index === 8 ? cardRef9 :
+    index === 9 ? cardRef10 :
+    cardRef10
+  }
+  className={`${index === activeCard ? 'active' : ''} ${titleCardInView ? 'rotate' : ''}`}
+>
+            <CardContent>
+              <CardTitle>{card.title}</CardTitle>
+              <p style={{ padding: '15px 0' }}>A partir de:</p>
+              <CardPlan>{card.plan}</CardPlan>
+              <CardDescription>{card.description}</CardDescription>
+              <ServicesList>
+                {card.services.map((service, index) => (
+                  <ServiceItemCard key={index}>{service}</ServiceItemCard>
+                ))}
+              </ServicesList>
+            </CardContent>
+          </Card>
+        ))}
       </CardWrapper>
 
       <ContainerFlags>
@@ -274,11 +304,9 @@ const Contact = () => {
             <Flag
               key={index}
               ref={index === 0 ? flagLeftRef : index === 1 ? flagCenterRef : flagRightRef}
-              className={`
-                ${index === 0 ? (flagLeftInView ? 'animate-left' : '') : ''}
-                ${index === 1 ? (flagCenterInView ? 'animate-center' : '') : ''}
-                ${index === 2 ? (flagRightInView ? 'animate-right' : '') : ''}
-              `}
+              className={
+                `${index === 0 ? (flagLeftInView ? 'animate-left' : '') : ''} ${index === 1 ? (flagCenterInView ? 'animate-center' : '') : ''} ${index === 2 ? (flagRightInView ? 'animate-right' : '') : ''}`
+              }
             >
               <CardContent>
                 <FlagTitle>{flag.plan}</FlagTitle>
