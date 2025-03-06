@@ -246,7 +246,7 @@ const Contact = () => {
               className={isActive ? 'active' : ''}
               style={{
                 transform: isActive ? 'rotate(360deg)' : 'rotate(0deg)',
-                transition: 'transform 0.8s ease-in-out'
+                transition: 'transform 0.5s ease-in-out'
               }}
             >
               <CardContent>
