@@ -32,15 +32,13 @@ export const NotFoundBackground = styled.div`
 export const NotFoundTitle = styled.h1`
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
-  1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  color: #fff;
 `;
 
 export const NotFoundDescription = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
-  text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
-  1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  color: #fff;
 `;
 
 export const BackButton = styled.a`

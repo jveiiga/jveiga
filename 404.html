@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página não encontrada</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    .notfound-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #fff;
+    }
+    .notfound-background {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background: url('./src/assets/images/background/notfound-background.jpg') no-repeat center center;
+      background-size: cover;
+      z-index: 0;
+    }
+    .notfound-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .notfound-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      z-index: 1;
+    }
+    .notfound-description {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      z-index: 1;
+    }
+    .back-button {
+      font-size: 0.9rem;
+      color: #007bff;
+      cursor: pointer;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+    .back-button:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="notfound-background"></div>
+  <div class="notfound-wrapper">
+    <h1 class="notfound-title">Página não encontrada</h1>
+    <p class="notfound-description">A página que você está procurando não existe ou foi removida.</p>
+    <a href="https://jveiiga.github.io/jveiga/" class="back-button">Voltar para a página inicial</a>
+  </div>
+</body>
+</html>
