@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.9f5e5ca5.js",
+    "main.js": "/static/js/main.af0a0b04.js",
     "static/media/home-background.png": "/static/media/home-background.77a6b3eabe2e62bb72f6.png",
     "static/media/marketing-background.jpg": "/static/media/marketing-background.54d018bcc2b50b75dfdf.jpg",
     "static/media/agency-background.jpeg": "/static/media/agency-background.733b89d09a58ac2219f8.jpeg",
@@ -18,6 +18,7 @@
     "static/media/git-logo.png": "/static/media/git-logo.145c0a5dac0064d27443.png",
     "static/media/node-logo.png": "/static/media/node-logo.323d9e1cd747283e16fb.png",
     "static/media/seo-background.jpg": "/static/media/seo-background.d110547c80c5868ad480.jpg",
+    "static/media/notfound-background.jpg": "/static/media/notfound-background.76a1f7e7685f78d33f00.jpg",
     "static/media/java-logo.png": "/static/media/java-logo.66d5a4fef00821dfe115.png",
     "static/media/spring-logo.png": "/static/media/spring-logo.df25efeb9e2273d98840.png",
     "static/media/arrow-circle-up.png": "/static/media/arrow-circle-up.19f3d5e571bd8d7d7524.png",
@@ -29,9 +30,9 @@
     "static/media/github.svg": "/static/media/github.3b4375b1cacddb7910737e992dd73aad.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.540f6bb939a10fe0badbc26387374d38.svg",
-    "main.9f5e5ca5.js.map": "/static/js/main.9f5e5ca5.js.map"
+    "main.af0a0b04.js.map": "/static/js/main.af0a0b04.js.map"
   },
   "entrypoints": [
-    "static/js/main.9f5e5ca5.js"
+    "static/js/main.af0a0b04.js"
   ]
 }
