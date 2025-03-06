@@ -8,7 +8,8 @@ const Root = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const currentPath = window.location.hash.replace('#', '');
+    const currentHash = window.location.hash.replace('#', ''); // Remove o '#'
+    const currentPath = currentHash || '/'; // Se currentHash for vazio, assume a rota principal '/'
 
     // Verifica se a rota atual é a página inicial (/)
     const isHomePage = currentPath === '/';
