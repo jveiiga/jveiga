@@ -71,21 +71,6 @@ const rotateIn = keyframes`
   }
 `;
 
-const pulse = keyframes`
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(203, 52, 43, 0.7);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(203, 52, 43, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(203, 52, 43, 0);
-  }
-`;
-
 export const ContactWrapper = styled.div`
   width: 100%;
   margin: 0 auto;

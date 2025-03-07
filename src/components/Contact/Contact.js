@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   Card,
@@ -33,7 +33,6 @@ import Footer from '../Footer/Footer';
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-  const [page, setPage] = useState(1);
   const formRef = useRef(null);
 
   const { ref: formInViewRef, inView: formInView } = useInView({
@@ -56,14 +55,15 @@ const Contact = () => {
   });
   const { ref: flagCenterRef, inView: flagCenterInView } = useInView({
     triggerOnce: true,
-    threshold: 1,
+    threshold: 0.1,
   });
   const { ref: flagRightRef, inView: flagRightInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const cardContents = [
+
+  const cardContents = useMemo(() => [
     {
       id: 1,
       title: "Site Institucional",
@@ -124,7 +124,7 @@ const Contact = () => {
         "Hospedagem + Dominío"
       ],
     },
-  ];
+  ], []);
 
   const flagContents = [
     {
@@ -174,14 +174,13 @@ const Contact = () => {
   const loadMoreCards = useCallback(() => {
     setCards((prevCards) => [
       ...prevCards,
-      ...cardContents.slice((page - 1) * 10, page * 10),
+      ...cardContents,
     ]);
-    setPage((prevPage) => prevPage + 1);
-  }, [page]);
+  }, [cardContents]);
 
   useEffect(() => {
     loadMoreCards();
-  }, []);
+  }, [loadMoreCards]);
 
   const handleScroll = useCallback(() => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
@@ -264,22 +263,21 @@ const Contact = () => {
       <CardWrapper>
         {cards.map((card, index) => (
           <Card
-  key={index}
-  ref={
-    index === 0 ? cardRef1 :
-    index === 1 ? cardRef2 :
-    index === 2 ? cardRef3 :
-    index === 3 ? cardRef4 :
-    index === 4 ? cardRef5 :
-    index === 5 ? cardRef6 :
-    index === 6 ? cardRef7 :
-    index === 7 ? cardRef8 :
-    index === 8 ? cardRef9 :
-    index === 9 ? cardRef10 :
-    cardRef10
-  }
-  className={`${index === activeCard ? 'active' : ''} ${titleCardInView ? 'rotate' : ''}`}
->
+            key={index}
+            ref={
+              index === 0 ? cardRef1 :
+              index === 1 ? cardRef2 :
+              index === 2 ? cardRef3 :
+              index === 3 ? cardRef4 :
+              index === 4 ? cardRef5 :
+              index === 5 ? cardRef6 :
+              index === 6 ? cardRef7 :
+              index === 7 ? cardRef8 :
+              index === 8 ? cardRef9 :
+              index === 9 ? cardRef10 : null
+            }
+            className={`${index === activeCard ? 'active' : ''} ${titleCardInView ? 'rotate' : ''}`}
+          >
             <CardContent>
               <CardTitle>{card.title}</CardTitle>
               <p style={{ padding: '15px 0' }}>A partir de:</p>
