@@ -201,10 +201,11 @@ const Contact = () => {
             }
           ]
         },
-        "Otimização duas vezes por semana",
-        "Relatório quinzenal de desempenho",
-        "Suporte via WhatsApp e e-mail",
-        "Ajustes básicos em landing pages"
+        "Otimização diária",
+        "Relatórios detalhados e insights estratégicos mensais",
+        "Suporte prioritário 24/7 via WhatsApp e e-mail",
+        "Ajustes básicos em landing pages",
+        "Criação e ajustes completos em landing pages"
       ]
     }
   ];
