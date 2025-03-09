@@ -145,18 +145,25 @@ export const FlagsWrapper = styled.div`
   }
 `;
 
+export const FlagContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+`
+
 export const Flag = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 15rem;
+  width: 16rem;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   margin: 1rem;
   opacity: 0;
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -165,8 +172,8 @@ export const Flag = styled.div`
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 7.6rem solid transparent;
-    border-right: 7.5rem solid transparent;
+    border-left: 8rem solid transparent;
+    border-right: 8rem solid transparent;
     border-top: 8.5rem solid rgba(255, 255, 255, 0.1);
 
     @media screen and (min-width: 320px) and (max-width: 460px) {
@@ -255,7 +262,6 @@ export const Card = styled.div`
   }
 `;
 
-
 export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -310,7 +316,6 @@ export const ServicesList = styled.ul`
   list-style: none;
   padding: 0;
   width: 100%;
-  margin-top: auto;
 `;
 
 export const ServiceItemCard = styled.li`
@@ -340,7 +345,6 @@ export const ServiceItemFlag = styled.li`
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
-  align-items: center;
   
   &:before {
     content: "✓";
@@ -352,6 +356,28 @@ export const ServiceItemFlag = styled.li`
     border-bottom: none;
   }
 `;
+
+export const ServiceListFlag = styled.li`
+  font-size: 0.9rem;
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &:before {
+    content: "✓";
+    color: rgb(203, 52, 43);
+    margin-right: 0.5rem;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+export const ItemFlagRules = styled.ul`
+  list-style: circle;
+`
 
 export const FormWrapper = styled.div`
   display: flex;

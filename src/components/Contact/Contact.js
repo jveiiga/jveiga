@@ -26,7 +26,10 @@ import {
   ContainerFlags,
   Spinner,
   FlagTitle,
-  ServiceItemFlag
+  ServiceItemFlag,
+  FlagContent,
+  ServiceListFlag,
+  ItemFlagRules
 } from './ContactStyled';
 import Footer from '../Footer/Footer';
 
@@ -62,7 +65,6 @@ const Contact = () => {
     threshold: 0.1,
   });
 
-
   const cardContents = useMemo(() => [
     {
       id: 1,
@@ -79,7 +81,7 @@ const Contact = () => {
     {
       id: 2,
       title: "Landing Page",
-      plan: "R$ 500,00",
+      plan: "R$ 1.000,00",
       description: "Página estratégica para converter visitantes em clientes. Criada com design atrativo, carregamento rápido e otimização para capturar leads e aumentar suas vendas.",
       services: [
         "Design Responsivo",
@@ -91,7 +93,7 @@ const Contact = () => {
     {
       id: 3,
       title: "Páginas de Vendas",
-      plan: "R$ 800,00",
+      plan: "R$ 1.000,00",
       description: "Projetada para maximizar conversões e impulsionar suas vendas. Layout persuasivo, copywriting estratégico e integração com sistemas de pagamento para otimizar sua receita.",
       services: [
         "Design Responsivo",
@@ -103,7 +105,7 @@ const Contact = () => {
     {
       id: 4,
       title: "Hot Site",
-      plan: "R$ 1.000,00",
+      plan: "R$ 1.500,00",
       description: "Perfeito para campanhas promocionais e lançamentos de produtos. Um site dinâmico, chamativo e focado em gerar impacto imediato no público-alvo.",
       services: [
         "Design Responsivo",
@@ -129,10 +131,24 @@ const Contact = () => {
   const flagContents = [
     {
       plan: "Trimestral",
-      value: "R$ 1.500,00",
-      details: "3 parcelas de R$ 500,00",
+      value: "R$ 2.400,00",
+      details: "3 parcelas de R$ 800,00",
       services: [
         "Gestão de até 2 campanhas no Facebook Ads",
+        {
+          description: "Desenvolvimento de criativos (com as seguintes regras):",
+          rules: [
+            "Até 2 criativos por campanha (imagens estáticas ou carrosséis)",
+            "Para vídeos ou formatos mais complexos, será necessário um orçamento separado",
+            "Revisões limitadas a 2 rodadas por criativo",
+            {
+              delivery_times: {
+                imagens: "até 3 dias úteis após o briefing",
+                vídeos: "até 7 dias úteis após o briefing"
+              }
+            }
+          ]
+        },
         "Otimização semanal",
         "Relatório mensal de desempenho",
         "Suporte via WhatsApp",
@@ -141,10 +157,24 @@ const Contact = () => {
     },
     {
       plan: "Semestral",
-      value: "R$ 4.300,00",
-      details: "6 parcelas de R$ 716,67",
+      value: "R$ 6.000,00",
+      details: "6 parcelas de R$ 1.000,00",
       services: [
         "Gestão de até 4 campanhas no Facebook Ads ou Google Ads",
+        {
+          description: "Desenvolvimento de criativos (com as seguintes regras):",
+          rules: [
+            "Até 5 criativos por campanha (imagens estáticas ou carrosséis)",
+            "Para vídeos ou formatos mais complexos, será necessário um orçamento separado",
+            "Revisões limitadas a 3 rodadas por criativo",
+            {
+              delivery_times: {
+                imagens: "até 3 dias úteis após o briefing.",
+                vídeos: "até 7 dias úteis após o briefing."
+              }
+            }
+          ]
+        },
         "Otimização duas vezes por semana",
         "Relatório quinzenal de desempenho",
         "Suporte via WhatsApp e e-mail",
@@ -153,14 +183,28 @@ const Contact = () => {
     },
     {
       plan: "Anual",
-      value: "R$ 8.200,00",
-      details: "12 parcelas de R$ 683,33",
+      value: "R$ 18.000,00",
+      details: "12 parcelas de R$ 1.500,00",
       services: [
-        "Gestão de campanhas ilimitadas no Facebook Ads, Google Ads e YouTube, com otimização contínua",
-        "Otimização diária",
-        "Relatórios detalhados e insights",
-        "Suporte prioritário 24/7",
-        "Criação e ajustes de landing pages"
+        "Gestão de campanhas ilimitadas no Facebook Ads, Google Ads e YouTube",
+        {
+          description: "Desenvolvimento de criativos ilimitados (com as seguintes regras):",
+          rules: [
+            "Até 10 criativos por campanha (imagens estáticas ou carrosséis)",
+            "Para vídeos ou formatos mais complexos, será necessário um orçamento separado",
+            "Revisões limitadas a 5 rodadas por criativo",
+            {
+              delivery_times: {
+                imagens: "até 3 dias úteis após o briefing",
+                vídeos: "até 7 dias úteis após o briefing"
+              }
+            }
+          ]
+        },
+        "Otimização duas vezes por semana",
+        "Relatório quinzenal de desempenho",
+        "Suporte via WhatsApp e e-mail",
+        "Ajustes básicos em landing pages"
       ]
     }
   ];
@@ -306,21 +350,47 @@ const Contact = () => {
                 `${index === 0 ? (flagLeftInView ? 'animate-left' : '') : ''} ${index === 1 ? (flagCenterInView ? 'animate-center' : '') : ''} ${index === 2 ? (flagRightInView ? 'animate-right' : '') : ''}`
               }
             >
-              <CardContent>
+              <FlagContent>
                 <FlagTitle>{flag.plan}</FlagTitle>
                 <p style={{ padding: '10px 0', color: '#FFF' }}>A partir de:</p>
                 <CardPlan>{flag.value}</CardPlan>
                 <CardDetails>{flag.details}</CardDetails>
                 <hr style={{ width: '100%', border: '1px solid #333' }} />
                 <ServicesList>
-                  {flag.services.map((service, index) => (
-                    <ServiceItemFlag key={index}>{service}</ServiceItemFlag>
-                  ))}
+                  {flag.services.map((service, serviceIndex) => {
+                    if (typeof service === 'string') {
+                      return <ServiceItemFlag key={serviceIndex}>{service}</ServiceItemFlag>;
+                    } else if (typeof service === 'object' && service.description) {
+                      return (
+                        <ServiceListFlag key={serviceIndex}>
+                          {service.description}
+                          <ItemFlagRules>
+                            {service.rules.map((rule, ruleIndex) => {
+                              if (typeof rule === 'object' && rule.delivery_times) {
+                                return (
+                                  <li key={ruleIndex}>
+                                    {Object.entries(rule.delivery_times).map(([key, value]) => (
+                                      <div key={key}>
+                                        {key}: {value}
+                                      </div>
+                                    ))}
+                                  </li>
+                                );
+                              }
+                              return <li key={ruleIndex}>{rule}</li>;
+                            })}
+                          </ItemFlagRules>
+                        </ServiceListFlag>
+                      );
+                    }
+                    return null;
+                  })}
                 </ServicesList>
-              </CardContent>
+              </FlagContent>
             </Flag>
           ))}
         </FlagsWrapper>
+        
       </ContainerFlags>
       <FormWrapper>
         <FormContainer ref={formInViewRef}>
