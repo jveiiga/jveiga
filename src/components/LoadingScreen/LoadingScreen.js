@@ -19,6 +19,7 @@ import facebookLogo from '../../assets/images/logo/facebook-logo.png';
 import instagramLogo from '../../assets/images/logo/instagram-logo.png';
 import youtubeLogo from '../../assets/images/logo/youtube-logo.png';
 import nextLogo from '../../assets/images/logo/next-logo.png';
+import { Helmet } from 'react-helmet';
 
 
 const logos = [
@@ -115,6 +116,11 @@ const LoadingScreen = () => {
 
   return (
     <LoadingWrapper ref={sceneRef}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Carregando...</title>
+        <link rel="canonical" href="http://mysite.com/contact" />
+      </Helmet>
       <LoadingTextContainer>
         <LoadingText>Carregando....</LoadingText>
       </LoadingTextContainer>

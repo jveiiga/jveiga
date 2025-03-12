@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ToogleWrapper } from './AgencyDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 
 const AgencyDetail = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -38,6 +39,11 @@ const AgencyDetail = () => {
 
   return (
     <Container darkMode={darkMode}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Agência</title>
+        <link rel="canonical" href="https://jveiga.dev/#/agency-detail" />
+      </Helmet>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
         <Image src={require('../../assets/images/background/agency-background.jpeg')} alt="Agency Detail" />
         <Overlay>
@@ -56,7 +62,7 @@ const AgencyDetail = () => {
           <TextContent>
             <article id="agency">
               <header>
-                <h1 style={{'marginBottom': '20px'}}>Agência – Estratégia e Execução Personalizada para Impulsionar o Crescimento Digital</h1>
+                <h1 style={{ 'marginBottom': '20px' }}>Agência – Estratégia e Execução Personalizada para Impulsionar o Crescimento Digital</h1>
               </header>
               <section id="agency-introducao">
                 <p>

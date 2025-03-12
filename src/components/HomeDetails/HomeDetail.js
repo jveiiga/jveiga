@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ToogleWrapper, ListWrapper } from './HomeDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 
 const HomeDetail = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -38,11 +39,16 @@ const HomeDetail = () => {
 
   return (
     <Container darkMode={darkMode}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Desenvolvimento Web</title>
+        <link rel="canonical" href="https://jveiga.dev/#/home-detail" />
+      </Helmet>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
         <Image src={require('../../assets/images/background/desenvolvimento-background.jpeg')} alt="Home Detail" />
         <Overlay>
           <TitleContentImage>
-            <strong>Desenvolvimento&nbsp;<br/></strong>
+            <strong>Desenvolvimento&nbsp;<br /></strong>
             <h2>Web</h2>
           </TitleContentImage>
         </Overlay>
@@ -57,7 +63,7 @@ const HomeDetail = () => {
           <TextContent>
             <article id="desenvolvimento-web">
               <header>
-                <h1 style={{'marginBottom': '20px'}}>Desenvolvimento Web: Soluções Estratégicas para Fortalecer Sua Presença Digital</h1>
+                <h1 style={{ 'marginBottom': '20px' }}>Desenvolvimento Web: Soluções Estratégicas para Fortalecer Sua Presença Digital</h1>
               </header>
               <section id="dw-introducao">
                 <p>

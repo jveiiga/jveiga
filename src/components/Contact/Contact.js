@@ -32,6 +32,7 @@ import {
   ItemFlagRules
 } from './ContactStyled';
 import Footer from '../Footer/Footer';
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -302,6 +303,11 @@ const Contact = () => {
 
   return (
     <ContactWrapper>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Contato - Preço para Desenvolvimento de sites modernos & Gestão de tráfego pago com foco em resultados </title>
+        <link rel="canonical" href="https://jveiga.dev/#/contact" />
+      </Helmet>
       <TitleCard ref={titleCardRef} className={titleCardInView ? 'animate' : ''}>
         <h1>Preços para Criação de Sites Exclusivos</h1>
       </TitleCard>
@@ -311,15 +317,15 @@ const Contact = () => {
             key={index}
             ref={
               index === 0 ? cardRef1 :
-              index === 1 ? cardRef2 :
-              index === 2 ? cardRef3 :
-              index === 3 ? cardRef4 :
-              index === 4 ? cardRef5 :
-              index === 5 ? cardRef6 :
-              index === 6 ? cardRef7 :
-              index === 7 ? cardRef8 :
-              index === 8 ? cardRef9 :
-              index === 9 ? cardRef10 : null
+                index === 1 ? cardRef2 :
+                  index === 2 ? cardRef3 :
+                    index === 3 ? cardRef4 :
+                      index === 4 ? cardRef5 :
+                        index === 5 ? cardRef6 :
+                          index === 6 ? cardRef7 :
+                            index === 7 ? cardRef8 :
+                              index === 8 ? cardRef9 :
+                                index === 9 ? cardRef10 : null
             }
             className={`${index === activeCard ? 'active' : ''} ${titleCardInView ? 'rotate' : ''}`}
           >
@@ -391,7 +397,7 @@ const Contact = () => {
             </Flag>
           ))}
         </FlagsWrapper>
-        
+
       </ContainerFlags>
       <FormWrapper>
         <FormContainer ref={formInViewRef}>

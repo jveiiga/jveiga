@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import AppWrapper from './App';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
@@ -41,5 +41,9 @@ const Root = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Root />);
+const rootElement = document.getElementById('root');
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, <Root />);
+} else {
+  createRoot(rootElement).render(<Root />);
+}
