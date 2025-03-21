@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
+import TagManager from 'react-gtm-module';
 import AppWrapper from './App';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
+
+const tagManagerArgs = {
+  gtmId: 'GTM-MWM7NMR8'
+};
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    TagManager.initialize(tagManagerArgs); // Inicializa o GTM
+
     const currentHash = window.location.hash.replace('#', ''); // Remove o '#'
     const currentPath = currentHash || '/'; // Se currentHash for vazio, assume a rota principal '/'
 
