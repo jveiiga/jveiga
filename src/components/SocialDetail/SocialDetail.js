@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ToogleWrapper, ListWrapper } from './SocialDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { Helmet } from 'react-helmet';
 
 const SocialDetail = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -39,11 +38,6 @@ const SocialDetail = () => {
 
   return (
     <Container darkMode={darkMode}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Social Media</title>
-        <link rel="canonical" href="https://jveiga.dev/#/social-detail" />
-      </Helmet>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
         <Image src={require('../../assets/images/background/social-background.jpg')} alt="Social Detail" />
         <Overlay>

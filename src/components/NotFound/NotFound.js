@@ -1,7 +1,6 @@
 import React from 'react';
 import { NotFoundWrapper, NotFoundTitle, NotFoundDescription, BackButton, NotFoundBackground } from './NotFoundStyled';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -12,11 +11,6 @@ const NotFound = () => {
 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Página não encontrada</title>
-        <link rel="canonical" href="http://mysite.com/contact" />
-      </Helmet>
       <NotFoundBackground src={require('../../assets/images/background/notfound-background.jpg')} alt="Thank you" />
       <NotFoundWrapper>
         <NotFoundTitle>Página não encontrada</NotFoundTitle>

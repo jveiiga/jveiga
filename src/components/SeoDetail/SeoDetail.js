@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ListWrapper, ToogleWrapper } from './SeoDetailStyled';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { Helmet } from 'react-helmet';
 
 const SeoDetail = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -39,11 +38,6 @@ const SeoDetail = () => {
 
   return (
     <Container darkMode={darkMode}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Seo</title>
-        <link rel="canonical" href="https://jveiga.dev/#/seo-detail" />
-      </Helmet>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
         <Image src={require('../../assets/images/background/seo-background.jpg')} alt="Seo Detail" />
         <Overlay>

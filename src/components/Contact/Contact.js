@@ -32,7 +32,6 @@ import {
   ItemFlagRules
 } from './ContactStyled';
 import Footer from '../Footer/Footer';
-import { Helmet } from 'react-helmet';
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -303,11 +302,6 @@ const Contact = () => {
 
   return (
     <ContactWrapper>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Contato - Preço para Desenvolvimento de sites modernos & Gestão de tráfego pago com foco em resultados </title>
-        <link rel="canonical" href="https://jveiga.dev/#/contact" />
-      </Helmet>
       <TitleCard ref={titleCardRef} className={titleCardInView ? 'animate' : ''}>
         <h1>Preços para Criação de Sites Exclusivos</h1>
       </TitleCard>
