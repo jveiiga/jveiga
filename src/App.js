@@ -12,9 +12,9 @@ import Home from './components/Home/Home';
 import Social from './components/Social/Social';
 import Seo from './components/Seo/Seo';
 import Marketing from './components/Marketing/Marketing';
-import MarketingTwo from './components/MarketingTwo/MarketingTwo';
+// import MarketingTwo from './components/MarketingTwo/MarketingTwo';
 import Agency from './components/Agency/Agency';
-import AgencyTwo from './components/AgencyTwo/AgencyTwo';
+// import AgencyTwo from './components/AgencyTwo/AgencyTwo';
 import HomeDetail from './components/HomeDetails/HomeDetail';
 import SocialDetail from './components/SocialDetail/SocialDetail';
 import SeoDetail from './components/SeoDetail/SeoDetail';
@@ -23,6 +23,7 @@ import Contact from './components/Contact/Contact';
 import ThankYou from './components/ThankYou/ThankYou';
 import NotFound from './components/NotFound/NotFound';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
+import MarketingDetail from './components/MarketingDetail/MaketingDetail';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -35,7 +36,7 @@ const App = () => {
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
-  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/contact', '/thanks'].includes(location.pathname);
+  const isDetailPage = ['/home-detail', '/social-detail', '/seo-detail', '/agency-detail', '/marketing-detail', '/contact', '/thanks'].includes(location.pathname);
 
   return (
     <>
@@ -51,7 +52,7 @@ const App = () => {
               <Section id="google"><Seo /></Section>
               <Section id="facebook"><Social /></Section>
               {/* <Section id="social"><MarketingTwo /></Section> */}
-              {/* <Section id="marketing"><Marketing /></Section> */}
+              <Section id="gmn"><Marketing /></Section>
               {/* <Section id="agency"><AgencyTwo /></Section> */}
               <Section><Footer /></Section>
             </ContentWrapper>
@@ -62,6 +63,7 @@ const App = () => {
             <Route path="/social-detail" element={<SocialDetail />} />
             <Route path="/seo-detail" element={<SeoDetail />} />
             <Route path="/agency-detail" element={<AgencyDetail />} />
+            <Route path="/marketing-detail" element={<MarketingDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thanks" element={<ThankYou />} />
           </>

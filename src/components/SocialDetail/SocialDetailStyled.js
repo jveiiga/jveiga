@@ -35,9 +35,27 @@ export const Container = styled.div`
   /* text-align: center; */
   position: relative;
   width: 100vw;
-  background-color: ${({ darkMode }) => (darkMode ? 'black' : 'white')};
-  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
+  background-color: ${({ lightMode }) => (lightMode ? 'white' : 'black')};
+  color: ${({ lightMode }) => (lightMode ? 'black' : 'white')};
   transition: background-color 0.5s, color 0.5s;
+`;
+
+export const ToggleButton = styled.button`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: ${({ lightMode }) => (lightMode ? '#FFD700' : '#5F61B5')};
+  font-size: 1.5rem;
+`;
+
+export const GradientText = styled.span`
+  background: ${({ lightMode }) => (lightMode ? 'none' : 'linear-gradient(135deg, #8F91D9, #5F61B5)')};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: ${({ lightMode }) => (lightMode ? '#FFD700' : 'transparent')};
+  color: ${({ lightMode }) => (lightMode ? '#FFD700' : 'transparent')};
 `;
 
 export const ToogleWrapper = styled.div`
@@ -131,24 +149,6 @@ export const TextContent = styled.div`
 
 export const Content = styled.div`
   animation: ${fadeIn} 2s ease-out;
-`;
-
-export const ToggleButton = styled.button`
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: ${({ darkMode }) => (darkMode ? '#FFD700' : '#5F61B5')};
-  font-size: 1.5rem;
-`;
-
-export const GradientText = styled.span`
-  background: ${({ darkMode }) => (darkMode ? 'none' : 'linear-gradient(135deg, #8F91D9, #5F61B5)')};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
-  color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
 `;
 
 export const ListWrapper = styled.div`

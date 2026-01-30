@@ -15,7 +15,7 @@ import {
 import { FaMoon, FaSun } from "react-icons/fa";
 
 const AgencyDetail = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [lightMode, setLightMode] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef();
   const { ref: imageRef, inView: imageIsVisible } = useInView({
@@ -47,12 +47,12 @@ const AgencyDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const toggleLightMode = () => {
+    setLightMode(!lightMode);
   };
 
   return (
-    <Container darkMode={darkMode}>
+    <Container lightMode={lightMode}>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
         <Image
           src={require("../../assets/images/background/dev1-background.jpg")}
@@ -60,21 +60,27 @@ const AgencyDetail = () => {
         />
         <Overlay>
           <TitleContentImage>
-          <h2><strong>Presença&nbsp;</strong>Digital</h2>
+            <h2>
+              <strong>Presença&nbsp;</strong>Digital
+            </h2>
           </TitleContentImage>
         </Overlay>
       </ImageWrapper>
       <TextWrapper ref={textRef} isVisible={textIsVisible}>
         <Content ref={ref} className={isVisible ? "animate" : ""}>
           <ToogleWrapper>
-            <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
-              {darkMode ? <FaSun /> : <FaMoon />}
+            <ToggleButton onClick={toggleLightMode} lightMode={lightMode}>
+              {lightMode ? (
+                <FaMoon color="#5F61B5" />
+              ) : (
+                <FaSun color="#FFD700" />
+              )}
             </ToggleButton>
           </ToogleWrapper>
           <TextContent>
             <article id="agency">
-              <section
-                id="site-empresarial"
+              <main
+                id="trafego-pago"
                 style={{
                   margin: "3rem auto",
                   maxWidth: "960px",
@@ -82,123 +88,133 @@ const AgencyDetail = () => {
               >
                 <header style={{ marginBottom: "2rem" }}>
                   <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-                    Por Que Sua Empresa Precisa de um Site (Mesmo Que Você Ache
-                    Que Não)
+                    Tráfego Pago: clientes certos, no momento certo
                   </h1>
                   <p>
-                    Se sua empresa não está na internet, ela simplesmente não
-                    existe para a maioria dos seus potenciais clientes.
+                    Anunciar não é gastar dinheiro. É investir com estratégia
+                    para gerar vendas previsíveis.
                   </p>
                 </header>
 
                 <article>
                   <section style={{ marginBottom: "2rem" }}>
                     <p>
-                      Pense comigo: quando foi a última vez que você procurou um
-                      produto ou serviço sem antes fazer uma pesquisa rápida no
-                      Google?
+                      Todos os dias, pessoas entram no Instagram e Facebook
+                      prontas para comprar. A diferença entre você e seus
+                      concorrentes é simples: eles aparecem, você não.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      O Que Você Está Perdendo Agora Mesmo
+                      O erro da maioria das empresas
                     </h2>
                     <p>
-                      Enquanto você lê isso, pessoas estão procurando exatamente
-                      o que você oferece. Elas estão encontrando seus
-                      concorrentes, não você.
+                      Muitas empresas até anunciam, mas sem estratégia.
+                      Campanhas genéricas, público errado e dinheiro
+                      desperdiçado.
                     </p>
                     <p>
-                      Seus clientes já estão online. A questão não é se você
-                      precisa estar lá, mas quanto dinheiro está deixando de
-                      ganhar todos os dias sem presença digital.
+                      Tráfego pago sem planejamento não gera vendas. Gera
+                      frustração.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      Os Benefícios Reais de Ter um Site
+                      O que o tráfego pago bem feito entrega
                     </h2>
                     <ul style={{ paddingLeft: "1.2rem" }}>
                       <li>
-                        <strong>Credibilidade instantânea:</strong> um site
-                        profissional gera confiança imediata.
+                        <strong>Visibilidade imediata:</strong> seu negócio
+                        aparece desde o primeiro dia.
                       </li>
                       <li>
-                        <strong>Disponível 24/7:</strong> seu site trabalha por
-                        você o tempo todo.
+                        <strong>Público qualificado:</strong> anúncios para quem
+                        realmente tem interesse.
                       </li>
                       <li>
-                        <strong>Vendedor mais barato:</strong> responde dúvidas
-                        comuns sem consumir seu tempo.
+                        <strong>Controle total:</strong> você decide quanto
+                        investir e quando parar.
                       </li>
                       <li>
-                        <strong>Alcance ampliado:</strong> clientes de outras
-                        cidades passam a te encontrar.
+                        <strong>Escala:</strong> o que funciona pode ser
+                        multiplicado.
                       </li>
                       <li>
-                        <strong>Controle da imagem:</strong> você define como
-                        sua empresa é apresentada.
+                        <strong>Dados reais:</strong> decisões baseadas em
+                        números, não achismo.
                       </li>
                     </ul>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      “Mas Eu Já Tenho Instagram...”
+                      “Já tentei anunciar e não funcionou”
                     </h2>
                     <p>
-                      Redes sociais são importantes, mas não são suas. Seu site
-                      é seu território. Ninguém muda as regras, ninguém tira do
-                      ar.
+                      O problema raramente é a plataforma. Normalmente é a
+                      estratégia, a segmentação ou a mensagem errada.
+                    </p>
+                    <p>
+                      Quando tudo está alinhado, o tráfego pago se paga — e
+                      sobra.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      O Custo Real de Não Ter um Site
+                      Quanto custa não anunciar?
                     </h2>
                     <p>
-                      Quantos clientes você precisa ganhar para pagar um site?
-                      Provavelmente menos de cinco. Quantos você já perdeu por
-                      não ser encontrado?
+                      Cada dia sem tráfego é um dia entregando clientes para o
+                      concorrente.
                     </p>
                     <p>
-                      Um site não é custo. É investimento. E se paga sozinho.
+                      Enquanto você espera, alguém está aparecendo exatamente
+                      onde seu cliente está olhando.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      Não Precisa Ser Complicado
+                      Tráfego pago não precisa ser complicado
                     </h2>
                     <ul style={{ paddingLeft: "1.2rem" }}>
-                      <li>Mostrar quem você é e o que faz</li>
-                      <li>Transmitir confiança</li>
-                      <li>Facilitar o contato</li>
-                      <li>Estar disponível quando o cliente procurar</li>
+                      <li>Objetivo claro</li>
+                      <li>Mensagem direta</li>
+                      <li>Público bem definido</li>
+                      <li>Acompanhamento e otimização contínua</li>
                     </ul>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      A Decisão é Simples
+                      A escolha é estratégica
                     </h2>
                     <p>
-                      Ou você continua invisível para quem já procura seu
-                      serviço, ou decide ser encontrado.
+                      Ou você depende da sorte, ou constrói um fluxo constante
+                      de clientes.
                     </p>
-                    <p>Seus concorrentes já escolheram. E você?</p>
+                    <p>
+                      Negócio que cresce não espera ser descoberto. Ele aparece.
+                    </p>
                   </section>
 
-                  <footer style={{ marginTop: "3rem" }}>
-                    <p>
-                      Pronto para ser encontrado pelos clientes certos? Vamos
-                      conversar e colocar sua empresa no mapa digital.
+                  <section>
+                    <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+                      Próximo passo
+                    </h2>
+
+                    <p style={{ marginBottom: "1rem" }}>
+                      Se você quer campanhas estruturadas, previsíveis e focadas
+                      em resultado, vamos conversar.
                     </p>
+
                     <a
-                      href="https://jveiga.dev/#/contact"
+                      href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20desenvolvimento%20de%20sites%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+                      target="_blank"
+                      rel="noreferrer"
                       style={{
                         display: "inline-block",
                         padding: "1rem 2rem",
@@ -208,30 +224,11 @@ const AgencyDetail = () => {
                         marginTop: "1rem",
                       }}
                     >
-                      Solicite seu plano de tráfego hoje
+                      Solicite seu orçamento de sites hoje
                     </a>
-                    <p style={{ marginTop: "1rem" }}>
-                      Ou entre em contato direto:
-                    </p>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <p>📱</p>
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20desenvolvimentos%20de%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-                      >
-                        WhatsApp
-                      </a>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <p>📧</p>
-                      <a href="mailto:mktweb.veiga@gmail.com?subject=Informa%C3%A7%C3%B5es%20sobre%20campanhas%20de%20tr%C3%A1fego%20no%20Google&body=Ol%C3%A1%2C%0A%0AVi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Google%20e%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es.%0A%0AObrigado.">
-                        Email
-                      </a>
-                    </div>
-                  </footer>
+                  </section>
                 </article>
-              </section>
+              </main>
             </article>
           </TextContent>
         </Content>

@@ -35,10 +35,94 @@ export const Container = styled.div`
   /* min-height: 100vh; */
   /* text-align: center; */
   position: relative;
-  width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
   background-color: ${({ lightMode }) => (lightMode ? "white" : "black")};
   color: ${({ lightMode }) => (lightMode ? "black" : "white")};
   transition: background-color 0.5s, color 0.5s;
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 2s ease-out;
+  overflow-x: hidden;
+`;
+
+export const TextWrapper = styled.div`
+  animation: ${({ isVisible }) => (isVisible ? slideInLeft : "none")} 1s
+    ease-out;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  display: block;
+`;
+
+export const Overlay = styled.div`
+  position: absolute;
+  inset: 0;
+  /* top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 40vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* padding: 2rem; */
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  animation: ${fadeIn} 3s ease-out;
+`;
+
+export const TitleContentImage = styled.div`
+  display: flex;
+  /* padding: 1rem 3rem; */
+
+  strong {
+    font-size: 3rem;
+    font-family: "Raleway";
+    font-weight: 100;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 3rem;
+    font-family: "Open Sans";
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  @media (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    strong,
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+`;
+
+export const TitleContent = styled.div`
+  padding: 0 2rem;
+`;
+
+export const TextContent = styled.div`
+  padding: 0 2rem;
+
+  p {
+    text-align: left;
+    font-weight: 100;
+    line-height: 2rem;
+  }
+
+  h2 {
+    margin: 1rem 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -61,101 +145,10 @@ export const ToggleButton = styled.button`
 `;
 
 export const GradientText = styled.span`
-  background: ${({ lightMode }) =>
-    lightMode ? "none" : "linear-gradient(135deg, #8F91D9, #5F61B5)"};
+  background: ${({ darkMode }) =>
+    darkMode ? "none" : "linear-gradient(135deg, #8F91D9, #5F61B5)"};
   -webkit-background-clip: text;
-  -webkit-text-fill-color: ${({ lightMode }) =>
-    lightMode ? "#FFD700" : "transparent"};
-`;
-
-
-export const ListWrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  text-align: start;
-
-  &ul,
-  li {
-    list-style: disc;
-  }
-`;
-
-export const ImageWrapper = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 2s ease-out;
-`;
-
-export const TextWrapper = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? slideInLeft : "none")} 1s
-    ease-out;
-`;
-
-export const Image = styled.img`
-  width: 100vw;
-  height: 40vh;
-  object-fit: cover;
-`;
-
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
-  animation: ${fadeIn} 3s ease-out;
-`;
-
-export const TitleContentImage = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  /* height: 3rem; */
-  /* margin-bottom: 1.5rem; */
-
-  h2 {
-    font-family: "Open Sans", sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    animation: ${slideInRight} 1s ease-out;
-    text-align: center;
-
-    @media screen and (min-width: 320px) and (max-width: 460px) {
-      font-size: 2rem;
-      padding: 0%.5rem 0;
-    }
-  }
-
-  strong {
-    font-size: 3rem;
-    font-family: "Raleway", sans-serif;
-    font-weight: 100;
-    animation: ${slideInRight} 1s ease-out;
-  }
-  
-`;
-
-export const TitleContent = styled.div`
-  padding: 0 2rem;
-  h1 {
-    font-size: 2rem;
-  }
-`;
-
-export const TextContent = styled.div`
-  padding: 0 2rem;
-
-  p {
-    text-align: left;
-    font-weight: 100;
-    line-height: 2rem;
-  }
-
-  h2 {
-    margin: 1rem 0;
-  }
+  -webkit-text-fill-color: ${({ darkMode }) =>
+    darkMode ? "#FFD700" : "transparent"};
+  color: ${({ darkMode }) => (darkMode ? "#FFD700" : "transparent")};
 `;

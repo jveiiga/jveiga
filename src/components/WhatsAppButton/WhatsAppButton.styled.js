@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const pulse = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+`;
 
 export const FloatingButton = styled.a`
   position: fixed;
@@ -18,20 +30,15 @@ export const FloatingButton = styled.a`
   justify-content: center;
 
   color: #fff;
-
   cursor: pointer;
   z-index: 1000;
 
-  box-shadow: 0 8px 20px rgba(254, 255, 255, 0.34);
+  animation: ${pulse} 2.4s infinite;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+    animation: none;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
   }
-`;
-
-export const Icon = styled.img`
-  width: 24px;
-  height: 24px;
 `;

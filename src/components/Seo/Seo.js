@@ -28,9 +28,9 @@ const Seo = () => {
         <Overlay />
         <SeoContent ref={ref} className={inView ? 'animate' : ''}>
           <TitleContent>
-            <h2>Google Ads&nbsp;</h2><h2>&&nbsp;</h2><strong>Perfil de Negócios Google</strong>
+            <h2>Google Ads</h2>
           </TitleContent>
-          <p>Visibilidade para sua empresa de forma certa, alcance resultados lucrativos.</p>
+          <p>Atraia os clientes certos com Google Ads profissional.</p>
           <Button as={Link} to="/seo-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
         </SeoContent>
       </SeoWrapper>

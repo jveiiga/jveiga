@@ -37,8 +37,8 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   overflow-x: hidden;
-  background-color: ${({ darkMode }) => (darkMode ? "black" : "white")};
-  color: ${({ darkMode }) => (darkMode ? "white" : "black")};
+  background-color: ${({ lightMode }) => (lightMode ? "white" : "black")};
+  color: ${({ lightMode }) => (lightMode ? "black" : "white")};
   transition: background-color 0.5s, color 0.5s;
 `;
 
@@ -135,14 +135,12 @@ export const ToogleWrapper = styled.div`
 `;
 
 export const ToggleButton = styled.button`
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
-  cursor: pointer;
   background: none;
   border: none;
-  color: ${({ darkMode }) => (darkMode ? "#FFD700" : "#5F61B5")};
+  cursor: pointer;
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const GradientText = styled.span`
