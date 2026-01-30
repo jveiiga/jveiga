@@ -52,7 +52,7 @@ const HamburgerMenu = () => {
       </MenuButton>
       <MenuList isOpen={isOpen}>
         <Logo src={logoImage} alt="Logo" />
-        {['home', 'social', 'marketing', 'seo', 'agency', 'contact'].map((href, index) => (
+        {['home', 'web developer', 'google', 'facebook', 'contact'].map((href, index) => (
           <MenuItem key={href} isOpen={isOpen} index={index}>
             <a href={href === 'contact' ? '/contact' : `#${href}`} onClick={(e) => handleItemClick(e, href)}>
               <span className="menu-number">{index + 1}.</span>

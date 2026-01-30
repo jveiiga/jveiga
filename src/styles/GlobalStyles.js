@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ul {
-    list-style: none;
+    /* list-style: none; */
   }
 `;
 

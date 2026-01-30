@@ -83,6 +83,7 @@ const Header = ({ currentPath }) => {
       <NavWrapper>
         <Nav>
           <NavList>
+
             <NavItem>
               <NavLink
                 href="#home"
@@ -92,16 +93,38 @@ const Header = ({ currentPath }) => {
                 Home
               </NavLink>
             </NavItem>
+
             <NavItem>
               <NavLink
-                href="#social"
-                onClick={(e) => handleClick(e, 'social')}
-                className={activeLink === '#social' ? 'active' : ''}
+                href="#web developer"
+                onClick={(e) => handleClick(e, 'web developer')}
+                className={activeLink === '#web developer' ? 'active' : ''}
               >
-                Social
+                Web Developer
               </NavLink>
             </NavItem>
+
             <NavItem>
+              <NavLink
+                href="#google"
+                onClick={(e) => handleClick(e, 'google')}
+                className={activeLink === '#google' ? 'active' : ''}
+              >
+                Google
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink
+                href="#facebook"
+                onClick={(e) => handleClick(e, 'facebook')}
+                className={activeLink === '#facebook' ? 'active' : ''}
+              >
+                Facebook
+              </NavLink>
+            </NavItem>
+
+            {/* <NavItem>
               <NavLink
                 href="#marketing"
                 onClick={(e) => handleClick(e, 'marketing')}
@@ -109,25 +132,12 @@ const Header = ({ currentPath }) => {
               >
                 Marketing
               </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="#seo"
-                onClick={(e) => handleClick(e, 'seo')}
-                className={activeLink === '#seo' ? 'active' : ''}
-              >
-                Seo
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="#agency"
-                onClick={(e) => handleClick(e, 'agency')}
-                className={activeLink === '#agency' ? 'active' : ''}
-              >
-                Agency
-              </NavLink>
-            </NavItem>
+            </NavItem> */}
+
+
+
+
+
             <NavItem>
               <NavLink
                 as={Link}
@@ -137,6 +147,7 @@ const Header = ({ currentPath }) => {
                 Contact
               </NavLink>
             </NavItem>
+
           </NavList>
         </Nav>
         <Icons>

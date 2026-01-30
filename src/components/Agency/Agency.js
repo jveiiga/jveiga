@@ -24,16 +24,16 @@ const Agency = () => {
   }, [inView]);
 
   return (
-    <AgencySession id="agency">
+    <AgencySession id="web developer">
       <AgencyWrapper id="agency-wrapper">
-        <BackgroundImage id="creative-image" src={require('../../assets/images/background/agency-background.jpeg')} alt="Agency Background" />
+        <BackgroundImage id="creative-image" src={require('../../assets/images/background/dev-background.jpg')} alt="Agency Background" />
         <Overlay />
         <AgencyContentWrapper>
           <AgencyContent ref={ref} className={inView ? 'animate' : ''}>
             <TitleContent>
-              <strong>Melhores&nbsp;</strong><h2>Soluções</h2>
+              <strong>Presença&nbsp;</strong><h2>Digital</h2>
             </TitleContent>
-            <p>Empresas que querem crescer precisam de presença digital forte.</p>
+            <p>Desenvolvimento de sites para alcance, visibilidade e conversões</p>
             <Button as={Link} to="/agency-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
           </AgencyContent>
         </AgencyContentWrapper>

@@ -22,6 +22,7 @@ import AgencyDetail from './components/AgencyDetail/AgencyDetail';
 import Contact from './components/Contact/Contact';
 import ThankYou from './components/ThankYou/ThankYou';
 import NotFound from './components/NotFound/NotFound';
+import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -46,12 +47,12 @@ const App = () => {
           <Route path="/" element={
             <ContentWrapper className={showContent ? 'show' : ''}>
               <Section id="home"><Home /></Section>
-              <Section id="social"><MarketingTwo /></Section>
-              <Section id="social"><Social /></Section>
-              <Section id="marketing"><Marketing /></Section>
-              <Section id="seo"><Seo /></Section>
-              <Section id="agency"><AgencyTwo /></Section>
-              <Section id="agency"><Agency /></Section>
+              <Section id="web developer"><Agency /></Section>
+              <Section id="google"><Seo /></Section>
+              <Section id="facebook"><Social /></Section>
+              {/* <Section id="social"><MarketingTwo /></Section> */}
+              {/* <Section id="marketing"><Marketing /></Section> */}
+              {/* <Section id="agency"><AgencyTwo /></Section> */}
               <Section><Footer /></Section>
             </ContentWrapper>
           } />
@@ -68,7 +69,13 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {!isDetailPage && <ScrollToTopButton />}
+      {!isDetailPage && (
+        <>
+          <WhatsAppButton />
+          <ScrollToTopButton />
+        </>
+      )}
+
     </>
   );
 }

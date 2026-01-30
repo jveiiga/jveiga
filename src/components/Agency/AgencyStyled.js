@@ -49,14 +49,14 @@ export const AgencyContentWrapper = styled.div`
 export const AgencyContent = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-direction: column;
-  padding-right: 10%;
+  padding-left: 10%;
   position: relative;
   color: white;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   opacity: 0;
-  transform: translateX(50%);
+  transform: translateX(-50%);
   transition: opacity 1s ease-out, transform 1s ease-out;
 
   &.animate {

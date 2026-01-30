@@ -1,5 +1,5 @@
   import styled from 'styled-components';
-import homeBackground from '../../assets/images/background/home-background.jpg';
+import homeBackground from '../../assets/images/background/myimage-background.png';
 
 export const HomeContainer = styled.div`
   height: 100vh;
@@ -20,7 +20,8 @@ export const HomeWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-image: url(${homeBackground});
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
   background-position: center;
   will-change: background-position;
 `;

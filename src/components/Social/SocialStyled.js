@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SocialSession = styled.section`
   height: 100vh;
@@ -25,7 +25,7 @@ export const BackgroundImage = styled.img`
   top: 0;
   left: 0;
   z-index: 1;
-`
+`;
 
 export const Overlay = styled.div`
   position: absolute;
@@ -33,7 +33,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 `;
 
@@ -49,14 +49,14 @@ export const SocialContentWrapper = styled.div`
 export const SocialContent = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-direction: column;
-  padding-right: 10%;
+  padding-left: 10%;
   position: relative;
   color: white;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   opacity: 0;
-  transform: translateX(50%);
+  transform: translateX(-50%);
   transition: opacity 1s ease-out, transform 1s ease-out;
 
   &.animate {
@@ -65,14 +65,14 @@ export const SocialContent = styled.div`
   }
 
   h2 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
   }
 
   p {
     font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 100;
     text-transform: uppercase;
   }
@@ -101,14 +101,14 @@ export const TitleContent = styled.div`
 
   p {
     font-size: 1.5rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
   }
 
   strong {
     font-size: 3rem;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 2.5rem;
     font-weight: 100;
   }
@@ -117,13 +117,14 @@ export const TitleContent = styled.div`
 export const Button = styled.button`
   position: relative;
   padding: 1rem 4rem;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   background-color: transparent;
-  color: #FFF;
+  color: #fff;
   font-size: 0.875rem;
   text-transform: uppercase;
   margin-top: 2rem;
-  transition: background-color 0.3s ease, color 0.3s ease, opacity 1s ease-out, transform 1s ease-out;
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 1s ease-out,
+    transform 1s ease-out;
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
@@ -134,8 +135,48 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background-color: #FFF;
+    background-color: #fff;
     color: #000;
     text-shadow: none;
   }
+`;
+
+export const ButtonCTA = styled.button`
+  display: block;
+  width: 90%;  
+  padding: 1rem 4rem;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  margin: 4rem 0;
+  white-space: nowrap;
+  background-color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-shadow: none;
+  }
+
+  @media (min-width: 1024px) {
+    width: auto;
+    font-size: 0.875rem;
+    padding: 1.25rem 5rem;
+  }
+
+  /* @media (min-width: 1280px) {
+    width: 40%;
+    font-size: 1.125rem;
+    padding: 1.5rem 6rem;
+  }
+
+  @media (min-width: 1536px) {
+    width: 50%;
+    font-size: 1.25rem;
+    padding: 1.75rem 7rem;
+  } */
 `;

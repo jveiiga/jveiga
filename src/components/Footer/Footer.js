@@ -12,10 +12,10 @@ const Footer = () => {
       <FooterSection>
         <FooterLinkList>
           <FooterLink as={Link} smooth to="/#home">Home</FooterLink>
-          <FooterLink as={Link} smooth to="/#social">Social</FooterLink>
-          <FooterLink as={Link} smooth to="/#marketing">Marketing</FooterLink>
-          <FooterLink as={Link} smooth to="/#seo">SEO</FooterLink>
-          <FooterLink as={Link} smooth to="/#agency">Agency</FooterLink>
+          <FooterLink as={Link} smooth to="/#web developer">Web Developer</FooterLink>
+          <FooterLink as={Link} smooth to="/#google">Google</FooterLink>
+          <FooterLink as={Link} smooth to="/#facebook">Facebook</FooterLink>
+          {/* <FooterLink as={Link} smooth to="/#marketing">Marketing</FooterLink> */}
           <FooterLink as={Link} smooth to="/contact">Contact</FooterLink>
         </FooterLinkList>
       </FooterSection>

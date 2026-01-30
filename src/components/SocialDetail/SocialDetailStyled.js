@@ -32,7 +32,7 @@ export const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   width: 100vw;
   background-color: ${({ darkMode }) => (darkMode ? 'black' : 'white')};
@@ -114,6 +114,18 @@ export const TextContent = styled.div`
 
   h2 {
     margin: 1rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 10rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0 15rem;
+  }
+
+  @media (min-width: 1600px) {
+    padding: 0 30rem;
   }
 `;
 

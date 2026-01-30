@@ -1,18 +1,34 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ListWrapper, ToogleWrapper } from './SeoDetailStyled';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import React, { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import {
+  Container,
+  Content,
+  Image,
+  Overlay,
+  TitleContentImage,
+  ToggleButton,
+  TextContent,
+  ImageWrapper,
+  TextWrapper,
+  ListWrapper,
+  ToogleWrapper,
+} from "./SeoDetailStyled";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const SeoDetail = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef();
-  const { ref: imageRef, inView: imageIsVisible } = useInView({ triggerOnce: true });
-  const { ref: textRef, inView: textIsVisible } = useInView({ triggerOnce: true });
+  const { ref: imageRef, inView: imageIsVisible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: textRef, inView: textIsVisible } = useInView({
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         if (entries[0].isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
@@ -39,15 +55,18 @@ const SeoDetail = () => {
   return (
     <Container darkMode={darkMode}>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
-        <Image src={require('../../assets/images/background/seo-background.jpg')} alt="Seo Detail" />
+        <Image
+          src={require("../../assets/images/background/google-detail-background.jpg")}
+          alt="Seo Detail"
+        />
         <Overlay>
           <TitleContentImage>
-            <h2>Seo</h2>
+            <h2>Google Ads & Perfil de Negócios Google</h2>
           </TitleContentImage>
         </Overlay>
       </ImageWrapper>
       <TextWrapper ref={textRef} isVisible={textIsVisible}>
-        <Content ref={ref} className={isVisible ? 'animate' : ''}>
+        <Content ref={ref} className={isVisible ? "animate" : ""}>
           <ToogleWrapper>
             <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
               {darkMode ? <FaSun /> : <FaMoon />}
@@ -55,110 +74,279 @@ const SeoDetail = () => {
           </ToogleWrapper>
           <TextContent>
             <article id="seo-conteudo">
-              <header>
-                <h1>SEO e Conteúdo Estratégico: Conquistando o Topo do Google e Gerando Tráfego Orgânico</h1>
+              <header
+                style={{ maxWidth: "900px", margin: "auto" }}
+              >
+                <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>
+                  Google Ads: apareça quando seus clientes estão procurando por
+                  você
+                </h1>
+                <p style={{ marginBottom: "1rem" }}>
+                  Imagine aparecer no topo do Google exatamente quando alguém
+                  busca pelo que você vende. Sem esperar meses por resultados
+                  orgânicos, sem depender de redes sociais. Apenas você, no
+                  momento certo, na frente da pessoa certa.
+                </p>
+                <p>
+                  O Google Ads funciona, mas entre criar anúncios e gerar
+                  resultados reais existe um abismo que muitos descobrem tarde
+                  demais.
+                </p>
               </header>
-              <section id="seo-introducao">
-                <header>
-                  <h2>Introdução</h2>
-                </header>
-                <p>
-                  Em um mundo digital onde a visibilidade é crucial, muitas empresas sofrem com a frustração de não serem encontradas pelos seus clientes. A falta de posicionamento nos motores de busca e de conteúdo relevante pode significar a perda de oportunidades e um baixo retorno sobre o investimento em marketing. Essa dor afeta não só o volume de visitas, mas a credibilidade e o crescimento do negócio.
-                </p>
-                <p>
-                  O SEO (Search Engine Optimization) e uma estratégia de conteúdo bem definida são a solução para esse desafio. Ao otimizar seu site para os mecanismos de busca e criar conteúdo que realmente responda às dúvidas e necessidades do seu público, você pode transformar sua presença online e conquistar resultados duradouros.
-                </p>
-              </section>
-              <section id="seo-importancia">
-                <header>
-                  <h2>Por que o SEO é Essencial?</h2>
-                </header>
-                <p>
-                  O SEO é fundamental para que sua empresa seja encontrada organicamente, sem depender exclusivamente de anúncios pagos. Um bom posicionamento nos resultados de busca aumenta a credibilidade, atrai tráfego qualificado e gera oportunidades de conversão de maneira sustentável.
-                </p>
-                <p>
-                  Quando o seu site aparece nas primeiras posições do Google, ele transmite autoridade e confiança. Isso é crucial para transformar visitantes em clientes e para construir uma marca forte e reconhecida no mercado.
-                </p>
-              </section>
-              <section id="seo-palavras">
-                <header>
-                  <h2>Pesquisa de Palavras-Chave e Otimização On-Page</h2>
-                </header>
-                <p>
-                  Nossa estratégia inicia com uma pesquisa detalhada de palavras-chave. Identificamos os termos que seu público utiliza ao buscar produtos ou serviços semelhantes aos seus. Essa etapa é essencial para orientar a criação de conteúdo e estruturar seu site de maneira que os motores de busca consigam indexá-lo corretamente.
-                </p>
-                <p>
-                  A otimização on-page envolve ajustes na estrutura do site, na velocidade de carregamento e na qualidade do conteúdo. Cada página é trabalhada para garantir que os algoritmos do Google a interpretem de forma positiva, aumentando as chances de um melhor ranqueamento.
-                </p>
-              </section>
-              <section id="seo-conteudo-relevante">
-                <header>
-                  <h2>Conteúdo Relevante e Estratégico</h2>
-                </header>
-                <p>
-                  Conteúdo é o coração de qualquer estratégia digital de sucesso. Criar textos, vídeos e imagens que dialoguem com as dúvidas e interesses do seu público é fundamental para manter a audiência engajada e atrair novos visitantes.
-                </p>
-                <p>
-                  Nossa equipe de especialistas desenvolve conteúdo otimizado, que alia qualidade, criatividade e técnicas avançadas de SEO. Isso garante que seu site não só seja bem posicionado, mas que também se torne uma referência no seu segmento, gerando tráfego orgânico de forma contínua.
-                </p>
-              </section>
-              <section id="seo-linkbuilding">
-                <header>
-                  <h2>Link Building e Construção de Autoridade</h2>
-                </header>
-                <p>
-                  A construção de uma rede de links de qualidade é outra peça fundamental na estratégia de SEO. Ao conquistar links de sites relevantes e de autoridade, você reforça a credibilidade do seu domínio e melhora significativamente o seu posicionamento nos motores de busca.
-                </p>
-                <p>
-                  Implementamos técnicas de link building que atraem parceiros estratégicos e ampliam a visibilidade da sua marca. Esse esforço contínuo é responsável por transformar seu site em uma referência dentro do mercado.
-                </p>
-              </section>
-              <section id="seo-beneficios">
-                <header>
-                  <h2>Benefícios de Investir em SEO e Conteúdo Estratégico</h2>
-                </header>
-                <p>
-                  Ao apostar em uma estratégia completa de SEO e conteúdo, sua empresa experimenta diversos benefícios:
-                </p>
-                <ListWrapper>
-                  <ul>
-                    <li>Maior visibilidade orgânica e posicionamento privilegiado nos resultados de busca;</li>
-                    <li>Aumento de tráfego qualificado, sem custos recorrentes com anúncios;</li>
-                    <li>Geração de leads e conversões de forma sustentável;</li>
-                    <li>Fortalecimento da autoridade e credibilidade da marca no mercado.</li>
-                  </ul>
-                </ListWrapper>
-                <p>
-                  Esses resultados se traduzem em crescimento contínuo e em uma presença digital robusta, que coloca sua empresa à frente da concorrência.
-                </p>
-              </section>
-              <section id="seo-conclusao">
-                <header>
-                  <h2>Por fim</h2>
-                </header>
-                <p>
-                  Se a sua marca ainda não alcançou o posicionamento desejado nos motores de busca, é hora de investir em uma estratégia de SEO e conteúdo que faça a diferença. Nosso compromisso é transformar a sua presença online, fazendo com que seu site se torne uma ferramenta poderosa de atração e conversão.
-                </p>
-                <p>
-                  Com uma abordagem integrada – que vai da pesquisa de palavras-chave à criação de conteúdo relevante e à construção de autoridade – oferecemos a solução completa para que sua empresa seja encontrada e admirada pelo público certo. Essa estratégia não só gera tráfego, mas constrói uma base sólida para o crescimento sustentável do seu negócio.
-                </p>
-                <p>
-                  Permita que nossa expertise transforme a maneira como seu público vê sua marca. Com transparência, qualidade e um atendimento personalizado, estamos prontos para implementar uma estratégia que coloque sua empresa no topo.
-                </p>
-              </section>
-              <footer>
-                <p>
-                  Quer descobrir como conquistar as primeiras posições no Google e atrair tráfego orgânico qualificado? Não perca tempo – conheça nossas soluções em SEO e Conteúdo Estratégico.
-                </p>
-                <button onclick="location.href='/detalhes-seo-conteudo'" type="button">Saiba Mais</button>
-              </footer>
-            </article>
 
+              <section
+                id="problema"
+                style={{ maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  O Problema que você provavelmente já enfrentou
+                </h2>
+                <p style={{ marginBottom: "1rem" }}>
+                  Você cria uma campanha, define palavras-chave, escreve
+                  anúncios, ativa tudo e... espera. Os cliques aparecem, o
+                  dinheiro sai, mas as vendas não vêm na proporção esperada.
+                </p>
+                <p style={{ marginTop: "4rem", marginBottom: "0.5rem" }}>
+                  <strong>Sinais de que algo está errado:</strong>
+                </p>
+                <ul style={{ textAlign: "start", paddingLeft: "1.5rem" }}>
+                  <li>Custo por clique altíssimo (R$ 5, R$ 10, R$ 15+)</li>
+                  <li>Muitos cliques, mas poucas conversões</li>
+                  <li>Orçamento diário que acaba em 2 horas</li>
+                  <li>Anúncios aparecendo para buscas irrelevantes</li>
+                  <li>Concorrentes sempre acima de você</li>
+                </ul>
+              </section>
+
+              <section
+                id="porque-google-ads"
+                style={{ maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+                    marginBottom: "2rem",
+                  }}
+                >
+                  Por que google ads não é "criar anúncio e pronto"
+                </h2>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    1. Correspondência de palavras-chave
+                  </h3>
+                  <p style={{ marginBottom: "1rem" }}>
+                    Escolher "tênis de corrida" e ver anúncios para "como lavar
+                    tênis" é desperdício de orçamento.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Solução:</strong> Estrutura de correspondências
+                    (ampla, frase, exata) + lista de palavras negativas.
+                  </p>
+                </article>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    2. Quality score (a métrica que ninguém vê)
+                  </h3>
+                  <p style={{ marginBottom: "1rem" }}>
+                    Quality score baixo aumenta o custo por clique.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Solução:</strong> Campanhas granulares com anúncios
+                    ultra-relevantes para cada grupo de palavras.
+                  </p>
+                </article>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    3. Landing pages que não convertem
+                  </h3>
+                  <p style={{ marginBottom: "1rem" }}>
+                    Mandar tráfego para a homepage genérica significa cliques
+                    desperdiçados.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Solução:</strong> Análise de correspondência
+                    anúncio-busca-landing page + otimização de páginas
+                    específicas.
+                  </p>
+                </article>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    4. Lances que não fazem sentido
+                  </h3>
+                  <p style={{ marginBottom: "1rem" }}>
+                    Pagar R$ 8 por clique quando o ticket médio é R$ 100 e
+                    margem 30% não funciona.
+                  </p>
+                  <p>
+                    <strong>Solução:</strong> cálculo de CAC máximo permitido +
+                    ajuste de lances por dispositivo, horário, localização e
+                    intenção de busca.
+                  </p>
+                </article>
+              </section>
+
+              <section
+                id="como-trabalhamos"
+                style={{ maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Como Trabalhamos com Google Ads
+                </h2>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    Fase 1: Diagnóstico Estratégico (Semana 1)
+                  </h3>
+                  <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                    <li>Palavras-chave com demanda real</li>
+                    <li>Análise da concorrência e lances médios</li>
+                    <li>Cálculo do CAC máximo permitido</li>
+                    <li>Auditoria do site/landing pages</li>
+                  </ul>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Entrega:</strong> Plano de campanha com projeção de
+                    custos e resultados.
+                  </p>
+                </article>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    Fase 2: Estruturação e Lançamento (Semana 2-3)
+                  </h3>
+                  <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                    <li>Criação de estrutura de campanha granular</li>
+                    <li>Redação de anúncios com gatilhos de conversão</li>
+                    <li>Configuração de rastreamento de conversões</li>
+                    <li>Listas de palavras negativas desde o dia 1</li>
+                  </ul>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Entrega:</strong> Campanhas ativas com monitoramento
+                    diário nos primeiros 7 dias.
+                  </p>
+                </article>
+
+                <article>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1.5rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    Fase 3: Otimização Contínua (Mensal)
+                  </h3>
+                  <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                    <li>Análise de termos de busca</li>
+                    <li>Ajuste de lances por desempenho</li>
+                    <li>Testes A/B de anúncios</li>
+                    <li>Relatórios mensais com métricas importantes</li>
+                  </ul>
+                  <p>
+                    <strong>Entrega:</strong> Relatório executivo + reunião de
+                    alinhamento mensal.
+                  </p>
+                </article>
+              </section>
+
+              <section
+                id="contato"
+                style={{ maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Próximo Passo
+                </h2>
+                <p style={{ marginBottom: "1rem" }}>
+                  Se você quer campanhas estruturadas, acompanhada de relatórios
+                  e suporte, vamos conversar.
+                </p>
+                <a
+                  href="https://jveiga.dev/#/contact"
+                  style={{
+                    display: "inline-block",
+                    padding: "1rem 2rem",
+                    backgroundColor: "#007bff",
+                    color: "#fff",
+                    textDecoration: "none",
+                    marginTop: "1rem",
+                  }}
+                >
+                  Solicite seu plano de tráfego hoje
+                </a>
+                <p style={{ marginTop: "1rem" }}>Ou entre em contato direto:</p>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p>📱</p>
+                  <a target="_blank" rel="noreferrer" href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
+                    WhatsApp
+                  </a>
+                </div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p>📧</p>
+                  <a href="mailto:mktweb.veiga@gmail.com?subject=Informa%C3%A7%C3%B5es%20sobre%20campanhas%20de%20tr%C3%A1fego%20no%20Google&body=Ol%C3%A1%2C%0A%0AVi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Google%20e%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es.%0A%0AObrigado.">
+                    Email
+                  </a>
+                </div>
+              </section>
+            </article>
           </TextContent>
         </Content>
       </TextWrapper>
     </Container>
   );
-}
+};
 
 export default SeoDetail;

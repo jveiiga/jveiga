@@ -1,18 +1,36 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { Container, Content, Image, Overlay, TitleContentImage, ToggleButton, TextContent, ImageWrapper, TextWrapper, ToogleWrapper, ListWrapper } from './SocialDetailStyled';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import React, { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import {
+  Container,
+  Content,
+  Image,
+  Overlay,
+  TitleContentImage,
+  ToggleButton,
+  TextContent,
+  ImageWrapper,
+  TextWrapper,
+  ToogleWrapper,
+} from "./SocialDetailStyled";
+import { FaMoon, FaSun } from "react-icons/fa";
+
+import { Link } from "react-router-dom";
+import { ButtonCTA } from "../Social/SocialStyled";
 
 const SocialDetail = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef();
-  const { ref: imageRef, inView: imageIsVisible } = useInView({ triggerOnce: true });
-  const { ref: textRef, inView: textIsVisible } = useInView({ triggerOnce: true });
+  const { ref: imageRef, inView: imageIsVisible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: textRef, inView: textIsVisible } = useInView({
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         if (entries[0].isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
@@ -39,15 +57,19 @@ const SocialDetail = () => {
   return (
     <Container darkMode={darkMode}>
       <ImageWrapper ref={imageRef} isVisible={imageIsVisible}>
-        <Image src={require('../../assets/images/background/social-background.jpg')} alt="Social Detail" />
+        <Image
+          src={require("../../assets/images/background/social-background.jpg")}
+          alt="Social Detail"
+        />
         <Overlay>
           <TitleContentImage>
-            <strong>Mídia&nbsp;</strong><h2>Social</h2>
+            <h2>Facebook&nbsp;</h2>
+            <strong>Ads</strong>
           </TitleContentImage>
         </Overlay>
       </ImageWrapper>
       <TextWrapper ref={textRef} isVisible={textIsVisible}>
-        <Content ref={ref} className={isVisible ? 'animate' : ''}>
+        <Content ref={ref} className={isVisible ? "animate" : ""}>
           <ToogleWrapper>
             <ToggleButton onClick={toggleDarkMode} darkMode={darkMode}>
               {darkMode ? <FaSun /> : <FaMoon />}
@@ -55,95 +77,296 @@ const SocialDetail = () => {
           </ToogleWrapper>
           <TextContent>
             <article id="trafego-pago">
-              <header>
-                <h1 style={{ 'marginBottom': '20px' }}>Tráfego Pago: Acelerando Resultados com Anúncios Estratégicos</h1>
+              <header
+                style={{ padding: "2rem", maxWidth: "900px", margin: "auto" }}
+              >
+                <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>
+                  Meta Ads: Conquiste Clientes Onde Eles Passam Horas Por Dia
+                </h1>
+                <p style={{ marginBottom: "1rem" }}>
+                  Seus clientes ideais estão no Facebook e Instagram agora.
+                  Rolando o feed, assistindo Reels, checando Stories. Mas entre
+                  alcançar essas pessoas e{" "}
+                  <strong>fazê-las comprar de você</strong>, existe uma barreira
+                  que a maioria das empresas não consegue ultrapassar.
+                </p>
+                <p style={{ marginBottom: "1rem" }}>
+                  O problema não é falta de alcance. É alcançar as pessoas
+                  erradas, com a mensagem errada, no momento errado. E descobrir
+                  isso só depois de gastar milhares de reais em anúncios que
+                  geraram curtidas, mas não vendas.
+                </p>
               </header>
-              <section id="tp-introducao">
-                <p>
-                  Muitos empreendedores investem tempo e dinheiro em marketing digital, mas ainda enfrentam a frustração de não ver resultados expressivos. Se você já sentiu a dor de campanhas que não convertem, sabe o quanto é desafiador atrair o público certo e transformar cliques em vendas. Essa situação pode prejudicar o crescimento do seu negócio e gerar insegurança quanto ao retorno do investimento.
+
+              <section
+                id="problema"
+                style={{ padding: "2rem", maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+
+                    marginBottom: "2rem",
+                  }}
+                >
+                  O Problema que você provavelmente já enfrentou
+                </h2>
+                <p style={{ marginBottom: "1rem" }}>
+                  Você cria uma campanha, escolhe público-alvo, escreve um
+                  texto, coloca uma imagem bonita e... espera. As visualizações
+                  aparecem. O dinheiro sai da conta. Mas as vendas? Não vêm na
+                  proporção esperada.
                 </p>
-                <p>
-                  O Tráfego Pago surge como uma solução eficaz para seu problema. Ao investir em anúncios segmentados e estratégias bem definidas, é possível alcançar um público qualificado de maneira rápida e escalável. Nossa abordagem visa não apenas aumentar o volume de visitas, mas transformar essas visitas em oportunidades reais de negócio.
+                <p style={{ marginBottom: "1rem" }}>
+                  <strong>Os sinais de que algo está errado:</strong>
                 </p>
+                <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                  <li>Muito alcance, poucos cliques</li>
+                  <li>Muitos cliques, poucas vendas</li>
+                  <li>Custo por lead altíssimo (R$ 50, R$ 80, R$ 100+)</li>
+                  <li>Leads que não respondem ou não têm interesse real</li>
+                  <li>Orçamento que acaba sem retorno visível</li>
+                  <li>Anúncios que param de funcionar após alguns dias</li>
+                </ul>
               </section>
-              <section id="tp-conceito">
-                <header>
-                  <h2>O que é Tráfego Pago e Por que Investir?</h2>
-                </header>
-                <p>
-                  O Tráfego Pago consiste em investir em plataformas de anúncios para promover seu negócio de forma imediata e direcionada. Diferente das estratégias orgânicas, que podem levar tempo para gerar resultados, os anúncios pagos oferecem a previsibilidade e o controle necessários para alcançar seu público-alvo de maneira rápida.
-                </p>
-                <p>
-                  Investir em Tráfego Pago permite que você direcione sua mensagem a pessoas que têm real interesse em seus produtos ou serviços, aumentando as chances de conversão e maximizando o retorno sobre o investimento (ROI). É a solução ideal para negócios que desejam acelerar seus resultados e sair na frente da concorrência.
-                </p>
+
+              <section
+                id="porque-meta-ads"
+                style={{ padding: "2rem", maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+
+                    marginBottom: "2rem",
+                  }}
+                >
+                  Por que meta ads não é "impulsionar post"
+                </h2>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    1. Segmentação que parece boa mas é genérica
+                  </h3>
+                  <p style={{ marginBottom: "0.5rem" }}>
+                    Você acha que segmentou bem, mas incluiu milhões de pessoas
+                    diferentes.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Nossa solução:</strong> Audiências estratificadas +
+                    lookalike dos melhores clientes + segmentação baseada em
+                    comportamento de compra.
+                  </p>
+                </article>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    2. Criativos que não param o scroll
+                  </h3>
+                  <p style={{ marginBottom: "0.5rem" }}>
+                    Imagens bonitas passam despercebidas em meio a centenas de
+                    posts.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Nossa solução:</strong> Framework de criativos
+                    testados + testes A/B de imagens, vídeos e formatos
+                    (carrossel, Stories, Reels).
+                  </p>
+                </article>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    3. Campanha Única tentando fazer tudo
+                  </h3>
+                  <p style={{ marginBottom: "0.5rem" }}>
+                    Campanha genérica não funciona para todos os públicos.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Nossa solução:</strong> Funil completo ToFu, MoFu e
+                    BoFu + remarketing estratégico para cada estágio.
+                  </p>
+                </article>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    4. Otimização para a métrica errada
+                  </h3>
+                  <p style={{ marginBottom: "0.5rem" }}>
+                    Otimizar para curtidas ou alcance não gera vendas.
+                  </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Nossa solução:</strong> Configuração correta de
+                    eventos de conversão + otimização para a ação que realmente
+                    importa.
+                  </p>
+                </article>
               </section>
-              <section id="tp-plataformas">
-                <header>
-                  <h2>Google Ads e Meta Ads</h2>
-                </header>
-                <p>
-                  Nossa expertise abrange as principais plataformas de anúncios do mercado. Com o Google Ads, sua marca aparece exatamente quando o potencial cliente pesquisa por soluções relacionadas ao seu negócio. Já com o Meta Ads (Facebook e Instagram Ads), você atinge um público altamente segmentado, aproveitando os dados demográficos e comportamentais dessas redes.
-                </p>
-                <p>
-                  Cada plataforma possui suas particularidades, e nossa equipe desenvolve campanhas otimizadas para tirar o máximo proveito de cada uma delas. Essa abordagem personalizada garante que o investimento seja direcionado de forma eficiente, gerando resultados reais e mensuráveis.
-                </p>
-              </section>
-              <section id="tp-segmentacao">
-                <header>
-                  <h2>Segmentação Avançada e Otimização Contínua</h2>
-                </header>
-                <p>
-                  Um dos grandes diferenciais do Tráfego Pago é a capacidade de segmentação avançada. Nossa estratégia começa com a definição clara do público-alvo, utilizando dados demográficos, interesses e comportamentos para criar campanhas que realmente dialogam com as necessidades do consumidor.
-                </p>
-                <p>
-                  Além disso, implementamos técnicas de retargeting e remarketing para recuperar visitantes que demonstraram interesse, mas ainda não converteram. Aliado a testes A/B, esse processo de otimização contínua permite que cada campanha seja refinada em tempo real, aumentando a eficiência e o ROI.
-                </p>
-              </section>
-              <section id="tp-beneficios">
-                <header>
-                  <h2>Benefícios do Tráfego Pago</h2>
-                </header>
-                <p>
-                  Ao investir em Tráfego Pago, você obtém resultados que vão além do simples aumento de visitas. Nossa abordagem integrada garante:
-                </p>
-                <ListWrapper>
-                  <ul>
-                    <li>Aumento imediato do tráfego qualificado;</li>
-                    <li>Mensuração precisa dos resultados através de indicadores específicos;</li>
-                    <li>Flexibilidade para ajustar campanhas conforme o desempenho;</li>
-                    <li>Crescimento escalável, possibilitando investimentos progressivos conforme a performance.</li>
+
+              <section
+                id="como-trabalhamos"
+                style={{ padding: "2rem", maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+
+                    marginBottom: "2rem",
+                  }}
+                >
+                  Como trabalhamos com meta ads
+                </h2>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    Fase 1: Diagnóstico Estratégico (Semana 1)
+                  </h3>
+                  <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                    <li>Análise do público atual</li>
+                    <li>Pesquisa de concorrentes</li>
+                    <li>Definição de avatares de cliente</li>
+                    <li>Auditoria de Pixel e rastreamento</li>
+                    <li>Análise de funil de conversão</li>
                   </ul>
-                </ListWrapper>
-                <p>
-                  Esses benefícios se traduzem em crescimento real para seu negócio, com a segurança de que cada centavo investido está trabalhando para gerar conversões e consolidar sua marca no mercado.
-                </p>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Entrega:</strong> Estratégia documentada com
+                    público-alvo, mensagens-chave e projeção de resultados.
+                  </p>
+                </article>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    Fase 2: Estruturação e Lançamento (Semana 2-3)
+                  </h3>
+                  <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                    <li>Estrutura de campanha por objetivo</li>
+                    <li>
+                      Desenvolvimento de criativos (imagens, vídeos, copy)
+                    </li>
+                    <li>
+                      Configuração de públicos (salvos, lookalike, custom)
+                    </li>
+                    <li>Implementação/validação do Pixel</li>
+                    <li>Configuração de eventos de conversão</li>
+                  </ul>
+                  <p style={{ marginBottom: "1rem" }}>
+                    <strong>Entrega:</strong> Campanhas ativas com no mínimo 3
+                    variações criativas por público.
+                  </p>
+                </article>
+
+                <article style={{ marginBottom: "1rem" }}>
+                  <h3
+                    style={{
+                      fontSize: "1.2rem",
+                      marginTop: "1rem",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    Fase 3: Otimização Contínua (Semanal)
+                  </h3>
+                  <ul style={{ marginBottom: "1rem", paddingLeft: "1.5rem" }}>
+                    <li>Análise de fadiga criativa</li>
+                    <li>Expansão de públicos com base em dados</li>
+                    <li>Ajuste de orçamento para anúncios vencedores</li>
+                    <li>Testes A/B de criativos, copies, ofertas e CTAs</li>
+                    <li>Relatórios semanais com métricas acionáveis</li>
+                  </ul>
+                  <p>
+                    <strong>Entrega:</strong> Relatório executivo semanal +
+                    reunião quinzenal de alinhamento.
+                  </p>
+                </article>
               </section>
-              <section id="tp-conclusao">
-                <header>
-                  <h2>Por fim</h2>
-                </header>
-                <p>
-                  Se você está cansado de estratégias que não entregam o esperado, chegou a hora de apostar em uma solução que traz resultados imediatos e mensuráveis. O Tráfego Pago, aliado a uma segmentação avançada e otimização contínua, é a ferramenta certa para transformar cliques em clientes e expandir sua presença digital.
+
+              <section
+                id="contato"
+                style={{ padding: "2rem", maxWidth: "900px", margin: "auto" }}
+              >
+                <h2
+                  style={{
+                    fontSize: "1.5rem",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Próximo Passo
+                </h2>
+                <p style={{ marginBottom: "1rem" }}>
+                  Se você quer campanhas com funil completo, relatórios claros,
+                  vamos conversar.
                 </p>
-                <p>
-                  Nossa equipe está pronta para planejar, executar e monitorar campanhas que atendam às especificidades do seu negócio. Com uma abordagem transparente e orientada a resultados, trabalhamos lado a lado com nossos clientes para superar desafios e alcançar o sucesso.
-                </p>
-                <p>
-                  Não deixe que a insegurança e a incerteza comprometam o crescimento da sua empresa. Descubra como anúncios bem planejados podem acelerar seu desempenho no mercado e gerar um retorno sobre investimento que realmente faça a diferença.
-                </p>
+                <a
+                  href="https://jveiga.dev/#/contact"
+                  style={{
+                    display: "inline-block",
+                    padding: "1rem 2rem",
+                    backgroundColor: "#007bff",
+                    color: "#fff",
+                    textDecoration: "none",
+                    marginTop: "1rem",
+                  }}
+                >
+                  Solicite seu plano de tráfego hoje
+                </a>
+                <p style={{ marginTop: "1rem" }}>Ou entre em contato direto:</p>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p>📱</p>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Facebook%20Ads%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p>📧</p>
+                  <a href="mailto:mktweb.veiga@gmail.com?subject=Informa%C3%A7%C3%B5es%20sobre%20campanhas%20de%20tr%C3%A1fego%20no%20Google&body=Ol%C3%A1%2C%0A%0AVi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Google%20e%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es.%0A%0AObrigado.">
+                    Email
+                  </a>
+                </div>
               </section>
-              <footer>
-                <p>
-                  Está pronto para impulsionar seu negócio com campanhas de Tráfego Pago estratégicas e eficazes? Conheça nossas soluções e transforme seu investimento em resultados concretos.
-                </p>
-                <button onclick="location.href='/detalhes-trafego-pago'" type="button">Saiba Mais</button>
-              </footer>
             </article>
           </TextContent>
         </Content>
       </TextWrapper>
     </Container>
   );
-}
+};
 
 export default SocialDetail;

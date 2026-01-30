@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 export const slideInLeft = keyframes`
   from {
@@ -33,20 +33,21 @@ export const fadeIn = keyframes`
 
 export const Container = styled.div`
   /* min-height: 100vh; */
-  text-align: center;
+  /* text-align: center; */
   position: relative;
   width: 100vw;
-  background-color: ${({ darkMode }) => (darkMode ? 'black' : 'white')};
-  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
+  background-color: ${({ darkMode }) => (darkMode ? "black" : "white")};
+  color: ${({ darkMode }) => (darkMode ? "white" : "black")};
   transition: background-color 0.5s, color 0.5s;
 `;
 
 export const ImageWrapper = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? fadeIn : 'none')} 2s ease-out;
+  animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 2s ease-out;
 `;
 
 export const TextWrapper = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? slideInLeft : 'none')} 1s ease-out;
+  animation: ${({ isVisible }) => (isVisible ? slideInLeft : "none")} 1s
+    ease-out;
 `;
 
 export const Image = styled.img`
@@ -73,22 +74,30 @@ export const Overlay = styled.div`
 export const TitleContentImage = styled.div`
   display: flex;
   align-items: baseline;
-  height: 3rem;
-  margin-bottom: 1.5rem;
+  justify-content: center;
+  /* height: 3rem; */
+  /* margin-bottom: 1.5rem; */
 
   h2 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 3rem;
     font-weight: 700;
     animation: ${slideInRight} 1s ease-out;
+    text-align: center;
+
+    @media screen and (min-width: 320px) and (max-width: 460px) {
+      font-size: 2rem;
+      padding: 0%.5rem 0;
+    }
   }
 
   strong {
     font-size: 3rem;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-weight: 100;
     animation: ${slideInRight} 1s ease-out;
   }
+  
 `;
 
 export const TitleContent = styled.div`
@@ -129,23 +138,26 @@ export const ToggleButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  color: ${({ darkMode }) => (darkMode ? '#FFD700' : '#5F61B5')};
+  color: ${({ darkMode }) => (darkMode ? "#FFD700" : "#5F61B5")};
   font-size: 1.5rem;
 `;
 
 export const GradientText = styled.span`
-  background: ${({ darkMode }) => (darkMode ? 'none' : 'linear-gradient(135deg, #8F91D9, #5F61B5)')};
+  background: ${({ darkMode }) =>
+    darkMode ? "none" : "linear-gradient(135deg, #8F91D9, #5F61B5)"};
   -webkit-background-clip: text;
-  -webkit-text-fill-color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
-  color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
+  -webkit-text-fill-color: ${({ darkMode }) =>
+    darkMode ? "#FFD700" : "transparent"};
+  color: ${({ darkMode }) => (darkMode ? "#FFD700" : "transparent")};
 `;
 
 export const ListWrapper = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    text-align: start;
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
 
-    &ul, li {
-        list-style: disc;
-    }
-`
+  &ul,
+  li {
+    list-style: disc;
+  }
+`;

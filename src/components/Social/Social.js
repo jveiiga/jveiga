@@ -22,14 +22,14 @@ const Social = () => {
   }, [inView]);
 
   return (
-    <SocialSession id="social">
+    <SocialSession id="facebook">
       <SocialWrapper id="social-wrapper">
         <BackgroundImage id="creative-image" src={require('../../assets/images/background/social-background.jpg')} alt="Social Background" />
         <Overlay />
         <SocialContentWrapper>
             <SocialContent ref={ref} className={inView ? 'animate' : ''}>
               <TitleContent>
-                <strong>Mídia&nbsp;</strong><h2>Social</h2>
+                <strong>Facebook&nbsp;</strong><h2>Ads</h2>
               </TitleContent>
               <p>Gestão inteligente para engajamento, alcance e conversões.</p>
               <Button as={Link} to="/social-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button> 

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 export const slideInLeft = keyframes`
   from {
@@ -33,51 +33,57 @@ export const fadeIn = keyframes`
 
 export const Container = styled.div`
   /* min-height: 100vh; */
-  text-align: center;
+  /* text-align: center; */
   position: relative;
-  width: 100vw;
-  background-color: ${({ darkMode }) => (darkMode ? 'black' : 'white')};
-  color: ${({ darkMode }) => (darkMode ? 'white' : 'black')};
+  width: 100%;
+  overflow-x: hidden;
+  background-color: ${({ darkMode }) => (darkMode ? "black" : "white")};
+  color: ${({ darkMode }) => (darkMode ? "white" : "black")};
   transition: background-color 0.5s, color 0.5s;
 `;
 
 export const ImageWrapper = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? fadeIn : 'none')} 2s ease-out;
+  position: relative;
+  animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 2s ease-out;
+  overflow-x: hidden;
 `;
 
 export const TextWrapper = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? slideInLeft : 'none')} 1s ease-out;
+  animation: ${({ isVisible }) => (isVisible ? slideInLeft : "none")} 1s
+    ease-out;
 `;
 
 export const Image = styled.img`
-  width: 100vw;
+  width: 100%;
   height: 40vh;
   object-fit: cover;
+  display: block;
 `;
 
 export const Overlay = styled.div`
   position: absolute;
-  top: 0;
+  inset: 0;
+  /* top: 0;
   left: 0;
   width: 100%;
-  height: 40vh;
+  min-height: 40vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
+  padding: 2rem;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   animation: ${fadeIn} 3s ease-out;
 `;
 
 export const TitleContentImage = styled.div`
   display: flex;
-  align-items: baseline;
-  height: 3rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  padding: 1rem 3rem;
 
   h2 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 3rem;
     font-weight: 700;
     animation: ${slideInRight} 1s ease-out;
@@ -85,17 +91,23 @@ export const TitleContentImage = styled.div`
 
   strong {
     font-size: 3rem;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-weight: 100;
     animation: ${slideInRight} 1s ease-out;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 640px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+    strong {
+      font-size: 2.5rem;
+    }
   }
 `;
 
 export const TitleContent = styled.div`
   padding: 0 2rem;
-  h1 {
-    font-size: 2rem;
-  }
 `;
 
 export const TextContent = styled.div`
@@ -129,13 +141,15 @@ export const ToggleButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  color: ${({ darkMode }) => (darkMode ? '#FFD700' : '#5F61B5')};
+  color: ${({ darkMode }) => (darkMode ? "#FFD700" : "#5F61B5")};
   font-size: 1.5rem;
 `;
 
 export const GradientText = styled.span`
-  background: ${({ darkMode }) => (darkMode ? 'none' : 'linear-gradient(135deg, #8F91D9, #5F61B5)')};
+  background: ${({ darkMode }) =>
+    darkMode ? "none" : "linear-gradient(135deg, #8F91D9, #5F61B5)"};
   -webkit-background-clip: text;
-  -webkit-text-fill-color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
-  color: ${({ darkMode }) => (darkMode ? '#FFD700' : 'transparent')};
+  -webkit-text-fill-color: ${({ darkMode }) =>
+    darkMode ? "#FFD700" : "transparent"};
+  color: ${({ darkMode }) => (darkMode ? "#FFD700" : "transparent")};
 `;
