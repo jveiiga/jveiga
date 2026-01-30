@@ -80,7 +80,7 @@ const AgencyDetail = () => {
           <TextContent>
             <article id="agency">
               <main
-                id="trafego-pago"
+                id="site-empresarial"
                 style={{
                   margin: "3rem auto",
                   maxWidth: "960px",
@@ -88,129 +88,121 @@ const AgencyDetail = () => {
               >
                 <header style={{ marginBottom: "2rem" }}>
                   <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-                    Tráfego Pago: clientes certos, no momento certo
+                    Por que sua empresa precisa de um site (mesmo que você ache
+                    que não)
                   </h1>
                   <p>
-                    Anunciar não é gastar dinheiro. É investir com estratégia
-                    para gerar vendas previsíveis.
+                    Se sua empresa não está na internet, ela simplesmente não
+                    existe para a maioria dos seus potenciais clientes.
                   </p>
                 </header>
 
                 <article>
                   <section style={{ marginBottom: "2rem" }}>
                     <p>
-                      Todos os dias, pessoas entram no Instagram e Facebook
-                      prontas para comprar. A diferença entre você e seus
-                      concorrentes é simples: eles aparecem, você não.
+                      Pense comigo: quando foi a última vez que você procurou um
+                      produto ou serviço sem antes fazer uma pesquisa rápida no
+                      Google?
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      O erro da maioria das empresas
+                      O Que você está perdendo agora mesmo
                     </h2>
                     <p>
-                      Muitas empresas até anunciam, mas sem estratégia.
-                      Campanhas genéricas, público errado e dinheiro
-                      desperdiçado.
+                      Enquanto você lê isso, pessoas estão procurando exatamente
+                      o que você oferece. Elas estão encontrando seus
+                      concorrentes, não você.
                     </p>
                     <p>
-                      Tráfego pago sem planejamento não gera vendas. Gera
-                      frustração.
+                      Seus clientes já estão online. A questão não é se você
+                      precisa estar lá, mas quanto dinheiro está deixando de
+                      ganhar todos os dias sem presença digital.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      O que o tráfego pago bem feito entrega
+                      Os benefícios reais de ter um site
                     </h2>
                     <ul style={{ paddingLeft: "1.2rem" }}>
                       <li>
-                        <strong>Visibilidade imediata:</strong> seu negócio
-                        aparece desde o primeiro dia.
+                        <strong>Credibilidade instantânea:</strong> um site
+                        profissional gera confiança imediata.
                       </li>
                       <li>
-                        <strong>Público qualificado:</strong> anúncios para quem
-                        realmente tem interesse.
+                        <strong>Disponível 24/7:</strong> seu site trabalha por
+                        você o tempo todo.
                       </li>
                       <li>
-                        <strong>Controle total:</strong> você decide quanto
-                        investir e quando parar.
+                        <strong>Vendedor mais barato:</strong> responde dúvidas
+                        comuns sem consumir seu tempo.
                       </li>
                       <li>
-                        <strong>Escala:</strong> o que funciona pode ser
-                        multiplicado.
+                        <strong>Alcance ampliado:</strong> clientes de outras
+                        cidades passam a te encontrar.
                       </li>
                       <li>
-                        <strong>Dados reais:</strong> decisões baseadas em
-                        números, não achismo.
+                        <strong>Controle da imagem:</strong> você define como
+                        sua empresa é apresentada.
                       </li>
                     </ul>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      “Já tentei anunciar e não funcionou”
+                      “Mas eu já tenho instagram...”
                     </h2>
                     <p>
-                      O problema raramente é a plataforma. Normalmente é a
-                      estratégia, a segmentação ou a mensagem errada.
-                    </p>
-                    <p>
-                      Quando tudo está alinhado, o tráfego pago se paga — e
-                      sobra.
+                      Redes sociais são importantes, mas não são suas. Seu site
+                      é seu território. Ninguém muda as regras, ninguém tira do
+                      ar.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      Quanto custa não anunciar?
+                      O Custo Real de Não Ter um Site
                     </h2>
                     <p>
-                      Cada dia sem tráfego é um dia entregando clientes para o
-                      concorrente.
+                      Quantos clientes você precisa ganhar para pagar um site?
+                      Provavelmente menos de cinco. Quantos você já perdeu por
+                      não ser encontrado?
                     </p>
                     <p>
-                      Enquanto você espera, alguém está aparecendo exatamente
-                      onde seu cliente está olhando.
+                      Um site não é custo. É investimento. E se paga sozinho.
                     </p>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      Tráfego pago não precisa ser complicado
+                      Não precisa ser complicado
                     </h2>
                     <ul style={{ paddingLeft: "1.2rem" }}>
-                      <li>Objetivo claro</li>
-                      <li>Mensagem direta</li>
-                      <li>Público bem definido</li>
-                      <li>Acompanhamento e otimização contínua</li>
+                      <li>Mostrar quem você é e o que faz</li>
+                      <li>Transmitir confiança</li>
+                      <li>Facilitar o contato</li>
+                      <li>Estar disponível quando o cliente procurar</li>
                     </ul>
                   </section>
 
                   <section style={{ marginBottom: "2rem" }}>
                     <h2 style={{ marginBottom: "1rem" }}>
-                      A escolha é estratégica
+                      A decisão é simples
                     </h2>
                     <p>
-                      Ou você depende da sorte, ou constrói um fluxo constante
-                      de clientes.
+                      Ou você continua invisível para quem já procura seu
+                      serviço, ou decide ser encontrado.
                     </p>
-                    <p>
-                      Negócio que cresce não espera ser descoberto. Ele aparece.
-                    </p>
+                    <p>Seus concorrentes já escolheram. E você?</p>
                   </section>
 
-                  <section>
-                    <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-                      Próximo passo
-                    </h2>
-
+                  <footer style={{ marginTop: "2rem" }}>
                     <p style={{ marginBottom: "1rem" }}>
-                      Se você quer campanhas estruturadas, previsíveis e focadas
-                      em resultado, vamos conversar.
+                      Pronto para ser encontrado pelos clientes certos? Vamos
+                      conversar e colocar sua empresa no mapa digital.
                     </p>
-
                     <a
                       href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20desenvolvimento%20de%20sites%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
                       target="_blank"
@@ -226,7 +218,7 @@ const AgencyDetail = () => {
                     >
                       Solicite seu orçamento de sites hoje
                     </a>
-                  </section>
+                  </footer>
                 </article>
               </main>
             </article>
