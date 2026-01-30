@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.6b543b5d.js",
+    "main.js": "/static/js/main.ee87e98b.js",
     "static/media/dev1-background.jpg": "/static/media/dev1-background.604138a7be64510faee0.jpg",
     "static/media/google-detail-background.jpg": "/static/media/google-detail-background.36327a957a4a9008ad3e.jpg",
+    "static/media/gmn-background.png": "/static/media/gmn-background.c697df9d3613a22fc9d2.png",
+    "static/media/gmn1-background.png": "/static/media/gmn1-background.d5c6bd84491c6753e162.png",
     "static/media/dev-background.jpg": "/static/media/dev-background.d1ff635a064f70e25516.jpg",
     "static/media/google-background.jpg": "/static/media/google-background.aa9511a7f567816478be.jpg",
     "static/media/myimage-background.png": "/static/media/myimage-background.7fbe4927fc1b01ac30ee.png",
-    "static/media/marketing-background.jpg": "/static/media/marketing-background.54d018bcc2b50b75dfdf.jpg",
     "static/media/desenvolvimento-background.jpeg": "/static/media/desenvolvimento-background.56c5db4c5db38acb1c64.jpeg",
     "static/media/instagram-logo.png": "/static/media/instagram-logo.fec8881ae2639ea4a6c0.png",
     "static/media/facebook-logo.png": "/static/media/facebook-logo.cc1ec5be52186967f5db.png",
     "static/media/thankyou-background.jpg": "/static/media/thankyou-background.3549fb87871c0cd01537.jpg",
     "static/media/google-logo.png": "/static/media/google-logo.80b83630f88fa1c6e714.png",
     "static/media/meta-logo.png": "/static/media/meta-logo.265e1433383ef18bbcf2.png",
-    "static/media/agencyTwo-background.jpg": "/static/media/agencyTwo-background.822f2846fdc471ac4137.jpg",
     "static/media/social-background.jpg": "/static/media/social-background.d9186b0a24318f8a38aa.jpg",
     "static/media/canva-logo.png": "/static/media/canva-logo.46b2002f3c6f5bc56507.png",
     "static/media/youtube-logo.png": "/static/media/youtube-logo.1a5387ef290309c31eb6.png",
@@ -25,16 +25,15 @@
     "static/media/spring-logo.png": "/static/media/spring-logo.df25efeb9e2273d98840.png",
     "static/media/arrow-circle-up.png": "/static/media/arrow-circle-up.19f3d5e571bd8d7d7524.png",
     "static/media/next-logo.png": "/static/media/next-logo.36036eb4965d9a68bbd0.png",
-    "static/media/marketingTwo-background.jpg": "/static/media/marketingTwo-background.1d066661d0bd7132cc84.jpg",
     "static/media/react-logo.png": "/static/media/react-logo.b37f0a4b7134b3c99d6e.png",
     "static/media/css-logo.png": "/static/media/css-logo.5491a3b05b4addb59c15.png",
     "static/media/html-logo.png": "/static/media/html-logo.397540dec969b31fd37c.png",
     "index.html": "/index.html",
     "static/media/github.svg": "/static/media/github.3b4375b1cacddb7910737e992dd73aad.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.540f6bb939a10fe0badbc26387374d38.svg",
-    "main.6b543b5d.js.map": "/static/js/main.6b543b5d.js.map"
+    "main.ee87e98b.js.map": "/static/js/main.ee87e98b.js.map"
   },
   "entrypoints": [
-    "static/js/main.6b543b5d.js"
+    "static/js/main.ee87e98b.js"
   ]
 }
