@@ -348,7 +348,7 @@ const Contact = () => {
     },
     {
       plan: "Pacote Completo Básico",
-      value: "R$ 1.200,00 (pagamento único)",
+      value: "R$ 700,00 (pagamento único)",
       details: "Tudo para começar",
       services: [
         "Configuração do Google Meu Negócio",
