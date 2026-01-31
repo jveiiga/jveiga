@@ -193,9 +193,6 @@ const SocialDetail = () => {
                   <a
                     id="btn_social"
                     href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Facebook%20Ads%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-                    target="_blank"
-                    rel="noreferrer"
-                    onclick="dataLayer.push({event:'click_link', button_id:'btn_social'})"
                     style={{
                       display: "inline-block",
                       padding: "1rem 2rem",
