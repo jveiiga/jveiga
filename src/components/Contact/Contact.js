@@ -34,14 +34,16 @@ import {
   FlagTitle,
   ServiceItemFlag,
   FlagContent,
-  ServiceListFlag,
-  ItemFlagRules,
+  // ServiceListFlag,
+  // ItemFlagRules,
 } from "./ContactStyled";
 import Footer from "../Footer/Footer";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
-  const [cards, setCards] = useState([]);
+  const [cardsBasic, setCardsBasic] = useState([]);
+  const [cardsIntermediate, setCardsIntermediate] = useState([]);
+  const [cardsPremium, setCardsPremium] = useState([]);
   const formRef = useRef(null);
 
   const { ref: formInViewRef, inView: formInView } = useInView({
@@ -50,160 +52,438 @@ const Contact = () => {
   });
   const [formVisible, setFormVisible] = useState(false);
 
-  const { ref: titleCardRef, inView: titleCardInView } = useInView({
+  const { ref: titleCardBasicRef, inView: titleCardBasicInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const { ref: titleFlagsRef, inView: titleFlagsInView } = useInView({
+  const { ref: titleCardIntermediateRef, inView: titleCardIntermediateInView } =
+    useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+  const { ref: titleCardPremiumRef, inView: titleCardPremiumInView } =
+    useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+  const { ref: titleFlagsBasicRef, inView: titleFlagsBasicInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const { ref: flagLeftRef, inView: flagLeftInView } = useInView({
+  const {
+    ref: titleFlagsIntermediateRef,
+    inView: titleFlagsIntermediateInView,
+  } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const { ref: flagCenterRef, inView: flagCenterInView } = useInView({
+  const { ref: titleFlagsPremiumRef, inView: titleFlagsPremiumInView } =
+    useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+
+  // Refs para flags do Básico
+  const { ref: flagBasicLeftRef, inView: flagBasicLeftInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const { ref: flagRightRef, inView: flagRightInView } = useInView({
+  const { ref: flagBasicCenterRef, inView: flagBasicCenterInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: flagBasicRightRef, inView: flagBasicRightInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const cardContents = useMemo(
+  // Refs para flags do Intermediário
+  const { ref: flagIntermediateLeftRef, inView: flagIntermediateLeftInView } =
+    useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+  // const {
+  //   ref: flagIntermediateCenterRef,
+  //   inView: flagIntermediateCenterInView,
+  // } = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.1,
+  // });
+  // const { ref: flagIntermediateRightRef, inView: flagIntermediateRightInView } =
+  //   useInView({
+  //     triggerOnce: true,
+  //     threshold: 0.1,
+  //   });
+
+  // Refs para flags do Premium
+  const { ref: flagPremiumLeftRef, inView: flagPremiumLeftInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: flagPremiumCenterRef, inView: flagPremiumCenterInView } =
+    useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+  const { ref: flagPremiumRightRef, inView: flagPremiumRightInView } =
+    useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+
+  // ========== OBJETO 1: PLANOS BÁSICOS (Sites) ==========
+  const cardContentsBasic = useMemo(
     () => [
+      {
+        id: 2,
+        title: "Landing Page",
+        plan: "de R$ 300,00",
+        description:
+          "Landing page, criada para capturar leads e gerar oportunidades de negócio de forma prática e objetiva.",
+        services: [
+          "Design responsivo",
+          "Integração com WhatsApp",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
+        ],
+      },
       {
         id: 1,
         title: "Site Institucional",
-        plan: "de R$ 2.000,00",
+        plan: "de R$ 500,00",
         description:
-          "Site profissional para posicionar sua marca, transmitir confiança e apresentar seus serviços de forma clara e estratégica.",
+          "Site institucional, desenvolvido para apresentar a empresa de forma clara, profissional e objetiva, reforçando credibilidade e presença digital.",
         services: [
           "Até 5 páginas",
-          "UI/UX completo (arquitetura de informação)",
           "Design responsivo",
-          "Copy institucional",
-          "SEO on-page",
           "Integração com WhatsApp",
-          "Hospedagem + Domínio",
-        ],
-      },
-      {
-        id: 2,
-        title: "Landing Page de Conversão",
-        plan: "de R$ 1.500,00",
-        description:
-          "Página estratégica focada em geração de leads, criada para converter tráfego em oportunidades reais de negócio.",
-        services: [
-          "UI/UX orientado à conversão",
-          "Copy estratégica",
-          "Design responsivo",
-          "SEO básico",
-          "Integração com WhatsApp e formulário",
-          "Pixel de rastreamento",
-          "Hospedagem + Domínio",
-        ],
-      },
-      {
-        id: 3,
-        title: "Página de Vendas",
-        plan: "de R$ 2.000,00",
-        description:
-          "Página persuasiva desenvolvida para vender produtos ou serviços, com foco em conversão e tomada de decisão.",
-        services: [
-          "UI/UX persuasivo",
-          "Copy de vendas",
-          "Design responsivo",
-          "SEO básico",
-          "Integração com pagamento ou WhatsApp",
-          "Pixel e eventos de conversão",
-          "Hospedagem + Domínio",
-        ],
-      },
-      {
-        id: 4,
-        title: "Site para Campanhas e Lançamentos",
-        plan: "de R$ 2.200,00",
-        description:
-          "Site dinâmico e direto para campanhas promocionais e lançamentos, focado em impacto imediato e ação rápida.",
-        services: [
-          "UI/UX dinâmico",
-          "Copy focada em campanha",
-          "Design responsivo",
-          "SEO básico",
-          "Integrações de conversão",
-          "Pixel de rastreamento",
-          "Hospedagem + Domínio",
-        ],
-      },
-      {
-        id: 5,
-        title: "Site One Page",
-        plan: "de R$ 1.200,00",
-        description:
-          "Site objetivo em uma única página, ideal para presença digital rápida com clareza e profissionalismo.",
-        services: [
-          "UI/UX simplificado",
-          "Copy objetiva",
-          "Design responsivo",
-          "SEO básico",
-          "Integração com WhatsApp",
-          "Hospedagem + Domínio",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
         ],
       },
     ],
     []
   );
 
-  const flagContents = [
+  // ========== OBJETO 2: PLANOS INTERMEDIÁRIOS (Sites) ==========
+  const cardContentsIntermediate = useMemo(
+    () => [
+      {
+        id: 2,
+        title: "Landing Page",
+        plan: "de R$ 600,00",
+        description:
+          "Página estratégica, desenvolvida para conversão, com foco em captar leads, direcionar ações e maximizar resultados de campanhas digitais.",
+        services: [
+          "Página única otimizada para conversão",
+          "Design responsivo",
+          "Integração com WhatsApp",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
+          "Formulário de contato funcional",
+          "SEO básico",
+        ],
+      },
+      {
+        id: 1,
+        title: "Site Institucional",
+        plan: "de R$ 800,00",
+        description:
+          "Estrutura mais completa, desenvolvido para apresentar serviços, diferenciais e fortalecer a autoridade da marca, mantendo foco em clareza, performance e experiência do usuário.",
+        services: [
+          "Até 5 páginas",
+          "Design responsivo",
+          "Integração com WhatsApp",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Performance otimizada (carregamento rápido)",
+        ],
+      },
+      {
+        id: 3,
+        title: "Página de vendas",
+        plan: "de R$ 1.000,00",
+        description:
+          "Estruturada para persuadir, destacar benefícios e conduzir o visitante à decisão de compra, com foco em conversão e resultados.",
+        services: [
+          "Página de vendas completa",
+          "Copywriting persuasivos",
+          "Design responsivo",
+          "Integração com WhatsApp + botão de compra",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Otimização para conversão (CTA visível, provas sociais, estrutura AIDA)",
+        ],
+      },
+    ],
+    []
+  );
+
+  // ========== OBJETO 3: PLANOS PREMIUM (Sites) ==========
+  const cardContentsPremium = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "One page estratégica",
+        plan: "R$ 1.000,00",
+        description:
+          "Apresentação objetiva do negócio em uma única página, rápida, clara e eficiente.",
+        services: [
+          "Prototipação UI/UX",
+          "Copywriting persuasivo",
+          "Design responsivo",
+          "Integração com WhatsApp",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Otimização para conversão (leitura fluida e CTA claro)",
+        ],
+      },
+      {
+        id: 2,
+        title: "Landing page de alta conversão",
+        plan: "R$ 1.200,00",
+        description:
+          "Foco total em conversão, ideal para captação de leads e suporte a campanhas de tráfego pago.",
+        services: [
+          "Prototipação UI/UX",
+          "Copywriting persuasivo",
+          "Design responsivo",
+          "Integração com WhatsApp",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Otimização para conversão (CTA visível e hierarquia visual)",
+        ],
+      },
+      {
+        id: 3,
+        title: "Página para campanhas e lançamentos",
+        plan: "R$ 1.800,00",
+        description:
+          "Páginas criadas para ações pontuais, lançamentos e campanhas com foco em conversão imediata.",
+        services: [
+          "Prototipação UI/UX",
+          "Copywriting persuasivo",
+          "Design responsivo",
+          "Integração com WhatsApp + CTA estratégico",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Otimização para conversão (urgência, escassez e CTA)",
+        ],
+      },
+      {
+        id: 4,
+        title: "Página de vendas completa",
+        plan: "R$ 2.000,00",
+        description:
+          "Parceria estratégica completa com gestão 360º. Para empresas que querem dominar o mercado digital.",
+        services: [
+          "Prototipação UI/UX focada em jornada de compra",
+          "Copywriting persuasivo",
+          "Design responsivo",
+          "Integração com WhatsApp + botão de compra",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Otimização para conversão (CTA visível, provas sociais, estrutura AIDA)",
+        ],
+      },
+      {
+        id: 5,
+        title: "Site Institucional",
+        plan: "R$ 3.500,00",
+        description:
+          "Site completo para fortalecer a presença digital, transmitir credibilidade e gerar contatos qualificados.",
+        services: [
+          "Até 7 páginas institucionais",
+          "Prototipação UI/UX (wireframe + layout)",
+          "Copywriting estratégico",
+          "Design responsivo",
+          "Integração com WhatsApp",
+          "Instalação de pixel de rastreamento (Meta e/ou GA4)",
+          "Hospedagem + domínio por 1 ano",
+          "Formulário de contato funcional",
+          "SEO básico",
+          "Otimização de performance e usabilidade",
+        ],
+      },
+    ],
+    []
+  );
+
+  // ========== OBJETO 4: FLAGS BÁSICO (Tráfego Pago) ==========
+  const flagContentsBasic = [
     {
-      plan: "Trimestral",
-      value: "R$ 2.400,00",
-      details: "3 parcelas de R$ 800,00",
+      plan: "Google Meu Negócio",
+      value: "R$ 300,00",
+      details: "Setup inicial completo",
       services: [
-        "Gestão de tráfego em Meta Ads (Facebook e Instagram)",
-        "Estruturação completa de campanhas, públicos e funil",
-        "Configuração de pixel e eventos de conversão",
-        "Otimização contínua",
-        "Relatório mensal de desempenho",
-        "Suporte via WhatsApp",
-        "Sem ajustes de landing page",
-        "Cadastro e otimização do Google Meu Negócio",
+        "Criação ou atualização de perfil",
+        "Otimização de categorias",
+        "Upload de fotos e logo",
+        "Configuração de horários",
+        "Suporte básico",
+      ],
+    },
+    {
+      plan: "Google meu negócio + Landing Page",
+      value: "R$ 400,00",
+      details: "Presença digital básica",
+      services: [
+        "Google Meu Negócio completo",
+        "Landing page com 5 seções",
+        "Design básico",
+        "Sem copy profissional",
+        "Sem UI/UX avançado",
+        "Hospedagem incluída",
+      ],
+    },
+    {
+      plan: "Pacote Completo Básico",
+      value: "R$ 1.200,00 (pagamento único)",
+      details: "Tudo para começar",
+      services: [
+        "Configuração do Google Meu Negócio",
+        "Landing page básica",
+        "Tráfego pago inicial com recorrência de R$ 400,00/mês (sem permanência mínima)",
+        "Gestão de anúncios no Facebook ou Google Ads",
+        "Otimizações semanais de campanhas",
+        "Ajustes de criativos e públicos",
+        "Monitoramento básico de métricas",
+        "Relatório mensal simples",
+        "Suporte básico",
+        "Configuração inicial de campanhas",
+        "Verba de anúncios e criativos não inclusos",
+      ],
+    },
+  ];
+
+  // ========== OBJETO 5: FLAGS INTERMEDIÁRIO (Tráfego Pago) ==========
+  const flagContentsIntermediate = [
+    {
+      plan: "Pacote Intermediário",
+      value: "R$ 1.400,00 (pagamento único)",
+      details: "Presença digital estruturada",
+      services: [
+        "Configuração completa do Google Meu Negócio",
+        "Site institucional",
+        "Copywriting básico orientado à conversão",
+        "Tráfego pago inicial",
+        "Gestão de tráfego pago - R$ 600,00/mês (sem permanência mínima)",
+        "Gestão de anúncios no Facebook OU Google Ads",
+        "Otimizações semanais de campanhas",
+        "Ajustes de criativos e públicos",
+        "Monitoramento de métricas",
+        "Relatório semanal das métricas da campanha",
+        "Suporte padrão",
+        "Verba de anúncios e criativos não inclusos",
+      ],
+    },
+    {
+      plan: "Pacote Intermediário Plus",
+      value: "R$ 1.600,00 (pagamento único)",
+      details: "Estrutura completa para conversão",
+      services: [
+        "Google Meu Negócio otimizado + consultoria estratégica",
+        "Site institucional",
+        "Copywriting persuasivo orientado à conversão",
+        "Tráfego pago inicial otimizado",
+        "Gestão de tráfego pago - R$ 800,00/mês (sem permanência mínima)",
+        "Gestão de anúncios no Facebook E Google Ads (multicanal)",
+        "Otimizações semanais com testes A/B",
+        "Monitoramento avançado e análise de métricas",
+        "Relatório de métricas semanal detalhado + reunião mensal",
+        "Suporte prioritário",
         "Verba de anúncios não inclusa",
       ],
     },
     {
-      plan: "Semestral",
-      value: "R$ 6.000,00",
-      details: "6 parcelas de R$ 1.000,00",
+      plan: "Pacote Intermediário Pro",
+      value: "R$ 1.900,00 (pagamento único)",
+      details: "Performance máxima com gestão completa",
       services: [
-        "Gestão de tráfego em Meta Ads ou Google Ads",
-        "Planejamento estratégico de aquisição",
-        "Segmentação avançada e análise de dados",
-        "Configuração e acompanhamento de conversões",
-        "Otimização contínua",
-        "Relatório quinzenal de desempenho",
-        "Suporte via WhatsApp e e-mail",
-        "Ajustes básicos em landing pages",
-        "Cadastro e otimização do Google Meu Negócio",
+        "Google Meu Negócio otimizado + consultoria estratégica",
+        "Site institucional",
+        "Copywriting persuasivo estratégico",
+        "Tráfego pago inicial com estratégia multicanal",
+        "Gestão de tráfego pago - R$ 1.100,00/mês (sem permanência mínima)",
+        "Gestão de anúncios no Facebook, Google Ads e remarketing",
+        "Otimizações semanais com testes A/B contínuos",
+        "Monitoramento em tempo real e análise preditiva",
+        "Relatório semanal do perfil de negócios google + reunião mensal de estratégia",
+        "Suporte VIP com atendimento prioritário",
+        "Dashboard personalizado de métricas",
+        "Verba de anúncios não inclusa",
+      ],
+    },
+  ];
+
+  // ========== OBJETO 6: FLAGS PREMIUM (Tráfego Pago) ==========
+  const flagContentsPremium = [
+    {
+      plan: "Pacote Premium",
+      value: "R$ 2.200,00 (pagamento único)",
+      details: "Estratégia completa de alta performance",
+      services: [
+        "Google Meu Negócio otimizado com estratégia de SEO local",
+        "One page estratégica com prototipação UI/UX",
+        "Copywriting persuasivo profissional",
+        "Tráfego pago inicial com estratégia multicanal",
+        "Gestão de tráfego pago - R$ 1.200,00/mês (sem permanência mínima)",
+        "Gestão de anúncios no Facebook, Google Ads e remarketing",
+        "Otimizações semanais com testes A/B contínuos",
+        "Monitoramento em tempo real com análise preditiva",
+        "Relatório de métricas semanal + reunião quinzenal",
+        "Suporte VIP com atendimento prioritário",
+        "Dashboard personalizado de métricas",
         "Verba de anúncios não inclusa",
       ],
     },
     {
-      plan: "Anual",
-      value: "R$ 18.000,00",
-      details: "12 parcelas de R$ 1.500,00",
+      plan: "Pacote Premium Plus",
+      value: "R$ 2.700,00 (pagamento único)",
+      details: "Máxima conversão com estrutura avançada",
       services: [
-        "Gestão de tráfego em Meta Ads, Google Ads e YouTube",
-        "Estratégia completa de aquisição e escala",
-        "Redistribuição de orçamento entre canais",
-        "Configuração avançada de eventos e funis",
-        "Otimização contínua",
-        "Relatórios detalhados e insights estratégicos mensais",
-        "Suporte prioritário 24/7 via WhatsApp e e-mail",
-        "Criação e ajustes completos em landing pages",
-        "Cadastro e otimização do Google Meu Negócio",
+        "Google Meu Negócio otimizado + estratégia de reputação online",
+        "Landing page de alta conversão com prototipação UI/UX completa",
+        "Copywriting persuasivo estratégico com storytelling",
+        "Tráfego pago inicial com funil completo de conversão",
+        "Gestão de tráfego pago - R$ 1.500,00/mês (sem permanência mínima)",
+        "Gestão de anúncios multicanal (Facebook, Google, remarketing e YouTube)",
+        "Otimizações diárias com testes A/B avançados",
+        "Monitoramento 24/7",
+        "Relatório semanal do google meu negócio + reunião semanal de estratégia",
+        "Suporte VIP dedicado",
+        "Dashboard personalizado com BI avançado",
+        "Consultoria estratégica mensal",
+        "Verba de anúncios não inclusa",
+      ],
+    },
+    {
+      plan: "Pacote Premium Pro",
+      value: "R$ 4.000,00 (pagamento único)",
+      details: "Solução enterprise para domínio total do mercado",
+      services: [
+        "Google Meu Negócio + estratégia completa de presença digital",
+        "Página de vendas completa com prototipação UI/UX focada em jornada",
+        "Copywriting persuasivo master com gatilhos psicológicos",
+        "Tráfego pago inicial com funil avançado",
+        "Gestão de tráfego pago - R$ 2.000,00/mês (sem permanência mínima)",
+        "Gestão omnichannel (Facebook, Google, YouTube e remarketing)",
+        "Monitoramento 24/7",
+        "Relatório diário + reunião estratégica semanal + revisão mensal",
+        "Suporte VIP exclusivo",
+        "Dashboard enterprise",
+        "Consultoria estratégica quinzenal",
+        "Análise de concorrência mensal",
         "Verba de anúncios não inclusa",
       ],
     },
@@ -215,27 +495,35 @@ const Contact = () => {
     }
   }, [formInView]);
 
-  const loadMoreCards = useCallback(() => {
-    setCards((prevCards) => [...prevCards, ...cardContents]);
-  }, [cardContents]);
+  // Load cards Básico
+  const loadMoreCardsBasic = useCallback(() => {
+    setCardsBasic((prevCards) => [...prevCards, ...cardContentsBasic]);
+  }, [cardContentsBasic]);
 
   useEffect(() => {
-    loadMoreCards();
-  }, [loadMoreCards]);
+    loadMoreCardsBasic();
+  }, [loadMoreCardsBasic]);
 
-  const handleScroll = useCallback(() => {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - 500
-    ) {
-      loadMoreCards();
-    }
-  }, [loadMoreCards]);
+  // Load cards Intermediário
+  const loadMoreCardsIntermediate = useCallback(() => {
+    setCardsIntermediate((prevCards) => [
+      ...prevCards,
+      ...cardContentsIntermediate,
+    ]);
+  }, [cardContentsIntermediate]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+    loadMoreCardsIntermediate();
+  }, [loadMoreCardsIntermediate]);
+
+  // Load cards Premium
+  const loadMoreCardsPremium = useCallback(() => {
+    setCardsPremium((prevCards) => [...prevCards, ...cardContentsPremium]);
+  }, [cardContentsPremium]);
+
+  useEffect(() => {
+    loadMoreCardsPremium();
+  }, [loadMoreCardsPremium]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -261,94 +549,112 @@ const Contact = () => {
       });
   };
 
-  // Hook para detectar qual card está visível
-  const [activeCard, setActiveCard] = useState(0);
-  const { ref: cardRef1, inView: card1InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef2, inView: card2InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef3, inView: card3InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef4, inView: card4InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef5, inView: card5InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef6, inView: card6InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef7, inView: card7InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef8, inView: card8InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef9, inView: card9InView } = useInView({ threshold: 0.9 });
-  const { ref: cardRef10, inView: card10InView } = useInView({
+  // Hooks para detectar card ativo (Básico)
+  const [activeCardBasic, setActiveCardBasic] = useState(0);
+  const { ref: cardBasicRef1, inView: cardBasic1InView } = useInView({
+    threshold: 0.9,
+  });
+  const { ref: cardBasicRef2, inView: cardBasic2InView } = useInView({
+    threshold: 0.9,
+  });
+  const { ref: cardBasicRef3, inView: cardBasic3InView } = useInView({
+    threshold: 0.9,
+  });
+  const { ref: cardBasicRef4, inView: cardBasic4InView } = useInView({
+    threshold: 0.9,
+  });
+  const { ref: cardBasicRef5, inView: cardBasic5InView } = useInView({
     threshold: 0.9,
   });
 
   useEffect(() => {
-    // Lógica para verificar se o primeiro card está visível
-    if (card1InView) {
-      setActiveCard(0); // Define o primeiro card como ativo
-    } else if (card2InView) {
-      setActiveCard(1); // Define o segundo card como ativo
-    } else if (card3InView) {
-      setActiveCard(2); // Define o terceiro card como ativo
-    } else if (card4InView) {
-      setActiveCard(3); // Define o quarto card como ativo
-    } else if (card5InView) {
-      setActiveCard(4); // Define o quinto card como ativo
-    } else if (card6InView) {
-      setActiveCard(5); // Define o sexto card como ativo
-    } else if (card7InView) {
-      setActiveCard(6); // Define o sétimo card como ativo
-    } else if (card8InView) {
-      setActiveCard(7); // Define o oitavo card como ativo
-    } else if (card9InView) {
-      setActiveCard(8); // Define o nono card como ativo
-    } else if (card10InView) {
-      setActiveCard(9); // Define o décimo card como ativo
-    }
+    if (cardBasic1InView) setActiveCardBasic(0);
+    else if (cardBasic2InView) setActiveCardBasic(1);
+    else if (cardBasic3InView) setActiveCardBasic(2);
+    else if (cardBasic4InView) setActiveCardBasic(3);
+    else if (cardBasic5InView) setActiveCardBasic(4);
   }, [
-    card1InView,
-    card2InView,
-    card3InView,
-    card4InView,
-    card5InView,
-    card6InView,
-    card7InView,
-    card8InView,
-    card9InView,
-    card10InView,
+    cardBasic1InView,
+    cardBasic2InView,
+    cardBasic3InView,
+    cardBasic4InView,
+    cardBasic5InView,
   ]);
+
+  // Hooks para detectar card ativo (Intermediário)
+  const [activeCardIntermediate, setActiveCardIntermediate] = useState(0);
+  const { ref: cardIntermediateRef1, inView: cardIntermediate1InView } =
+    useInView({ threshold: 0.9 });
+  const { ref: cardIntermediateRef2, inView: cardIntermediate2InView } =
+    useInView({ threshold: 0.9 });
+  const { ref: cardIntermediateRef3, inView: cardIntermediate3InView } =
+    useInView({ threshold: 0.9 });
+  const { ref: cardIntermediateRef4, inView: cardIntermediate4InView } =
+    useInView({ threshold: 0.9 });
+
+  useEffect(() => {
+    if (cardIntermediate1InView) setActiveCardIntermediate(0);
+    else if (cardIntermediate2InView) setActiveCardIntermediate(1);
+    else if (cardIntermediate3InView) setActiveCardIntermediate(2);
+    else if (cardIntermediate4InView) setActiveCardIntermediate(3);
+  }, [
+    cardIntermediate1InView,
+    cardIntermediate2InView,
+    cardIntermediate3InView,
+    cardIntermediate4InView,
+  ]);
+
+  // Hooks para detectar card ativo (Premium)
+  const [activeCardPremium, setActiveCardPremium] = useState(0);
+  const { ref: cardPremiumRef1, inView: cardPremium1InView } = useInView({
+    threshold: 0.9,
+  });
+  const { ref: cardPremiumRef2, inView: cardPremium2InView } = useInView({
+    threshold: 0.9,
+  });
+  const { ref: cardPremiumRef3, inView: cardPremium3InView } = useInView({
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (cardPremium1InView) setActiveCardPremium(0);
+    else if (cardPremium2InView) setActiveCardPremium(1);
+    else if (cardPremium3InView) setActiveCardPremium(2);
+  }, [cardPremium1InView, cardPremium2InView, cardPremium3InView]);
 
   return (
     <ContactWrapper>
+      {/* ============ SEÇÃO BÁSICO ============ */}
       <TitleCard
-        ref={titleCardRef}
-        className={titleCardInView ? "animate" : ""}
+        ref={titleCardBasicRef}
+        className={titleCardBasicInView ? "animate" : ""}
       >
-        <h1>Preços para Criação de Sites Exclusivos</h1>
+        <h1>
+          Preços para Criação de Sites Exclusivos{" "}
+          <span style={{ color: "#32CD32", textDecoration: "underline" }}>
+            Básicos
+          </span>
+        </h1>
       </TitleCard>
       <CardWrapper>
-        {cards.map((card, index) => (
+        {cardsBasic.map((card, index) => (
           <Card
             key={index}
             ref={
               index === 0
-                ? cardRef1
+                ? cardBasicRef1
                 : index === 1
-                ? cardRef2
+                ? cardBasicRef2
                 : index === 2
-                ? cardRef3
+                ? cardBasicRef3
                 : index === 3
-                ? cardRef4
+                ? cardBasicRef4
                 : index === 4
-                ? cardRef5
-                : index === 5
-                ? cardRef6
-                : index === 6
-                ? cardRef7
-                : index === 7
-                ? cardRef8
-                : index === 8
-                ? cardRef9
-                : index === 9
-                ? cardRef10
+                ? cardBasicRef5
                 : null
             }
-            className={`${index === activeCard ? "active" : ""} ${
-              titleCardInView ? "rotate" : ""
+            className={`${index === activeCardBasic ? "active" : ""} ${
+              titleCardBasicInView ? "rotate" : ""
             }`}
           >
             <CardContent>
@@ -357,8 +663,8 @@ const Contact = () => {
               <CardPlan>{card.plan}</CardPlan>
               <CardDescription>{card.description}</CardDescription>
               <ServicesList>
-                {card.services.map((service, index) => (
-                  <ServiceItemCard key={index}>{service}</ServiceItemCard>
+                {card.services.map((service, idx) => (
+                  <ServiceItemCard key={idx}>{service}</ServiceItemCard>
                 ))}
               </ServicesList>
             </CardContent>
@@ -368,27 +674,38 @@ const Contact = () => {
 
       <ContainerFlags>
         <TitleFlags
-          ref={titleFlagsRef}
-          className={titleFlagsInView ? "animate" : ""}
+          ref={titleFlagsBasicRef}
+          className={titleFlagsBasicInView ? "animate" : ""}
         >
-          <h2>Planos Estratégicos de Tráfego Pago</h2>
+          <h2>
+            Planos de Serviços -{" "}
+            <span style={{ color: "#32CD32", textDecoration: "underline" }}>
+              Básico
+            </span>
+          </h2>
         </TitleFlags>
         <FlagsWrapper>
-          {flagContents.map((flag, index) => (
+          {flagContentsBasic.map((flag, index) => (
             <Flag
               key={index}
               ref={
                 index === 0
-                  ? flagLeftRef
+                  ? flagBasicLeftRef
                   : index === 1
-                  ? flagCenterRef
-                  : flagRightRef
+                  ? flagBasicCenterRef
+                  : flagBasicRightRef
               }
               className={`${
-                index === 0 ? (flagLeftInView ? "animate-left" : "") : ""
+                index === 0 ? (flagBasicLeftInView ? "animate-left" : "") : ""
               } ${
-                index === 1 ? (flagCenterInView ? "animate-center" : "") : ""
-              } ${index === 2 ? (flagRightInView ? "animate-right" : "") : ""}`}
+                index === 1
+                  ? flagBasicCenterInView
+                    ? "animate-center"
+                    : ""
+                  : ""
+              } ${
+                index === 2 ? (flagBasicRightInView ? "animate-right" : "") : ""
+              }`}
             >
               <FlagContent>
                 <FlagTitle>{flag.plan}</FlagTitle>
@@ -397,52 +714,200 @@ const Contact = () => {
                 <CardDetails>{flag.details}</CardDetails>
                 <hr style={{ width: "100%", border: "1px solid #333" }} />
                 <ServicesList>
-                  {flag.services.map((service, serviceIndex) => {
-                    if (typeof service === "string") {
-                      return (
-                        <ServiceItemFlag key={serviceIndex}>
-                          {service}
-                        </ServiceItemFlag>
-                      );
-                    } else if (
-                      typeof service === "object" &&
-                      service.description
-                    ) {
-                      return (
-                        <ServiceListFlag key={serviceIndex}>
-                          {service.description}
-                          <ItemFlagRules>
-                            {service.rules.map((rule, ruleIndex) => {
-                              if (
-                                typeof rule === "object" &&
-                                rule.delivery_times
-                              ) {
-                                return (
-                                  <li key={ruleIndex}>
-                                    {Object.entries(rule.delivery_times).map(
-                                      ([key, value]) => (
-                                        <div key={key}>
-                                          {key}: {value}
-                                        </div>
-                                      )
-                                    )}
-                                  </li>
-                                );
-                              }
-                              return <li key={ruleIndex}>{rule}</li>;
-                            })}
-                          </ItemFlagRules>
-                        </ServiceListFlag>
-                      );
-                    }
-                    return null;
-                  })}
+                  {flag.services.map((service, serviceIndex) => (
+                    <ServiceItemFlag key={serviceIndex}>
+                      {service}
+                    </ServiceItemFlag>
+                  ))}
                 </ServicesList>
               </FlagContent>
             </Flag>
           ))}
         </FlagsWrapper>
       </ContainerFlags>
+
+      {/* ============ SEÇÃO INTERMEDIÁRIO ============ */}
+      <TitleCard
+        ref={titleCardIntermediateRef}
+        className={titleCardIntermediateInView ? "animate" : ""}
+      >
+        <h1>
+          Planos de Serviços{" "}
+          <span style={{ color: "#32CD32", textDecoration: "underline" }}>
+            Intermediário
+          </span>
+        </h1>
+      </TitleCard>
+      <CardWrapper>
+        {cardsIntermediate.map((card, index) => (
+          <Card
+            key={index}
+            ref={
+              index === 0
+                ? cardIntermediateRef1
+                : index === 1
+                ? cardIntermediateRef2
+                : index === 2
+                ? cardIntermediateRef3
+                : index === 3
+                ? cardIntermediateRef4
+                : null
+            }
+            className={`${index === activeCardIntermediate ? "active" : ""} ${
+              titleCardIntermediateInView ? "rotate" : ""
+            }`}
+          >
+            <CardContent>
+              <CardTitle>{card.title}</CardTitle>
+              <p style={{ padding: "15px 0" }}>A partir de:</p>
+              <CardPlan>{card.plan}</CardPlan>
+              <CardDescription>{card.description}</CardDescription>
+              <ServicesList>
+                {card.services.map((service, idx) => (
+                  <ServiceItemCard key={idx}>{service}</ServiceItemCard>
+                ))}
+              </ServicesList>
+            </CardContent>
+          </Card>
+        ))}
+      </CardWrapper>
+
+      <ContainerFlags>
+        <TitleFlags
+          ref={titleFlagsIntermediateRef}
+          className={titleFlagsIntermediateInView ? "animate" : ""}
+        >
+          <h2>
+            Plano de Tráfego -{" "}
+            <span style={{ color: "#32CD32", textDecoration: "underline" }}>
+              Intermediário
+            </span>
+          </h2>
+        </TitleFlags>
+        <FlagsWrapper>
+          {flagContentsIntermediate.map((flag, index) => (
+            <Flag
+              key={index}
+              ref={flagIntermediateLeftRef}
+              className={flagIntermediateLeftInView ? "animate-center" : ""}
+            >
+              <FlagContent>
+                <FlagTitle>{flag.plan}</FlagTitle>
+                <p style={{ padding: "10px 0", color: "#FFF" }}>A partir de:</p>
+                <CardPlan>{flag.value}</CardPlan>
+                <CardDetails>{flag.details}</CardDetails>
+                <hr style={{ width: "100%", border: "1px solid #333" }} />
+                <ServicesList>
+                  {flag.services.map((service, serviceIndex) => (
+                    <ServiceItemFlag key={serviceIndex}>
+                      {service}
+                    </ServiceItemFlag>
+                  ))}
+                </ServicesList>
+              </FlagContent>
+            </Flag>
+          ))}
+        </FlagsWrapper>
+      </ContainerFlags>
+
+      {/* ============ SEÇÃO PREMIUM ============ */}
+      <TitleCard
+        ref={titleCardPremiumRef}
+        className={titleCardPremiumInView ? "animate" : ""}
+      >
+        <h1>
+          Planos de Serviços{" "}
+          <span style={{ color: "#32CD32", textDecoration: "underline" }}>
+            Premium
+          </span>
+        </h1>
+      </TitleCard>
+      <CardWrapper>
+        {cardsPremium.map((card, index) => (
+          <Card
+            key={index}
+            ref={
+              index === 0
+                ? cardPremiumRef1
+                : index === 1
+                ? cardPremiumRef2
+                : index === 2
+                ? cardPremiumRef3
+                : null
+            }
+            className={`${index === activeCardPremium ? "active" : ""} ${
+              titleCardPremiumInView ? "rotate" : ""
+            }`}
+          >
+            <CardContent>
+              <CardTitle>{card.title}</CardTitle>
+              <p style={{ padding: "15px 0" }}>A partir de:</p>
+              <CardPlan>{card.plan}</CardPlan>
+              <CardDescription>{card.description}</CardDescription>
+              <ServicesList>
+                {card.services.map((service, idx) => (
+                  <ServiceItemCard key={idx}>{service}</ServiceItemCard>
+                ))}
+              </ServicesList>
+            </CardContent>
+          </Card>
+        ))}
+      </CardWrapper>
+
+      <ContainerFlags>
+        <TitleFlags
+          ref={titleFlagsPremiumRef}
+          className={titleFlagsPremiumInView ? "animate" : ""}
+        >
+          <h2>Planos Estratégicos de Tráfego Pago - <span style={{ color: "#32CD32", textDecoration: "underline" }}>Premium</span></h2>
+        </TitleFlags>
+        <FlagsWrapper>
+          {flagContentsPremium.map((flag, index) => (
+            <Flag
+              key={index}
+              ref={
+                index === 0
+                  ? flagPremiumLeftRef
+                  : index === 1
+                  ? flagPremiumCenterRef
+                  : flagPremiumRightRef
+              }
+              className={`${
+                index === 0 ? (flagPremiumLeftInView ? "animate-left" : "") : ""
+              } ${
+                index === 1
+                  ? flagPremiumCenterInView
+                    ? "animate-center"
+                    : ""
+                  : ""
+              } ${
+                index === 2
+                  ? flagPremiumRightInView
+                    ? "animate-right"
+                    : ""
+                  : ""
+              }`}
+            >
+              <FlagContent>
+                <FlagTitle>{flag.plan}</FlagTitle>
+                <p style={{ padding: "10px 0", color: "#FFF" }}>A partir de:</p>
+                <CardPlan>{flag.value}</CardPlan>
+                <CardDetails>{flag.details}</CardDetails>
+                <hr style={{ width: "100%", border: "1px solid #333" }} />
+                <ServicesList>
+                  {flag.services.map((service, serviceIndex) => (
+                    <ServiceItemFlag key={serviceIndex}>
+                      {service}
+                    </ServiceItemFlag>
+                  ))}
+                </ServicesList>
+              </FlagContent>
+            </Flag>
+          ))}
+        </FlagsWrapper>
+      </ContainerFlags>
+
+      {/* ============ FORMULÁRIO ============ */}
       <FormWrapper>
         <FormContainer ref={formInViewRef}>
           <FormTitle className={formVisible ? "visible" : ""}>

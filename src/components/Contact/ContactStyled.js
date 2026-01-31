@@ -254,7 +254,7 @@ export const Card = styled.div`
   &.active {  
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgb(203, 52, 43);
+    border: 2px solid #32CD32;
   }
 
   @media screen and (min-width: 320px) and (max-width: 460px) {
@@ -276,7 +276,7 @@ export const CardImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
-  border: 2px solid rgb(203, 52, 43);
+  border: 2px solid #28a745;
 `;
 
 export const CardTitle = styled.h3`
@@ -293,7 +293,7 @@ export const CardPlan = styled.div`
   font-size: 2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  color: rgb(203, 52, 43);
+  color: #32CD32;
   margin-bottom: 1rem;
   border-radius: 20px;
 `;
@@ -329,7 +329,7 @@ export const ServiceItemCard = styled.li`
   
   &:before {
     content: "✓";
-    color: rgb(203, 52, 43);
+    color: #32CD32;
     margin-right: 0.5rem;
   }
   
@@ -348,7 +348,7 @@ export const ServiceItemFlag = styled.li`
   
   &:before {
     content: "✓";
-    color: rgb(203, 52, 43);
+    color: #32CD32;
     margin-right: 0.5rem;
   }
   
@@ -366,7 +366,7 @@ export const ServiceListFlag = styled.li`
   
   &:before {
     content: "✓";
-    color: rgb(203, 52, 43);
+    color: #32CD32;
     margin-right: 0.5rem;
   }
   
@@ -476,7 +476,7 @@ export const Input = styled.input`
   
   &:focus {
     outline: none;
-    border-color: rgb(203, 52, 43);
+    border-color: #32CD32;
     box-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
   }
   
@@ -489,7 +489,7 @@ export const SubmitButton = styled.button`
   grid-column: 1 / -1;
   margin-top: 1rem;
   padding: 1rem;
-  background-color: rgb(203, 52, 43);
+  background-color: #32CD32;
   color: white;
   border: none;
   border-radius: 5px;
