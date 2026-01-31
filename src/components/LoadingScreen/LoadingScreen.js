@@ -19,6 +19,9 @@ import facebookLogo from '../../assets/images/logo/facebook-logo.png';
 import instagramLogo from '../../assets/images/logo/instagram-logo.png';
 import youtubeLogo from '../../assets/images/logo/youtube-logo.png';
 import nextLogo from '../../assets/images/logo/next-logo.png';
+import gmn from '../../assets/images/logo/logo-gmn.png';
+import ga4 from '../../assets/images/logo/logo-ga4.png';
+import googleads from '../../assets/images/logo/logo-google-ads.png';
 
 
 const logos = [
@@ -39,7 +42,10 @@ const logos = [
   { src: facebookLogo, alt: 'Facebook Logo' },
   { src: instagramLogo, alt: 'Instagram Logo' },
   { src: youtubeLogo, alt: 'Youtube Logo' },
-  { src: nextLogo, alt: 'Next Logo' }
+  { src: gmn, alt: 'Google meu negócio Logo' },
+  { src: ga4, alt: 'GA4 Logo' },
+  { src: googleads, alt: 'Google Ads Logo' },
+  { src: nextLogo, alt: 'Next Logo' },
 ];
 
 const LoadingScreen = () => {
