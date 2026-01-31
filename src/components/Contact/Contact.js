@@ -103,18 +103,14 @@ const Contact = () => {
       triggerOnce: true,
       threshold: 0.1,
     });
-  // const {
-  //   ref: flagIntermediateCenterRef,
-  //   inView: flagIntermediateCenterInView,
-  // } = useInView({
-  //   triggerOnce: true,
-  //   threshold: 0.1,
-  // });
-  // const { ref: flagIntermediateRightRef, inView: flagIntermediateRightInView } =
-  //   useInView({
-  //     triggerOnce: true,
-  //     threshold: 0.1,
-  //   });
+
+  const {
+    ref: flagIntermediateCenterRef,
+    inView: flagIntermediateCenterInView,
+  } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  const { ref: flagIntermediateRightRef, inView: flagIntermediateRightInView } =
+    useInView({ triggerOnce: true, threshold: 0.1 });
 
   // Refs para flags do Premium
   const { ref: flagPremiumLeftRef, inView: flagPremiumLeftInView } = useInView({
@@ -787,10 +783,29 @@ const Contact = () => {
         <FlagsWrapper>
           {flagContentsIntermediate.map((flag, index) => (
             <Flag
-              key={index}
-              ref={flagIntermediateLeftRef}
-              className={flagIntermediateLeftInView ? "animate-center" : ""}
-            >
+            key={index}
+            ref={
+              index === 0
+                ? flagIntermediateLeftRef
+                : index === 1
+                ? flagIntermediateCenterRef
+                : flagIntermediateRightRef
+            }
+            className={`${
+              index === 0
+                ? flagIntermediateLeftInView
+                  ? "animate-left"
+                  : ""
+                : index === 1
+                ? flagIntermediateCenterInView
+                  ? "animate-center"
+                  : ""
+                : flagIntermediateRightInView
+                ? "animate-right"
+                : ""
+            }`}
+          >
+          
               <FlagContent>
                 <FlagTitle>{flag.plan}</FlagTitle>
                 <p style={{ padding: "10px 0", color: "#FFF" }}>A partir de:</p>
@@ -859,7 +874,12 @@ const Contact = () => {
           ref={titleFlagsPremiumRef}
           className={titleFlagsPremiumInView ? "animate" : ""}
         >
-          <h2>Planos Estratégicos de Tráfego Pago - <span style={{ color: "#32CD32", textDecoration: "underline" }}>Premium</span></h2>
+          <h2>
+            Planos Estratégicos de Tráfego Pago -{" "}
+            <span style={{ color: "#32CD32", textDecoration: "underline" }}>
+              Premium
+            </span>
+          </h2>
         </TitleFlags>
         <FlagsWrapper>
           {flagContentsPremium.map((flag, index) => (
