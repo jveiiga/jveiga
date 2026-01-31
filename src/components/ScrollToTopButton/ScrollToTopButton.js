@@ -5,8 +5,15 @@ import { Image, ScrollButton } from './ScrollToTopButton.styled';
 
 const ScrollToTopButton = () => {
   const scrollToTop = () => {
-    document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
+    const home = document.querySelector('#home');
+  
+    if (home) {
+      home.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
+  
 
   return (
     <ScrollButton onClick={scrollToTop}>

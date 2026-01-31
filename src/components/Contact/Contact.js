@@ -38,6 +38,8 @@ import {
   // ItemFlagRules,
 } from "./ContactStyled";
 import Footer from "../Footer/Footer";
+import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -783,29 +785,28 @@ const Contact = () => {
         <FlagsWrapper>
           {flagContentsIntermediate.map((flag, index) => (
             <Flag
-            key={index}
-            ref={
-              index === 0
-                ? flagIntermediateLeftRef
-                : index === 1
-                ? flagIntermediateCenterRef
-                : flagIntermediateRightRef
-            }
-            className={`${
-              index === 0
-                ? flagIntermediateLeftInView
-                  ? "animate-left"
+              key={index}
+              ref={
+                index === 0
+                  ? flagIntermediateLeftRef
+                  : index === 1
+                  ? flagIntermediateCenterRef
+                  : flagIntermediateRightRef
+              }
+              className={`${
+                index === 0
+                  ? flagIntermediateLeftInView
+                    ? "animate-left"
+                    : ""
+                  : index === 1
+                  ? flagIntermediateCenterInView
+                    ? "animate-center"
+                    : ""
+                  : flagIntermediateRightInView
+                  ? "animate-right"
                   : ""
-                : index === 1
-                ? flagIntermediateCenterInView
-                  ? "animate-center"
-                  : ""
-                : flagIntermediateRightInView
-                ? "animate-right"
-                : ""
-            }`}
-          >
-          
+              }`}
+            >
               <FlagContent>
                 <FlagTitle>{flag.plan}</FlagTitle>
                 <p style={{ padding: "10px 0", color: "#FFF" }}>A partir de:</p>
@@ -1015,6 +1016,8 @@ const Contact = () => {
         </FormContainer>
       </FormWrapper>
       <Footer />
+      <WhatsAppButton />
+      <ScrollToTopButton />
     </ContactWrapper>
   );
 };
