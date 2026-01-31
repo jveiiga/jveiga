@@ -6,6 +6,7 @@ import { FloatingButton } from "./WhatsAppButton.styled";
 const WhatsAppButton = () => {
   return (
     <FloatingButton
+       id="btn_whatsapp"
       href="https://wa.me/5511915181487"
       target="_blank"
       rel="noreferrer"

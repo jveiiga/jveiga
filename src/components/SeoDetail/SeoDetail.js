@@ -245,6 +245,7 @@ const SeoDetail = () => {
                   </p>
 
                   <a
+                    id="btn_seo"
                     href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20campanhas%20de%20tr%C3%A1fego%20no%20Google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
                     target="_blank"
                     rel="noreferrer"
