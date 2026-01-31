@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.5f352e2b.js",
+    "main.js": "/static/js/main.b8d42aea.js",
     "static/media/dev1-background.jpg": "/static/media/dev1-background.604138a7be64510faee0.jpg",
     "static/media/google-detail-background.jpg": "/static/media/google-detail-background.36327a957a4a9008ad3e.jpg",
     "static/media/gmn-background.png": "/static/media/gmn-background.c697df9d3613a22fc9d2.png",
@@ -11,12 +11,15 @@
     "static/media/desenvolvimento-background.jpeg": "/static/media/desenvolvimento-background.56c5db4c5db38acb1c64.jpeg",
     "static/media/instagram-logo.png": "/static/media/instagram-logo.fec8881ae2639ea4a6c0.png",
     "static/media/facebook-logo.png": "/static/media/facebook-logo.cc1ec5be52186967f5db.png",
+    "static/media/logo-gmn.png": "/static/media/logo-gmn.30e19faf9accc782e7c9.png",
     "static/media/thankyou-background.jpg": "/static/media/thankyou-background.3549fb87871c0cd01537.jpg",
+    "static/media/logo-google-ads.png": "/static/media/logo-google-ads.956c10d1bf258f61e685.png",
     "static/media/google-logo.png": "/static/media/google-logo.80b83630f88fa1c6e714.png",
     "static/media/meta-logo.png": "/static/media/meta-logo.265e1433383ef18bbcf2.png",
     "static/media/social-background.jpg": "/static/media/social-background.d9186b0a24318f8a38aa.jpg",
     "static/media/canva-logo.png": "/static/media/canva-logo.46b2002f3c6f5bc56507.png",
     "static/media/youtube-logo.png": "/static/media/youtube-logo.1a5387ef290309c31eb6.png",
+    "static/media/logo-ga4.png": "/static/media/logo-ga4.910c16eb0669e758c6ca.png",
     "static/media/github-logo.png": "/static/media/github-logo.55ab879d91a0fb9107af.png",
     "static/media/git-logo.png": "/static/media/git-logo.145c0a5dac0064d27443.png",
     "static/media/node-logo.png": "/static/media/node-logo.323d9e1cd747283e16fb.png",
@@ -31,9 +34,9 @@
     "index.html": "/index.html",
     "static/media/github.svg": "/static/media/github.3b4375b1cacddb7910737e992dd73aad.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.540f6bb939a10fe0badbc26387374d38.svg",
-    "main.5f352e2b.js.map": "/static/js/main.5f352e2b.js.map"
+    "main.b8d42aea.js.map": "/static/js/main.b8d42aea.js.map"
   },
   "entrypoints": [
-    "static/js/main.5f352e2b.js"
+    "static/js/main.b8d42aea.js"
   ]
 }
