@@ -210,9 +210,6 @@ const MarketingDetail = () => {
                     <a
                       id="btn_marketing"
                       href="https://wa.me/5511915181487?text=Ol%C3%A1%2C%20vi%20que%20voc%C3%AA%20trabalha%20com%20otimiza%C3%A7%C3%A3o%20de%20Google%20meu%20neg%C3%B3cio%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
-                      target="_blank"
-                      rel="noreferrer"
-                      // onclick="dataLayer.push({event:'click_link', button_id:'btn_marketing'})"
                       style={{
                         display: "inline-block",
                         padding: "1rem 2rem",
