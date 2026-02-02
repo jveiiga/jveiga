@@ -6,6 +6,8 @@ const WhatsAppButton = () => {
   return (
     <FloatingButton
       id="btn_whatsapp"
+      target="_blank"
+      rel="noopener noreferrer"
       href="https://wa.me/5511915181487"
       variant="whatsapp"
       aria-label="Fale conosco no WhatsApp"
