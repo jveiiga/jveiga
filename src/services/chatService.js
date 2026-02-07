@@ -1,4 +1,8 @@
-const CHAT_WEBHOOK = process.env.REACT_APP_N8N_CHAT_WEBHOOK;
+const isProduction = window.location.hostname !== 'localhost';
+
+const CHAT_WEBHOOK = isProduction 
+  ? "https://jveiga.app.n8n.cloud/webhook/12dd23ea-01bd-49d6-99cc-e8066280c6c1"
+  : "/webhook/12dd23ea-01bd-49d6-99cc-e8066280c6c1";
 
 export const sendMessage = async (chatInput, sessionId) => {
     const response = await fetch(CHAT_WEBHOOK, {
