@@ -20,7 +20,7 @@ import HamburgerMenu from "../MenuHamburguer/MenuHamburguer";
 
 const Header = ({ currentPath }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState("#home");
+  const [activeLink, setActiveLink] = useState("#sobre");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -92,7 +92,7 @@ const Header = ({ currentPath }) => {
 
   return (
     <HeaderWrapper scrolled={isScrolled ? "true" : undefined}>
-      <NavLink href="#home" onClick={(e) => handleClick(e, "home")}>
+      <NavLink href="#sobre" onClick={(e) => handleClick(e, "sobre")}>
         <Logo src={logoImage} alt="Logo" />
       </NavLink>
       <NavWrapper>
@@ -100,61 +100,61 @@ const Header = ({ currentPath }) => {
           <NavList>
             <NavItem>
               <NavLink
-                href="#home"
-                onClick={(e) => handleClick(e, "home")}
-                className={activeLink === "#home" ? "active" : ""}
+                href="#sobre"
+                onClick={(e) => handleClick(e, "sobre")}
+                className={activeLink === "#sobre" ? "active" : ""}
               >
-                Home
+                Sobre Mim
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#web developer"
-                onClick={(e) => handleClick(e, "web developer")}
-                className={activeLink === "#web developer" ? "active" : ""}
+                href="#cases"
+                onClick={(e) => handleClick(e, "cases")}
+                className={activeLink === "#cases" ? "active" : ""}
               >
-                Web Developer
+                Cases
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#google"
-                onClick={(e) => handleClick(e, "google")}
-                className={activeLink === "#google" ? "active" : ""}
+                href="#habilidades"
+                onClick={(e) => handleClick(e, "habilidades")}
+                className={activeLink === "#habilidades" ? "active" : ""}
               >
-                Google
+                Habilidades
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#facebook"
-                onClick={(e) => handleClick(e, "facebook")}
-                className={activeLink === "#facebook" ? "active" : ""}
+                href="#blog"
+                onClick={(e) => handleClick(e, "blog")}
+                className={activeLink === "#blog" ? "active" : ""}
               >
-                Facebook
+                Blog
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#gmn"
-                onClick={(e) => handleClick(e, "gmn")}
-                className={activeLink === "#gmn" ? "active" : ""}
+                href="#rjveiga"
+                onClick={(e) => handleClick(e, "rjveiga")}
+                className={activeLink === "#rjveiga" ? "active" : ""}
               >
-                Gmn
+                RJVEIGA
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
                 as={Link}
-                to="/contact"
-                className={activeLink === "#contact" ? "active" : ""}
+                to="/contato"
+                className={activeLink === "#contato" ? "active" : ""}
               >
-                Contact
+                Contato
               </NavLink>
             </NavItem>
           </NavList>

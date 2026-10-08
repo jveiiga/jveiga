@@ -20,10 +20,10 @@ const Home = () => {
           <Overlay />
           <HomeContent className={isVisible ? 'animate' : ''}>
             <TitleContent>
-              <strong>Soluções&nbsp;</strong>
-              <p>Estratégicas</p>
+              <strong>Olá, tudo bem?&nbsp;</strong>
+              <p>Sou Jeferson, muito prazer!</p>
             </TitleContent>
-            <h1>Desenvolvimento de Sites & Tráfego Pago</h1>
+            <h1>Sites, conteúdo para redes sociais & tráfego pago</h1>
             {/* <Button as={Link} to="/home-detail">Saber Mais</Button> */}
           </HomeContent>
         </HomeWrapper>

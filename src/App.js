@@ -101,8 +101,8 @@ const App = () => {
         <>
           <WhatsAppButton />
           <ScrollToTopButton />
-          <ChatButton onClick={() => setOpen(true)} />
-          <ChatModal open={open} onClose={() => setOpen(false)} />
+          {/* <ChatButton onClick={() => setOpen(true)} /> */}
+          {/* <ChatModal open={open} onClose={() => setOpen(false)} /> */}
         </>
       )}
     </>
