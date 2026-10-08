@@ -56,10 +56,11 @@ export const HomeContent = styled.div`
   }
 
   h1 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
     text-transform: uppercase;
+    min-height: 1.5rem;
   }
 `;
 
@@ -73,16 +74,16 @@ export const TitleContent = styled.div`
 
  
   p {
-    font-size: 2.6rem;
+    font-size: 2rem;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+    font-weight: 900;
     /* text-transform: uppercase; */
   }
 
   strong {
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: 'Raleway', sans-serif;
-    font-weight: 100;
+    font-weight: 500;
   }
 `;
 
