@@ -118,7 +118,7 @@ const Home = () => {
               {showDevelopment && developmentText && (
                 <span>{developmentText}</span>
               )}{" "}
-              <span>{currentWord}</span>
+              <span style={{ fontWeight: 500 }}>{currentWord}</span>
             </h1>
           </HomeContent>
         </HomeWrapper>

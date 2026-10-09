@@ -62,6 +62,7 @@ export const HomeContent = styled.div`
     text-transform: uppercase;
     min-height: 1.5rem;
   }
+
 `;
 
 export const TitleContent = styled.div`
@@ -83,7 +84,7 @@ export const TitleContent = styled.div`
   strong {
     font-size: 2rem;
     font-family: 'Raleway', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
   }
 `;
 
