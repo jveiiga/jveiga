@@ -33,7 +33,7 @@ const Agency = () => {
             <TitleContent>
               <strong>Presença&nbsp;</strong><h2>Digital</h2>
             </TitleContent>
-            <p>Desenvolvimento de sites para alcance, visibilidade e conversões</p>
+            <p>Desenvolvimento de sites & landing pages para alcance, visibilidade e conversões</p>
             <Button as={Link} to="/agency-detail" className={isVisible ? 'animate' : ''}>Saber Mais</Button>
           </AgencyContent>
         </AgencyContentWrapper>
