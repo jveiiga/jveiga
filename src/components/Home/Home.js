@@ -13,6 +13,7 @@ const Home = () => {
   const words = [
     "de sites",
     "de landing pages",
+    "de automações",
     "de conteúdo para redes sociais",
     "gerenciamento de tráfego pago",
   ];
@@ -38,7 +39,7 @@ const Home = () => {
     const word = words[wordIndex];
 
     // Entrando em "gerenciamento de tráfego"
-    if (wordIndex === 3 && showDevelopment) {
+    if (wordIndex === 4 && showDevelopment) {
       const timeout = setTimeout(() => {
         setShowDevelopment(false);
       }, 80);
@@ -47,7 +48,7 @@ const Home = () => {
     }
 
     // Voltando para "sites" ou "conteúdo..."
-    if (wordIndex !== 3 && !showDevelopment) {
+    if (wordIndex !== 4 && !showDevelopment) {
       setShowDevelopment(true);
       setDevelopmentText("");
 
@@ -85,7 +86,7 @@ const Home = () => {
             setIsDeleting(false);
             setWordIndex((prev) => (prev + 1) % words.length);
 
-            if (wordIndex === 3) {
+            if (wordIndex === 4) {
               setIsTypingDevelopment(true);
             }
           }
