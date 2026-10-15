@@ -14,10 +14,11 @@ const HamburgerMenu = () => {
     e.preventDefault();
     console.log(`Clicked on: ${href}`);
     setIsOpen(false);
-  
+
     if (href === 'contact') {
-      navigate('/contact'); // Navega para a página de contato
-      console.log('Navegou para /#/contact');
+      navigate('/contact');
+    } else if (href === 'privacy-policy') {
+      navigate('/privacy-policy');
     } else if (window.location.hash !== '#/') {
       // Se não estiver na página principal, navega para a página principal
       navigate('/#/');
@@ -43,7 +44,7 @@ const HamburgerMenu = () => {
         console.error('Seção não encontrada:', href);
       }
     }
-  }; 
+  };
 
   return (
     <MenuContainer>
@@ -52,11 +53,15 @@ const HamburgerMenu = () => {
       </MenuButton>
       <MenuList isOpen={isOpen}>
         <Logo src={logoImage} alt="Logo" />
-        {['home', 'web developer', 'google', 'facebook', 'gmn', 'contact'].map((href, index) => (
+        {['home', 'web developer', 'google', 'facebook', 'gmn', 'contact', 'privacy-policy'].map((href, index) => (
           <MenuItem key={href} isOpen={isOpen} index={index}>
             <a href={href === 'contact' ? '/contact' : `#${href}`} onClick={(e) => handleItemClick(e, href)}>
               <span className="menu-number">{index + 1}.</span>
-              <span className="menu-text">{href.charAt(0).toUpperCase() + href.slice(1)}</span>
+              <span className="menu-text">
+                {href === 'privacy-policy'
+                  ? 'Política de Privacidade'
+                  : href.charAt(0).toUpperCase() + href.slice(1)}
+              </span>
             </a>
           </MenuItem>
         ))}

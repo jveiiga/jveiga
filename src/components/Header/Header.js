@@ -41,7 +41,7 @@ const Header = ({ currentPath }) => {
           });
         }, options);
         sections.forEach((section) => observer.observe(section));
-        
+
 
         const handleScroll = () => {
           setIsScrolled(window.scrollY > 50);

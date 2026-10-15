@@ -26,6 +26,7 @@ import WhatsAppButton from "./components/WhatsAppButton/WhatsAppButton";
 import MarketingDetail from "./components/MarketingDetail/MaketingDetail";
 import ChatButton from "./components/ChatBotButton/ChatBotButton";
 import ChatModal from "./components/ChatBotButton/ChatModal";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -47,6 +48,7 @@ const App = () => {
     "/marketing-detail",
     "/contact",
     "/thanks",
+    "/privacy-policy",
   ].includes(location.pathname);
 
   return (
@@ -92,6 +94,7 @@ const App = () => {
             <Route path="/marketing-detail" element={<MarketingDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thanks" element={<ThankYou />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
