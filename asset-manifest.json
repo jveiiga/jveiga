@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.80fb7b9a.js",
+    "main.css": "/static/css/main.65e82718.css",
+    "main.js": "/static/js/main.74136a4b.js",
     "static/media/dev1-background.jpg": "/static/media/dev1-background.604138a7be64510faee0.jpg",
     "static/media/google-detail-background.jpg": "/static/media/google-detail-background.36327a957a4a9008ad3e.jpg",
     "static/media/privacy-policy-background.jpg": "/static/media/privacy-policy-background.c7dad55f1d5334554ff9.jpg",
     "static/media/gmn-background.png": "/static/media/gmn-background.c697df9d3613a22fc9d2.png",
-    "static/media/gmn1-background.png": "/static/media/gmn1-background.d5c6bd84491c6753e162.png",
     "static/media/dev-background.jpg": "/static/media/dev-background.d1ff635a064f70e25516.jpg",
     "static/media/google-background.jpg": "/static/media/google-background.aa9511a7f567816478be.jpg",
     "static/media/myimage-background.png": "/static/media/myimage-background.7fbe4927fc1b01ac30ee.png",
@@ -30,15 +30,16 @@
     "static/media/arrow-circle-up.png": "/static/media/arrow-circle-up.19f3d5e571bd8d7d7524.png",
     "static/media/next-logo.png": "/static/media/next-logo.36036eb4965d9a68bbd0.png",
     "static/media/react-logo.png": "/static/media/react-logo.b37f0a4b7134b3c99d6e.png",
-    "static/media/avatar.png": "/static/media/avatar.de29b5aaaf2aaf1034f3.png",
     "static/media/css-logo.png": "/static/media/css-logo.5491a3b05b4addb59c15.png",
     "static/media/html-logo.png": "/static/media/html-logo.397540dec969b31fd37c.png",
     "index.html": "/index.html",
     "static/media/github.svg": "/static/media/github.3b4375b1cacddb7910737e992dd73aad.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.540f6bb939a10fe0badbc26387374d38.svg",
-    "main.80fb7b9a.js.map": "/static/js/main.80fb7b9a.js.map"
+    "main.65e82718.css.map": "/static/css/main.65e82718.css.map",
+    "main.74136a4b.js.map": "/static/js/main.74136a4b.js.map"
   },
   "entrypoints": [
-    "static/js/main.80fb7b9a.js"
+    "static/css/main.65e82718.css",
+    "static/js/main.74136a4b.js"
   ]
 }
