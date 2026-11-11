@@ -338,10 +338,10 @@ const Home = () => {
           {/* MARCA */}
           <div className="mb-5">
             <span className="text-5xl font-black tracking-[-0.07em] sm:text-7xl lg:text-8xl">
-              JVEIGA<span className="text-red-500">.</span>
+              JVEIGA<span className="text-[#CB342B]">.</span>
             </span>
           </div>
-Ò
+
           {/* TÍTULO DINÂMICO */}
           <div className="min-h-[110px] sm:min-h-[145px]">
             <h1 className="max-w-2xl text-3xl font-light leading-tight tracking-tight sm:text-5xl lg:text-3xl">
