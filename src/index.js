@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import TagManager from 'react-gtm-module';
 import AppWrapper from './App';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
+import "./index.css";
 
 const tagManagerArgs = {
   gtmId: 'GTM-MWM7NMR8'
