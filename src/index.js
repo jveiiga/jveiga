@@ -39,11 +39,11 @@ const Root = () => {
   return (
     <React.StrictMode>
       <HashRouter>
-        {loading ? (
-          <LoadingScreen />
-        ) : (
+        {/* {loading ? ( */}
+          {/* // <LoadingScreen /> */}
+        {/* ) : ( */}
           <AppWrapper />
-        )}
+        {/* )} */}
       </HashRouter>
     </React.StrictMode>
   );
