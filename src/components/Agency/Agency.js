@@ -40,9 +40,9 @@ const Agency = () => {
           transition={{ duration: 0.7 }}
           className="mb-14 flex items-center gap-4"
         >
-          <span className="h-px w-10 bg-blue-600" />
+          <span className="h-px w-10 bg-[#CB342B]" />
 
-          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-blue-700 sm:text-xs">
+          <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#CB342B] sm:text-xs">
             Soluções digitais
           </span>
         </motion.div>
@@ -128,7 +128,7 @@ const Agency = () => {
             >
               <Link
                 to="/desenvolvimento-de-sites"
-                className="group inline-flex items-center gap-5 bg-[#087cff] px-7 py-5 text-xs font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-[#0064d8]"
+                className="group inline-flex items-center gap-5 bg-[#087cff] px-7 py-5 text-xs font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-[#CB342B]"
               >
                 Conheça nossas soluções
 
@@ -167,7 +167,7 @@ const Agency = () => {
               <div className="relative flex h-[calc(100%-36px)] flex-col overflow-hidden bg-[#080b12] p-4 sm:p-9">
 
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-black tracking-widest">
+                  <span className="text-xs text-white font-black tracking-widest">
                     BRAND<span className="text-blue-400">.</span>
                   </span>
 
@@ -182,7 +182,7 @@ const Agency = () => {
                     Your digital presence
                   </span>
 
-                  <h3 className="mt-3 text-2xl font-bold leading-tight tracking-tight sm:mt-4 sm:text-4xl">
+                  <h3 className="mt-3 text-2xl text-white font-bold leading-tight tracking-tight sm:mt-4 sm:text-4xl">
                     Beyond
                     <br />
                     the ordinary.
@@ -216,7 +216,7 @@ const Agency = () => {
             </div>
 
             {/* Marcador */}
-            <div className="absolute -bottom-6 -left-6 flex h-16 w-16 items-center justify-center bg-blue-600 text-white shadow-xl">
+            <div className="absolute -bottom-6 -left-6 flex h-16 w-16 items-center justify-center bg-[#CB342B] text-white shadow-xl">
               <FaCode className="text-2xl" />
             </div>
           </motion.div>
@@ -228,9 +228,6 @@ const Agency = () => {
             JVEIGA / Digital solutions
           </span>
 
-          <span className="text-[9px] uppercase tracking-[0.3em] text-gray-400">
-            01 — 04
-          </span>
         </div>
       </div>
     </section>

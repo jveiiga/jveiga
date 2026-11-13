@@ -46,6 +46,15 @@ const HamburgerMenu = () => {
     }
   };
 
+  const menuItems = [
+    { href: "home", label: "Início" },
+    { href: "desenvolvimento-de-sites", label: "Sites & Landing Pages" },
+    { href: "google", label: "Google Ads" },
+    { href: "facebook", label: "Meta Ads" },
+    { href: "gmn", label: "Perfil da Empresa no Google" },
+    { href: "privacy-policy", label: "Política de Privacidade" },
+  ];
+
   return (
     <MenuContainer>
       <MenuButton onClick={toggleMenu}>
@@ -53,15 +62,14 @@ const HamburgerMenu = () => {
       </MenuButton>
       <MenuList isOpen={isOpen}>
         <Logo src={logoImage} alt="Logo" />
-        {['home', 'web developer', 'google', 'facebook', 'gmn', 'contact', 'privacy-policy'].map((href, index) => (
+        {menuItems.map(({ href, label }, index) => (
           <MenuItem key={href} isOpen={isOpen} index={index}>
-            <a href={href === 'contact' ? '/contact' : `#${href}`} onClick={(e) => handleItemClick(e, href)}>
+            <a
+              href={`#${href}`}
+              onClick={(e) => handleItemClick(e, href)}
+            >
               <span className="menu-number">{index + 1}.</span>
-              <span className="menu-text">
-                {href === 'privacy-policy'
-                  ? 'Política de Privacidade'
-                  : href.charAt(0).toUpperCase() + href.slice(1)}
-              </span>
+              <span className="menu-text">{label}</span>
             </a>
           </MenuItem>
         ))}

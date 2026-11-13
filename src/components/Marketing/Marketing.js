@@ -298,7 +298,7 @@ const Marketing = () => {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-900">
                 Presença local
               </p>
-              <p className="text-[11px] text-gray-400">
+              <p className="text-[12px] text-gray-500 font-bold">
                 Perfil da Empresa no Google
               </p>
             </div>
@@ -310,7 +310,7 @@ const Marketing = () => {
             <span className="text-[#027BFF]">clientes.</span>
           </h2>
 
-          <p className="mt-6 max-w-lg text-sm leading-7 text-gray-500 sm:text-base">
+          <p className="mt-6 max-w-lg text-sm leading-7 text-gray-700 sm:text-base">
             Faça sua empresa ser encontrada por quem procura seus produtos
             e serviços. Transforme pesquisas locais em oportunidades reais
             de negócio.
@@ -330,13 +330,13 @@ const Marketing = () => {
           <div className="mt-10 flex flex-wrap items-center gap-5">
             <Link
               to="/marketing-detail"
-              className="group inline-flex items-center gap-5 bg-[#027BFF] px-7 py-5 text-xs font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-[#0064d8]"
+              className="group inline-flex items-center gap-5 bg-[#027BFF] px-7 py-5 text-xs font-bold uppercase tracking-wider text-white transition-colors duration-300 hover:bg-[#CB342B]"
             >
               CONHEÇA O SERVIÇO
               <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
 
-            <span className="text-xs text-gray-400">
+            <span className="text-[14px] text-gray-400 font-bold">
               Visibilidade que gera oportunidades.
             </span>
           </div>

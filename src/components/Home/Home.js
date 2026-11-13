@@ -136,6 +136,7 @@ const Home = () => {
       {/* ================================== */}
 
       <section
+        id="home"
         ref={containerRef}
         className="relative h-[180vh] w-full"
       >
@@ -151,8 +152,8 @@ const Home = () => {
           >
             <div
               className={`relative mx-auto flex min-h-[100svh] w-full max-w-7xl items-center px-6 py-32 transition-all duration-1000 sm:px-10 lg:px-16 ${isVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-10 opacity-0"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
                 }`}
             >
               <div className="w-full max-w-2xl">
@@ -212,8 +213,18 @@ const Home = () => {
 
                 {/* INDICADOR DE SCROLL */}
                 <div className="mt-16 items-center gap-4 sm:flex">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20">
-                    <FaChevronDown className="animate-bounce text-xs text-blue-400" />
+                  <div className="relative z-50 flex h-9 w-9 items-center justify-center rounded-full border border-white/20">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        console.log("Clique detectado");
+                        document
+                          .getElementById("desenvolvimento-de-sites")
+                          ?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    >
+                      <FaChevronDown className="animate-bounce text-xs text-blue-400" />
+                    </button>
                   </div>
 
                   <span className="text-[9px] font-medium uppercase tracking-[0.3em] text-white/40">

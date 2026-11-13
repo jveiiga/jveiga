@@ -305,6 +305,7 @@ const SharedOrbitalScene = ({ mouse, progress }) => {
     return (
         <div className="pointer-events-none fixed inset-0 z-[5]">
             <Canvas
+                style={{ pointerEvents: "none" }}
                 camera={{ position: [0, 0, 5.5], fov: 55 }}
                 dpr={[1, 1.5]}
                 gl={{

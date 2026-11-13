@@ -92,7 +92,7 @@ const Header = ({ currentPath }) => {
 
   return (
     <HeaderWrapper scrolled={isScrolled ? "true" : undefined}>
-      <NavLink href="#sobre" onClick={(e) => handleClick(e, "sobre")}>
+      <NavLink href="#home" onClick={(e) => handleClick(e, "home")}>
         <Logo src={logoImage} alt="Logo" />
       </NavLink>
       <NavWrapper>
@@ -100,54 +100,54 @@ const Header = ({ currentPath }) => {
           <NavList>
             <NavItem>
               <NavLink
-                href="#sobre"
-                onClick={(e) => handleClick(e, "sobre")}
-                className={activeLink === "#sobre" ? "active" : ""}
+                href="#home"
+                onClick={(e) => handleClick(e, "home")}
+                className={activeLink === "#home" ? "active" : ""}
               >
-                Sobre Mim
+                Início
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#cases"
-                onClick={(e) => handleClick(e, "cases")}
-                className={activeLink === "#cases" ? "active" : ""}
+                href="#desenvolvimento-de-sites"
+                onClick={(e) => handleClick(e, "desenvolvimento-de-sites")}
+                className={activeLink === "#desenvolvimento-de-sites" ? "active" : ""}
               >
-                Cases
+                Sites & Landing Pages
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#habilidades"
-                onClick={(e) => handleClick(e, "habilidades")}
-                className={activeLink === "#habilidades" ? "active" : ""}
+                href="#google"
+                onClick={(e) => handleClick(e, "google")}
+                className={activeLink === "#google" ? "active" : ""}
               >
-                Habilidades
+                Google Ads
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#blog"
-                onClick={(e) => handleClick(e, "blog")}
-                className={activeLink === "#blog" ? "active" : ""}
+                href="#facebook"
+                onClick={(e) => handleClick(e, "facebook")}
+                className={activeLink === "#facebook" ? "active" : ""}
               >
-                Blog
+                Meta Ads
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink
-                href="#rjveiga"
-                onClick={(e) => handleClick(e, "rjveiga")}
-                className={activeLink === "#rjveiga" ? "active" : ""}
+                href="#gmn"
+                onClick={(e) => handleClick(e, "gmn")}
+                className={activeLink === "#gmn" ? "active" : ""}
               >
-                RJVEIGA
+                Perfil da Empresa no Google
               </NavLink>
             </NavItem>
-
+{/* 
             <NavItem>
               <NavLink
                 as={Link}
@@ -156,7 +156,7 @@ const Header = ({ currentPath }) => {
               >
                 Contato
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </NavList>
         </Nav>
         <Icons>

@@ -10,6 +10,7 @@ import {
   FaMousePointer,
   FaSearch,
 } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Seo = () => {
   const { ref, inView } = useInView({
@@ -34,21 +35,22 @@ const Seo = () => {
       <div className="relative mx-auto grid min-h-[100svh] max-w-7xl items-center gap-16 px-6 py-24 sm:px-10 lg:grid-cols-2 lg:gap-12 lg:px-12">
         {/* Content */}
         <div
-          className={`relative z-10 max-w-xl transition-all duration-1000 ${
-            inView
-              ? "translate-x-0 opacity-100"
-              : "-translate-x-12 opacity-0"
-          }`}
+          className={`relative z-10 max-w-xl transition-all duration-1000 ${inView
+            ? "translate-x-0 opacity-100"
+            : "-translate-x-12 opacity-0"
+            }`}
         >
           <div className="mb-8 flex items-center gap-3">
-            <span className="h-px w-10 bg-secondary-blue" />
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary-blue">
+            <span className="h-px w-10 bg-[#CB342B]" />
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#CB342B]">
               Aquisição de clientes
             </span>
           </div>
 
           <div className="mb-6 flex items-center gap-3">
-            <FaGoogle className="text-3xl text-secondary-blue" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl text-2xl">
+              <FcGoogle />
+            </div>
             <span className="text-sm font-medium uppercase tracking-[0.2em] text-white/50">
               Google Ads
             </span>
@@ -83,7 +85,7 @@ const Seo = () => {
 
           <Link
             to="/seo-detail"
-            className="group mt-10 inline-flex items-center gap-4 rounded-sm bg-secondary-blue px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-[#0066d6]"
+            className="group mt-10 inline-flex items-center gap-4 rounded-sm bg-secondary-blue px-7 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-[#CB342B]"
           >
             Conheça a solução
             <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -92,11 +94,10 @@ const Seo = () => {
 
         {/* Google Ads mockup */}
         <div
-          className={`relative mx-auto w-full max-w-[560px] transition-all delay-200 duration-1000 ${
-            inView
-              ? "translate-x-0 opacity-100"
-              : "translate-x-12 opacity-0"
-          }`}
+          className={`relative mx-auto w-full max-w-[560px] transition-all delay-200 duration-1000 ${inView
+            ? "translate-x-0 opacity-100"
+            : "translate-x-12 opacity-0"
+            }`}
         >
           <div className="absolute -inset-8 rounded-full bg-secondary-blue/10 blur-[90px]" />
 
@@ -116,7 +117,9 @@ const Seo = () => {
             {/* Search */}
             <div className="py-6">
               <div className="flex items-center gap-3">
-                <FaGoogle className="text-2xl text-secondary-blue" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl text-2xl">
+                  <FcGoogle />
+                </div>
                 <div className="flex flex-1 items-center justify-between rounded-full border border-white/10 bg-white/[0.04] px-4 py-3">
                   <span className="text-xs text-white/65 sm:text-sm">
                     serviços para minha empresa
@@ -183,7 +186,7 @@ const Seo = () => {
           {/* Floating metrics */}
           <div className="absolute -bottom-7 -left-3 rounded-xl border border-white/10 bg-[#111c2d]/95 p-4 shadow-2xl backdrop-blur-xl sm:-left-8">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-blue/15 text-secondary-blue">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-red/15 text-secondary-red">
                 <FaMousePointer />
               </div>
               <div>
